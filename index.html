@@ -1,0 +1,1930 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>FORJA · Plan de Transformación 12 Semanas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* =========================================================
+   FORJA — Sistema de diseño
+   Paleta: negro cálido + dorado mate + verde éxito
+   Tipos: Bebas Neue (display) / Inter (cuerpo) / JetBrains Mono (datos)
+   ========================================================= */
+:root{
+  --bg:#0A0A0B;
+  --surface:#141416;
+  --surface-2:#1B1B1E;
+  --border:#26262A;
+  --gold:#C9A24B;
+  --gold-bright:#E4BE6C;
+  --gold-dim:#8A6F35;
+  --text:#EDE9E0;
+  --text-dim:#9C9891;
+  --text-faint:#615E58;
+  --green:#4ADE80;
+  --red:#E5484D;
+  --blue:#5B9BD5;
+  --radius:16px;
+  --radius-sm:10px;
+  --shadow-card: 0 4px 24px rgba(0,0,0,0.4);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Inter',sans-serif;
+  min-height:100vh;
+  overflow-x:hidden;
+  padding-bottom:calc(84px + var(--safe-bottom));
+}
+::selection{background:var(--gold-dim);color:#fff;}
+::-webkit-scrollbar{width:6px;height:6px;}
+::-webkit-scrollbar-thumb{background:var(--border);border-radius:10px;}
+h1,h2,h3,.display{font-family:'Bebas Neue',sans-serif;letter-spacing:0.02em;}
+.mono{font-family:'JetBrains Mono',monospace;}
+a{color:inherit;}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit;}
+img,svg{display:block;max-width:100%;}
+:focus-visible{outline:2px solid var(--gold);outline-offset:2px;}
+@media (prefers-reduced-motion: reduce){*{animation-duration:0.01ms !important;transition-duration:0.01ms !important;}}
+
+/* ––––– Layout shell ––––– */
+.app{max-width:520px;margin:0 auto;position:relative;min-height:100vh;}
+@media (min-width:900px){
+.app{max-width:1180px;}
+}
+
+/* Top bar */
+.topbar{
+position:sticky;top:0;z-index:50;
+background:rgba(10,10,11,0.88);
+backdrop-filter:blur(14px);
+-webkit-backdrop-filter:blur(14px);
+border-bottom:1px solid var(–border);
+padding:14px 20px;
+display:flex;align-items:center;justify-content:space-between;
+}
+.brand{display:flex;align-items:center;gap:10px;}
+.brand-mark{
+width:34px;height:34px;border-radius:9px;
+background:linear-gradient(155deg,var(–gold-bright),var(–gold-dim));
+display:flex;align-items:center;justify-content:center;
+font-family:‘Bebas Neue’,sans-serif;color:#0A0A0B;font-size:18px;
+}
+.brand-name{font-family:‘Bebas Neue’,sans-serif;font-size:22px;letter-spacing:0.06em;}
+.brand-sub{font-size:9px;color:var(–text-dim);letter-spacing:0.14em;text-transform:uppercase;margin-top:-2px;}
+.topbar-actions{display:flex;gap:8px;}
+.icon-btn{
+width:38px;height:38px;border-radius:11px;background:var(–surface);
+border:1px solid var(–border);display:flex;align-items:center;justify-content:center;
+color:var(–text-dim);transition:all .2s;
+}
+.icon-btn:hover{color:var(–gold);border-color:var(–gold-dim);}
+.icon-btn.active{color:var(–gold);border-color:var(–gold-dim);background:rgba(201,162,75,0.08);}
+
+/* Views */
+.view{display:none;padding:20px 20px 40px;animation:fadeIn .35s ease;}
+.view.active{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+
+@media (min-width:900px){
+.view{padding:28px 32px 48px;}
+}
+
+/* ––––– Bottom nav ––––– */
+.bottomnav{
+position:fixed;bottom:0;left:0;right:0;z-index:60;
+background:rgba(15,15,16,0.92);
+backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+border-top:1px solid var(–border);
+display:flex;justify-content:space-around;
+padding:10px 6px calc(10px + var(–safe-bottom));
+max-width:520px;margin:0 auto;
+}
+@media (min-width:900px){.bottomnav{max-width:1180px;}}
+.navbtn{
+display:flex;flex-direction:column;align-items:center;gap:4px;
+color:var(–text-faint);font-size:10px;font-weight:600;letter-spacing:0.02em;
+padding:4px 10px;border-radius:10px;transition:color .2s;
+flex:1;max-width:90px;
+}
+.navbtn svg{width:21px;height:21px;stroke:currentColor;fill:none;stroke-width:1.8;transition:transform .2s;}
+.navbtn.active{color:var(–gold);}
+.navbtn.active svg{transform:translateY(-2px);}
+
+/* ––––– Cards & primitives ––––– */
+.card{
+background:var(–surface);
+border:1px solid var(–border);
+border-radius:var(–radius);
+box-shadow:var(–shadow-card);
+}
+.section-title{
+font-family:‘Bebas Neue’,sans-serif;
+font-size:15px;letter-spacing:0.14em;text-transform:uppercase;
+color:var(–text-dim);margin:28px 0 12px;
+display:flex;align-items:center;gap:8px;
+}
+.section-title::before{content:’’;width:14px;height:2px;background:var(–gold);display:inline-block;}
+.section-title:first-child{margin-top:0;}
+
+.pill{
+display:inline-flex;align-items:center;gap:5px;
+padding:4px 10px;border-radius:100px;font-size:11px;font-weight:600;
+background:var(–surface-2);border:1px solid var(–border);color:var(–text-dim);
+}
+.pill.gold{color:var(–gold);border-color:var(–gold-dim);background:rgba(201,162,75,0.08);}
+.pill.green{color:var(–green);border-color:#1f4a30;background:rgba(74,222,128,0.08);}
+
+.btn{
+display:inline-flex;align-items:center;justify-content:center;gap:8px;
+padding:14px 22px;border-radius:12px;font-weight:700;font-size:14px;
+letter-spacing:0.02em;transition:all .2s;
+}
+.btn-primary{
+background:linear-gradient(155deg,var(–gold-bright),var(–gold-dim));
+color:#100C02;
+}
+.btn-primary:active{transform:scale(0.97);}
+.btn-ghost{
+background:var(–surface-2);border:1px solid var(–border);color:var(–text);
+}
+.btn-ghost:hover{border-color:var(–gold-dim);}
+.btn-danger{background:rgba(229,72,77,0.1);color:var(–red);border:1px solid rgba(229,72,77,0.3);}
+.btn-full{width:100%;}
+.btn-sm{padding:9px 14px;font-size:12px;border-radius:10px;}
+
+/* Progress ring (signature element) */
+.ring-wrap{position:relative;display:flex;align-items:center;justify-content:center;}
+.ring-wrap svg{transform:rotate(-90deg);}
+.ring-track{stroke:var(–border);fill:none;}
+.ring-fill{stroke:var(–gold);fill:none;stroke-linecap:round;transition:stroke-dashoffset .6s cubic-bezier(.65,0,.35,1);}
+.ring-center{position:absolute;text-align:center;}
+.ring-center .num{font-family:‘Bebas Neue’;font-size:28px;line-height:1;color:var(–text);}
+.ring-center .lbl{font-size:9px;color:var(–text-dim);text-transform:uppercase;letter-spacing:0.1em;margin-top:2px;}
+
+/* Progress bar */
+.bar{height:8px;border-radius:100px;background:var(–surface-2);overflow:hidden;border:1px solid var(–border);}
+.bar-fill{height:100%;background:linear-gradient(90deg,var(–gold-dim),var(–gold-bright));border-radius:100px;transition:width .5s ease;}
+.bar-fill.green{background:linear-gradient(90deg,#2c7a4b,var(–green));}
+
+/* ––––– Home / Dashboard ––––– */
+.hero-card{
+padding:24px 22px;border-radius:20px;
+background:radial-gradient(120% 140% at 100% 0%, rgba(201,162,75,0.14), transparent 60%), var(–surface);
+border:1px solid var(–border);position:relative;overflow:hidden;
+}
+.hero-eyebrow{font-size:11px;color:var(–gold);text-transform:uppercase;letter-spacing:0.16em;font-weight:700;}
+.hero-title{font-family:‘Bebas Neue’;font-size:34px;line-height:1.05;margin:6px 0 4px;}
+.hero-sub{color:var(–text-dim);font-size:13px;line-height:1.5;max-width:340px;}
+.hero-stats{display:flex;gap:22px;margin-top:18px;}
+.hero-stat .n{font-family:‘JetBrains Mono’;font-size:20px;color:var(–gold-bright);font-weight:700;}
+.hero-stat .l{font-size:10px;color:var(–text-dim);text-transform:uppercase;letter-spacing:0.08em;margin-top:2px;}
+
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+@media (min-width:900px){
+.dash-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:24px;align-items:start;}
+}
+
+.stat-card{padding:16px;text-align:center;}
+.stat-card .n{font-family:‘Bebas Neue’;font-size:26px;color:var(–gold);}
+.stat-card .l{font-size:10px;color:var(–text-dim);text-transform:uppercase;letter-spacing:0.06em;margin-top:2px;}
+
+.day-card{
+padding:16px 18px;display:flex;align-items:center;gap:14px;margin-bottom:10px;
+transition:transform .15s, border-color .15s;
+}
+.day-card:active{transform:scale(0.98);}
+.day-card.today{border-color:var(–gold-dim);background:linear-gradient(155deg, rgba(201,162,75,0.09), var(–surface));}
+.day-card .dnum{
+width:44px;height:44px;border-radius:12px;background:var(–surface-2);
+display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;
+font-family:‘Bebas Neue’;font-size:16px;border:1px solid var(–border);
+}
+.day-card.done .dnum{background:rgba(74,222,128,0.1);border-color:#1f4a30;color:var(–green);}
+.day-card .dnum small{font-size:8px;color:var(–text-faint);text-transform:uppercase;font-family:‘Inter’;font-weight:700;}
+.day-card .dinfo{flex:1;min-width:0;}
+.day-card .dtitle{font-weight:700;font-size:15px;}
+.day-card .dmeta{font-size:11px;color:var(–text-dim);margin-top:2px;}
+.day-card .dchev{color:var(–text-faint);}
+.day-card.locked{opacity:0.45;}
+
+/* ––––– Day detail view ––––– */
+.day-hero{
+border-radius:18px;padding:22px 20px;position:relative;overflow:hidden;
+background:var(–surface);border:1px solid var(–border);
+background-image:radial-gradient(140% 100% at 0% 0%, rgba(201,162,75,0.13), transparent 55%);
+}
+.back-btn{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(–text-dim);font-weight:600;margin-bottom:14px;}
+.back-btn svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;}
+.day-hero-title{font-family:‘Bebas Neue’;font-size:30px;}
+.day-hero-focus{color:var(–gold);font-size:13px;font-weight:700;margin-top:2px;}
+.day-hero-meta{display:flex;gap:16px;margin-top:16px;flex-wrap:wrap;}
+.dhm-item{display:flex;align-items:center;gap:6px;font-size:12px;color:var(–text-dim);}
+.dhm-item svg{width:15px;height:15px;stroke:var(–gold);fill:none;stroke-width:1.8;}
+
+.intensity-dots{display:inline-flex;gap:3px;}
+.intensity-dots span{width:6px;height:6px;border-radius:50%;background:var(–border);}
+.intensity-dots span.on{background:var(–gold);}
+
+/* Exercise card */
+.ex-card{margin-bottom:12px;overflow:hidden;}
+.ex-head{
+padding:16px 18px;display:flex;align-items:center;gap:14px;
+}
+.ex-thumb{
+width:56px;height:56px;border-radius:12px;background:var(–surface-2);
+display:flex;align-items:center;justify-content:center;flex-shrink:0;border:1px solid var(–border);
+}
+.ex-thumb svg{width:30px;height:30px;stroke:var(–gold);fill:none;stroke-width:1.5;}
+.ex-title-wrap{flex:1;min-width:0;}
+.ex-num{font-family:‘JetBrains Mono’;font-size:10px;color:var(–gold-dim);font-weight:700;}
+.ex-name{font-weight:700;font-size:15px;margin-top:1px;}
+.ex-quick{display:flex;gap:10px;margin-top:4px;flex-wrap:wrap;}
+.ex-quick span{font-size:11px;color:var(–text-dim);}
+.ex-quick b{color:var(–text);font-family:‘JetBrains Mono’;}
+.ex-fav{width:34px;height:34px;flex-shrink:0;border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(–text-faint);}
+.ex-fav svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.8;}
+.ex-fav.active svg{fill:var(–gold);stroke:var(–gold);}
+.ex-expand{width:34px;height:34px;flex-shrink:0;border-radius:10px;background:var(–surface-2);display:flex;align-items:center;justify-content:center;transition:transform .25s;}
+.ex-expand svg{width:16px;height:16px;stroke:var(–text-dim);fill:none;stroke-width:2;}
+.ex-card.open .ex-expand{transform:rotate(180deg);}
+
+.ex-body{max-height:0;overflow:hidden;transition:max-height .35s ease;}
+.ex-card.open .ex-body{max-height:none;}
+.ex-body-in{padding:0 18px 20px;border-top:1px solid var(–border);padding-top:16px;}
+
+.video-link{
+display:flex;align-items:center;gap:10px;padding:12px 14px;border-radius:12px;
+background:var(–surface-2);border:1px solid var(–border);margin-bottom:14px;
+}
+.video-link .vp{
+width:36px;height:36px;border-radius:50%;background:var(–red);display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.video-link .vp svg{width:14px;height:14px;fill:#fff;stroke:none;margin-left:2px;}
+.video-link .vt{font-size:12px;font-weight:700;}
+.video-link .vs{font-size:10px;color:var(–text-dim);}
+.video-link .varrow{margin-left:auto;color:var(–text-faint);width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;}
+
+.muscle-diagram-row{display:flex;gap:10px;margin-bottom:14px;}
+.muscle-mini{flex:1;background:var(–surface-2);border:1px solid var(–border);border-radius:12px;padding:10px;text-align:center;}
+.muscle-mini svg{width:100%;height:70px;margin-bottom:6px;}
+.muscle-mini .mlbl{font-size:10px;color:var(–text-dim);text-transform:uppercase;letter-spacing:0.04em;}
+
+.muscle-list{margin-bottom:14px;}
+.muscle-row{display:flex;align-items:center;gap:10px;padding:7px 0;}
+.muscle-row .dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+.muscle-row .mname{flex:1;font-size:12.5px;font-weight:600;}
+.muscle-row .mfunc{font-size:10.5px;color:var(–text-dim);display:block;}
+.muscle-row .mpct{font-family:‘JetBrains Mono’;font-size:12px;color:var(–gold);font-weight:700;}
+
+.info-block{margin-bottom:14px;}
+.info-block h4{font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:var(–gold);margin-bottom:6px;font-weight:700;}
+.info-block p, .info-block li{font-size:13px;line-height:1.6;color:#D8D4CB;}
+.info-block ul{padding-left:18px;}
+.info-block li{margin-bottom:3px;}
+
+.two-col-info{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;}
+.mini-box{background:var(–surface-2);border:1px solid var(–border);border-radius:12px;padding:12px;}
+.mini-box h5{font-size:10px;text-transform:uppercase;color:var(–text-dim);letter-spacing:0.06em;margin-bottom:5px;}
+.mini-box p{font-size:12px;line-height:1.5;}
+.mini-box.warn h5{color:var(–red);}
+.mini-box.tip h5{color:var(–green);}
+
+.setrep-table{width:100%;border-collapse:collapse;margin-bottom:14px;font-size:12.5px;}
+.setrep-table th{
+text-align:left;font-size:9.5px;text-transform:uppercase;color:var(–text-faint);
+letter-spacing:0.06em;padding-bottom:6px;border-bottom:1px solid var(–border);font-weight:700;
+}
+.setrep-table td{padding:9px 0;border-bottom:1px solid var(–border);}
+.setrep-table td:first-child{font-weight:700;}
+.setrep-table td.mono{font-family:‘JetBrains Mono’;color:var(–gold);}
+.setrep-table tr:last-child td{border-bottom:none;}
+
+.alt-box{
+display:flex;gap:10px;align-items:flex-start;padding:12px 14px;border-radius:12px;
+background:rgba(91,155,213,0.08);border:1px solid rgba(91,155,213,0.25);margin-bottom:14px;
+}
+.alt-box svg{width:16px;height:16px;stroke:var(–blue);fill:none;stroke-width:2;flex-shrink:0;margin-top:1px;}
+.alt-box p{font-size:12px;line-height:1.5;}
+.alt-box b{color:var(–blue);}
+
+.log-row{display:flex;gap:8px;align-items:center;}
+.log-input{
+flex:1;background:var(–surface-2);border:1px solid var(–border);border-radius:10px;
+padding:10px 12px;color:var(–text);font-size:13px;font-family:‘JetBrains Mono’;
+}
+.log-input::placeholder{color:var(–text-faint);font-family:‘Inter’;}
+.log-label{font-size:10px;color:var(–text-dim);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:5px;display:block;}
+
+/* Warmup / stretch strip */
+.wu-strip{display:flex;gap:10px;overflow-x:auto;padding-bottom:6px;margin-bottom:4px;}
+.wu-strip::-webkit-scrollbar{display:none;}
+.wu-item{
+flex:0 0 auto;width:150px;background:var(–surface);border:1px solid var(–border);
+border-radius:14px;padding:14px;
+}
+.wu-item .wicon{width:34px;height:34px;border-radius:10px;background:var(–surface-2);display:flex;align-items:center;justify-content:center;margin-bottom:10px;}
+.wu-item .wicon svg{width:18px;height:18px;stroke:var(–gold);fill:none;stroke-width:1.8;}
+.wu-item .wname{font-size:12.5px;font-weight:700;margin-bottom:2px;}
+.wu-item .wtime{font-size:10.5px;color:var(–gold);font-family:‘JetBrains Mono’;font-weight:700;}
+.wu-item .wdesc{font-size:10.5px;color:var(–text-dim);margin-top:4px;line-height:1.4;}
+
+/* Timer overlay */
+.timer-overlay{
+position:fixed;inset:0;z-index:200;background:rgba(6,6,7,0.92);
+backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;flex-direction:column;
+padding:20px;
+}
+.timer-overlay.show{display:flex;}
+.timer-ring-wrap{position:relative;width:240px;height:240px;}
+.timer-time{font-family:‘Bebas Neue’;font-size:56px;position:absolute;inset:0;display:flex;align-items:center;justify-content:center;}
+.timer-label{color:var(–text-dim);font-size:13px;text-transform:uppercase;letter-spacing:0.12em;margin-top:18px;}
+.timer-controls{display:flex;gap:12px;margin-top:28px;}
+.timer-controls .icon-btn{width:52px;height:52px;border-radius:50%;}
+.timer-controls .icon-btn svg{width:22px;height:22px;}
+
+/* Finish workout bar */
+.floating-bar{
+position:sticky;bottom:calc(84px + var(–safe-bottom) + 12px);z-index:40;
+margin-top:20px;padding:14px;display:flex;gap:10px;
+background:rgba(20,20,22,0.95);backdrop-filter:blur(10px);
+}
+
+/* Search / filter */
+.search-bar{
+display:flex;align-items:center;gap:10px;background:var(–surface);border:1px solid var(–border);
+border-radius:14px;padding:12px 16px;margin-bottom:14px;
+}
+.search-bar svg{width:17px;stroke:var(–text-dim);fill:none;stroke-width:2;flex-shrink:0;}
+.search-bar input{background:none;border:none;color:var(–text);font-size:14px;flex:1;outline:none;}
+.search-bar input::placeholder{color:var(–text-faint);}
+.chip-row{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;margin-bottom:16px;}
+.chip-row::-webkit-scrollbar{display:none;}
+.chip{
+flex:0 0 auto;padding:8px 16px;border-radius:100px;font-size:12px;font-weight:600;
+background:var(–surface);border:1px solid var(–border);color:var(–text-dim);
+}
+.chip.active{background:var(–gold);color:#100C02;border-color:var(–gold);}
+
+/* Accordion generic (science, progression) */
+.acc{margin-bottom:10px;overflow:hidden;}
+.acc-head{padding:16px 18px;display:flex;align-items:center;gap:12px;}
+.acc-head .aicon{width:36px;height:36px;border-radius:10px;background:var(–surface-2);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.acc-head .aicon svg{width:18px;height:18px;stroke:var(–gold);fill:none;stroke-width:1.8;}
+.acc-head .atitle{flex:1;font-weight:700;font-size:13.5px;}
+.acc-head .achev{width:14px;height:14px;stroke:var(–text-dim);fill:none;stroke-width:2;transition:transform .25s;flex-shrink:0;}
+.acc.open .achev{transform:rotate(180deg);}
+.acc-body{max-height:0;overflow:hidden;transition:max-height .35s ease;}
+.acc.open .acc-body{max-height:2000px;}
+.acc-body-in{padding:0 18px 18px;font-size:13px;line-height:1.65;color:#D8D4CB;}
+.acc-body-in ul{padding-left:18px;margin-top:6px;}
+.acc-body-in li{margin-bottom:4px;}
+.acc-body-in strong{color:var(–gold);}
+
+/* Toast */
+.toast{
+position:fixed;bottom:calc(96px + var(–safe-bottom));left:50%;transform:translateX(-50%) translateY(20px);
+background:var(–surface-2);border:1px solid var(–gold-dim);color:var(–text);
+padding:12px 20px;border-radius:100px;font-size:13px;font-weight:600;z-index:300;
+opacity:0;transition:all .3s;display:flex;align-items:center;gap:8px;box-shadow:0 8px 30px rgba(0,0,0,0.5);
+}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+.toast svg{width:16px;stroke:var(–green);fill:none;stroke-width:2.5;}
+
+/* Empty state */
+.empty{text-align:center;padding:50px 20px;color:var(–text-dim);}
+.empty svg{width:44px;stroke:var(–text-faint);fill:none;stroke-width:1.5;margin:0 auto 14px;}
+.empty p{font-size:13px;}
+
+/* Fullscreen mode */
+.app.fullscreen .topbar,.app.fullscreen .bottomnav{display:none !important;}
+.app.fullscreen .view{padding-top:16px;}
+
+/* Volume bars (muscle group weekly) */
+.vol-row{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+.vol-row .vname{width:78px;font-size:11.5px;color:var(–text-dim);flex-shrink:0;}
+.vol-row .bar{flex:1;}
+.vol-row .vval{width:34px;text-align:right;font-family:‘JetBrains Mono’;font-size:11px;color:var(–gold);flex-shrink:0;}
+
+/* Responsive desktop tweaks */
+@media (min-width:900px){
+.grid-2.desktop-3{grid-template-columns:repeat(3,1fr);}
+.day-hero-title{font-size:38px;}
+.hero-title{font-size:42px;}
+}
+</style>
+
+</head>
+<body>
+<div class="app" id="app">
+
+  <!-- ================= TOP BAR ================= -->
+
+  <div class="topbar">
+    <div class="brand">
+      <div class="brand-mark">F</div>
+      <div>
+        <div class="brand-name">FORJA</div>
+        <div class="brand-sub">12 semanas · recomposición</div>
+      </div>
+    </div>
+    <div class="topbar-actions">
+      <button class="icon-btn" id="searchToggle" title="Buscar ejercicios" aria-label="Buscar">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      </button>
+      <button class="icon-btn" id="fsToggle" title="Pantalla completa" aria-label="Pantalla completa">
+        <svg viewBox="0 0 24 24"><path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M21 16v3a2 2 0 0 1-2 2h-3M8 21H5a2 2 0 0 1-2-2v-3"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- ================= VIEW: HOME / DASHBOARD ================= -->
+
+  <div class="view active" id="view-home">
+
+```
+<div class="hero-card">
+  <div class="hero-eyebrow">Semana <span id="curWeek">1</span> de 12</div>
+  <h1 class="hero-title">Recomposición<br>en marcha.</h1>
+  <p class="hero-sub">93 kg → objetivo 10-12% grasa corporal. Fuerza en déficit, sin perder músculo. Planet Fitness, 5 días/semana.</p>
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="n" id="statWorkouts">0/60</div><div class="l">Entrenos</div></div>
+    <div class="hero-stat"><div class="n" id="statStreak">0</div><div class="l">Racha días</div></div>
+    <div class="hero-stat"><div class="n" id="statWeek">0/5</div><div class="l">Esta semana</div></div>
+  </div>
+</div>
+
+<div class="section-title">Progreso general</div>
+<div class="dash-grid">
+  <div>
+    <div class="grid-3" style="margin-bottom:12px;">
+      <div class="card stat-card">
+        <div class="ring-wrap" style="width:70px;height:70px;margin:0 auto 6px;">
+          <svg width="70" height="70"><circle class="ring-track" cx="35" cy="35" r="30" stroke-width="6"/><circle class="ring-fill" id="ringDay" cx="35" cy="35" r="30" stroke-width="6" stroke-dasharray="188.5" stroke-dashoffset="188.5"/></svg>
+        </div>
+        <div class="l">Hoy</div>
+      </div>
+      <div class="card stat-card">
+        <div class="ring-wrap" style="width:70px;height:70px;margin:0 auto 6px;">
+          <svg width="70" height="70"><circle class="ring-track" cx="35" cy="35" r="30" stroke-width="6"/><circle class="ring-fill" id="ringWeek" cx="35" cy="35" r="30" stroke-width="6" stroke-dasharray="188.5" stroke-dashoffset="188.5"/></svg>
+        </div>
+        <div class="l">Semana</div>
+      </div>
+      <div class="card stat-card">
+        <div class="ring-wrap" style="width:70px;height:70px;margin:0 auto 6px;">
+          <svg width="70" height="70"><circle class="ring-track" cx="35" cy="35" r="30" stroke-width="6"/><circle class="ring-fill" id="ring12" cx="35" cy="35" r="30" stroke-width="6" stroke-dasharray="188.5" stroke-dashoffset="188.5"/></svg>
+        </div>
+        <div class="l">12 sem.</div>
+      </div>
+    </div>
+
+    <div class="section-title">Tu semana</div>
+    <div id="weekList"></div>
+  </div>
+
+  <div>
+    <div class="section-title" style="margin-top:28px;">Volumen semanal por músculo</div>
+    <div class="card" style="padding:16px 18px;">
+      <div id="volList"></div>
+    </div>
+  </div>
+</div>
+```
+
+  </div>
+
+  <!-- ================= VIEW: DAY DETAIL ================= -->
+
+  <div class="view" id="view-day">
+    <button class="back-btn" onclick="goHome()"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg> Volver al plan</button>
+
+```
+<div class="day-hero">
+  <div class="day-hero-title" id="dayTitle">—</div>
+  <div class="day-hero-focus" id="dayFocus">—</div>
+  <p style="font-size:12.5px;color:var(--text-dim);margin-top:10px;line-height:1.55;" id="dayObjective">—</p>
+  <div class="day-hero-meta">
+    <div class="dhm-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg><span id="dayDuration">60 min</span></div>
+    <div class="dhm-item"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg><span id="dayIntensity">Intensidad</span> <span class="intensity-dots" id="dayIntensityDots"></span></div>
+    <div class="dhm-item"><svg viewBox="0 0 24 24"><path d="M4 4v16M20 4v16M4 12h16"/></svg><span id="dayRest">Descanso 60-90s</span></div>
+  </div>
+</div>
+
+<div class="section-title">Calentamiento específico</div>
+<div class="wu-strip" id="warmupStrip"></div>
+
+<div class="section-title">Ejercicios</div>
+<div id="exerciseList"></div>
+
+<div class="section-title">Estiramientos finales</div>
+<div class="wu-strip" id="stretchStrip"></div>
+
+<div class="floating-bar card">
+  <button class="btn btn-ghost" style="flex:0 0 auto;" onclick="goHome()">Salir</button>
+  <button class="btn btn-primary btn-full" id="finishBtn" onclick="toggleDayComplete()">Marcar entreno completado</button>
+</div>
+```
+
+  </div>
+
+  <!-- ================= VIEW: PROGRESIÓN ================= -->
+
+  <div class="view" id="view-progress-info">
+    <h2 class="display" style="font-size:26px;margin-bottom:4px;">Progresión de las 12 semanas</h2>
+    <p style="font-size:13px;color:var(--text-dim);margin-bottom:20px;">Cómo aplicar sobrecarga progresiva sin comprometer tu recuperación durante el déficit.</p>
+
+```
+<div class="card acc">
+  <div class="acc-head" onclick="toggleAcc(this)">
+    <div class="aicon"><svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8"/></svg></div>
+    <div class="atitle">Cuándo subir peso</div>
+    <svg class="achev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+  </div>
+  <div class="acc-body"><div class="acc-body-in">
+    <p>Sube peso cuando completes <strong>todas las series con todas las repeticiones del rango superior</strong>, con buena técnica, durante dos sesiones consecutivas de ese ejercicio. Ejemplo: si el objetivo es 8-12 reps y llegas a 12 en las 3 series dos semanas seguidas, en la siguiente sesión sube de peso.</p>
+  </div></div>
+</div>
+
+<div class="card acc">
+  <div class="acc-head" onclick="toggleAcc(this)">
+    <div class="aicon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></div>
+    <div class="atitle">Cómo elegir el peso</div>
+    <svg class="achev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+  </div>
+  <div class="acc-body"><div class="acc-body-in">
+    <p>Elige una carga con la que las <strong>últimas 2 repeticiones</strong> de cada serie sean genuinamente difíciles pero técnicamente limpias (RIR 1-2: podrías hacer 1-2 reps más como máximo). Si terminas una serie sintiendo que podrías haber hecho 5 reps más, el peso es demasiado bajo.</p>
+  </div></div>
+</div>
+
+<div class="card acc">
+  <div class="acc-head" onclick="toggleAcc(this)">
+    <div class="aicon"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>
+    <div class="atitle">Si completo todas las repeticiones</div>
+    <svg class="achev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+  </div>
+  <div class="acc-body"><div class="acc-body-in">
+    <p>Si alcanzas el <strong>tope del rango en todas las series</strong>, incrementa el peso en la siguiente sesión: +2.5-5% en máquinas y poleas, o el salto mínimo de mancuerna disponible (normalmente 2-2.5 kg por lado). Vuelve a la parte baja del rango de reps con el nuevo peso; es normal y esperado.</p>
+  </div></div>
+</div>
+
+<div class="card acc">
+  <div class="acc-head" onclick="toggleAcc(this)">
+    <div class="aicon"><svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg></div>
+    <div class="atitle">Si fallo antes del rango objetivo</div>
+    <svg class="achev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+  </div>
+  <div class="acc-body"><div class="acc-body-in">
+    <p>Si no llegas al mínimo del rango (ej. objetivo 8-12 y solo logras 6), <strong>mantén el mismo peso</strong> la próxima sesión, no lo bajes automáticamente. Solo reduce la carga si fallas por debajo del mínimo durante 2 sesiones seguidas, lo cual suele indicar fatiga acumulada por el déficit, no falta de fuerza real.</p>
+  </div></div>
+</div>
+
+<div class="card acc">
+  <div class="acc-head" onclick="toggleAcc(this)">
+    <div class="aicon"><svg viewBox="0 0 24 24"><path d="M12 2l2.4 7.2H22l-6 4.4 2.3 7.2L12 16.4l-6.3 4.4 2.3-7.2-6-4.4h7.6z"/></svg></div>
+    <div class="atitle">Si el ejercicio resulta demasiado fácil</div>
+    <svg class="achev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+  </div>
+  <div class="acc-body"><div class="acc-body-in">
+    <p>Si terminas todas las series con margen de 4+ repeticiones de reserva, el peso está desactualizado respecto a tu nivel actual. No esperes a la siguiente semana: <strong>sube el peso en la siguiente serie de la misma sesión</strong> y recalibra desde ahí.</p>
+  </div></div>
+</div>
+
+<div class="card acc">
+  <div class="acc-head" onclick="toggleAcc(this)">
+    <div class="aicon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4.5 8-11.8V5l-8-3-8 3v5.2C4 17.5 12 22 12 22z"/></svg></div>
+    <div class="atitle">Sobrecarga progresiva sin comprometer la recuperación</div>
+    <svg class="achev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+  </div>
+  <div class="acc-body"><div class="acc-body-in">
+    <p>En déficit calórico tu capacidad de recuperación está reducida. Prioriza este orden de progresión, del más al menos sostenible:</p>
+    <ul>
+      <li><strong>1. Técnica:</strong> mejora el control excéntrico y el rango de movimiento antes de subir peso.</li>
+      <li><strong>2. Peso:</strong> sube carga manteniendo series y reps iguales.</li>
+      <li><strong>3. Reps dentro del rango:</strong> exprime el rango antes de añadir series.</li>
+      <li><strong>4. Series (con moderación):</strong> añadir volumen extra solo si el sueño, el estrés y el apetito están bien controlados esa semana.</li>
+    </ul>
+    <p style="margin-top:8px;">Evita subir peso y añadir series en la misma semana. Si una semana te sientes agotado, repite los pesos de la semana anterior: mantener el estímulo ya es progreso durante un déficit.</p>
+  </div></div>
+</div>
+
+<div class="section-title">Cómo evoluciona el plan</div>
+<div class="card" style="padding:18px 20px;">
+  <div class="two-col-info" style="grid-template-columns:1fr;">
+    <div class="mini-box">
+      <h5>Semanas 1-4 · Adaptación</h5>
+      <p>Aprende la técnica de cada ejercicio. Prioriza rango de movimiento completo y conexión mente-músculo sobre el peso. RIR 2-3.</p>
+    </div>
+    <div class="mini-box">
+      <h5>Semanas 5-8 · Progresión</h5>
+      <p>El déficit se profundiza. Sube peso cuando corresponda, pero vigila señales de fatiga. RIR 1-2. Considera una semana de descarga si el rendimiento cae 2 sesiones seguidas.</p>
+    </div>
+    <div class="mini-box">
+      <h5>Semanas 9-12 · Mantenimiento de intensidad</h5>
+      <p>La energía es más limitada. El objetivo ya no es subir peso agresivamente, sino <strong>mantener el peso actual con buena técnica</strong>: eso ya conserva el músculo.</p>
+    </div>
+  </div>
+</div>
+```
+
+  </div>
+
+  <!-- ================= VIEW: CIENCIA ================= -->
+
+  <div class="view" id="view-science">
+    <h2 class="display" style="font-size:26px;margin-bottom:4px;">Fundamento científico</h2>
+    <p style="font-size:13px;color:var(--text-dim);margin-bottom:20px;">Por qué este plan está diseñado así.</p>
+
+```
+<div class="card acc">
+  <div class="acc-head" onclick="toggleAcc(this)">
+    <div class="aicon"><svg viewBox="0 0 24 24"><path d="M12 2v20M2 12h20"/></svg></div>
+    <div class="atitle">Qué ocurre durante un déficit calórico</div>
+    <svg class="achev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+  </div>
+  <div class="acc-body"><div class="acc-body-in">
+    <p>Cuando comes menos calorías de las que gastas, el cuerpo recurre a sus reservas de energía: principalmente grasa, pero también tejido muscular si no recibe el estímulo y los nutrientes adecuados. El objetivo de este plan es maximizar la proporción de grasa perdida frente a músculo perdido, algo que la ciencia llama "partición nutricional".</p>
+  </div></div>
+</div>
+
+<div class="card acc">
+  <div class="acc-head" onclick="toggleAcc(this)">
+    <div class="aicon"><svg viewBox="0 0 24 24"><path d="M6.5 6.5h11v11h-11z"/><path d="M6.5 2v4.5M17.5 2v4.5M6.5 17.5V22M17.5 17.5V22M2 6.5h4.5M17.5 6.5H22M2 17.5h4.5M17.5 17.5H22"/></svg></div>
+    <div class="atitle">Cómo conservar músculo en déficit</div>
+    <svg class="achev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+  </div>
+  <div class="acc-body"><div class="acc-body-in">
+    <p>El músculo se conserva dándole al cuerpo una razón para mantenerlo: seguir entrenándolo con cargas exigentes. Un déficit moderado (no extremo), proteína suficiente y entrenamiento de fuerza cercano al fallo son los tres pilares respaldados por la evidencia actual para minimizar la pérdida de masa magra durante la pérdida de grasa.</p>
+  </div></div>
+</div>
+
+<div class="card acc">
+  <div class="acc-head" onclick="toggleAcc(this)">
+    <div class="aicon"><svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg></div>
+    <div class="atitle">Por qué levantar pesas ayuda a perder grasa</div>
+    <svg class="achev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+  </div>
+  <div class="acc-body"><div class="acc-body-in">
+    <p>El entrenamiento de fuerza envía la señal de "este músculo es necesario" incluso con menos energía disponible. Además, mantener más masa muscular sostiene un metabolismo basal más alto a largo plazo que si esa pérdida de peso viniera solo de dieta o cardio. El déficit crea la pérdida de peso; la fuerza decide de dónde sale ese peso.</p>
+  </div></div>
+</div>
+
+<div class="card acc">
+  <div class="acc-head" onclick="toggleAcc(this)">
+    <div class="aicon"><svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 109 9c0-.5 0-1-.1-1.5A5 5 0 0113 4.1c-.5-.1-1-.1-1-.1z"/></svg></div>
+    <div class="atitle">Importancia del descanso entre sesiones</div>
+    <svg class="achev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+  </div>
+  <div class="acc-body"><div class="acc-body-in">
+    <p>El músculo no crece ni se conserva durante el entrenamiento, sino en la recuperación posterior. En déficit, esa capacidad de recuperación está reducida, por eso este plan da al menos 48h a cada grupo muscular grande antes de repetirlo directamente.</p>
+  </div></div>
+</div>
+
+<div class="card acc">
+  <div class="acc-head" onclick="toggleAcc(this)">
+    <div class="aicon"><svg viewBox="0 0 24 24"><path d="M12 2C8 6 5 10 5 14a7 7 0 0014 0c0-4-3-8-7-12z"/></svg></div>
+    <div class="atitle">Importancia de la proteína</div>
+    <svg class="achev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+  </div>
+  <div class="acc-body"><div class="acc-body-in">
+    <p>La proteína aporta los aminoácidos necesarios para reparar y mantener el tejido muscular, y es el macronutriente que más sacia por caloría, lo cual ayuda a sostener el déficit sin pasar hambre extrema. La evidencia actual en personas entrenando fuerza en déficit apunta a un rango aproximado de <strong>1.6-2.2 g de proteína por kg de peso corporal al día</strong> para maximizar la retención muscular.</p>
+  </div></div>
+</div>
+
+<div class="card acc">
+  <div class="acc-head" onclick="toggleAcc(this)">
+    <div class="aicon"><svg viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg></div>
+    <div class="atitle">Importancia del sueño</div>
+    <svg class="achev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+  </div>
+  <div class="acc-body"><div class="acc-body-in">
+    <p>Dormir poco altera las hormonas que regulan el apetito (aumenta grelina, reduce leptina), lo que hace más difícil sostener el déficit, y reduce la síntesis de proteína muscular. Dormir menos de 6 horas de forma sostenida puede hacer que una parte significativa del peso perdido venga de músculo en lugar de grasa, incluso entrenando fuerza.</p>
+  </div></div>
+</div>
+
+<div class="card acc">
+  <div class="acc-head" onclick="toggleAcc(this)">
+    <div class="aicon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 2"/></svg></div>
+    <div class="atitle">Mitos frecuentes</div>
+    <svg class="achev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+  </div>
+  <div class="acc-body"><div class="acc-body-in">
+    <ul>
+      <li><strong>"Hacer más repeticiones quema más grasa localmente":</strong> falso. No existe la pérdida de grasa localizada; el cuerpo decide de dónde moviliza grasa de forma general.</li>
+      <li><strong>"Sin cardio no se pierde grasa":</strong> falso. El déficit calórico es lo que determina la pérdida de grasa; el cardio solo ayuda a crear ese déficit más cómodamente.</li>
+      <li><strong>"Levantar pesado en déficit es peligroso":</strong> falso si la técnica es correcta y la progresión es gradual; de hecho es lo que protege el músculo.</li>
+      <li><strong>"Hay que entrenar todos los días para ver resultados":</strong> falso. La recuperación es parte activa del progreso, no tiempo perdido.</li>
+    </ul>
+  </div></div>
+</div>
+```
+
+  </div>
+
+  <!-- ================= VIEW: BUSCADOR ================= -->
+
+  <div class="view" id="view-search">
+    <h2 class="display" style="font-size:26px;margin-bottom:14px;">Buscador de ejercicios</h2>
+    <div class="search-bar">
+      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      <input type="text" id="searchInput" placeholder="Buscar por nombre de ejercicio…" oninput="renderSearch()">
+    </div>
+    <div class="chip-row" id="muscleFilterChips"></div>
+    <div id="searchResults"></div>
+  </div>
+
+  <!-- ================= VIEW: FAVORITOS ================= -->
+
+  <div class="view" id="view-favorites">
+    <h2 class="display" style="font-size:26px;margin-bottom:14px;">Ejercicios favoritos</h2>
+    <div id="favResults"></div>
+  </div>
+
+</div>
+
+<!-- ============ BOTTOM NAV ============ -->
+
+<div class="bottomnav">
+  <button class="navbtn active" data-view="view-home" onclick="switchNav(this)">
+    <svg viewBox="0 0 24 24"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/></svg>
+    Plan
+  </button>
+  <button class="navbtn" data-view="view-progress-info" onclick="switchNav(this)">
+    <svg viewBox="0 0 24 24"><path d="M4 19V9M12 19V5M20 19v-7"/></svg>
+    Progresión
+  </button>
+  <button class="navbtn" data-view="view-science" onclick="switchNav(this)">
+    <svg viewBox="0 0 24 24"><path d="M9 2v6L4 20a1 1 0 001 2h14a1 1 0 001-2L15 8V2M9 2h6"/></svg>
+    Ciencia
+  </button>
+  <button class="navbtn" data-view="view-favorites" onclick="switchNav(this)">
+    <svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 00-7.8 0L12 5.6l-1-1a5.5 5.5 0 00-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 000-7.8z"/></svg>
+    Favoritos
+  </button>
+</div>
+
+<!-- ============ TIMER OVERLAY ============ -->
+
+<div class="timer-overlay" id="timerOverlay">
+  <div class="timer-ring-wrap">
+    <svg width="240" height="240"><circle class="ring-track" cx="120" cy="120" r="105" stroke-width="10"/><circle class="ring-fill" id="timerRing" cx="120" cy="120" r="105" stroke-width="10" stroke-dasharray="659.7" stroke-dashoffset="0"/></svg>
+    <div class="timer-time" id="timerTime">01:00</div>
+  </div>
+  <div class="timer-label">Descanso — respira profundo</div>
+  <div class="timer-controls">
+    <button class="icon-btn" onclick="adjustTimer(-15)" aria-label="-15s">
+      <svg viewBox="0 0 24 24"><path d="M19 12H5"/></svg>
+    </button>
+    <button class="icon-btn" id="timerPlayPause" onclick="toggleTimerPlay()" aria-label="Pausar/Reanudar" style="border-color:var(--gold);color:var(--gold);">
+      <svg viewBox="0 0 24 24"><path d="M6 4l15 8-15 8V4z"/></svg>
+    </button>
+    <button class="icon-btn" onclick="adjustTimer(15)" aria-label="+15s">
+      <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+    </button>
+  </div>
+  <button class="btn btn-ghost" style="margin-top:24px;" onclick="closeTimer()">Cerrar</button>
+</div>
+
+<div class="toast" id="toast">
+  <svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
+  <span id="toastMsg">Guardado</span>
+</div>
+
+<script>
+/* =========================================================
+   FORJA — Motor de la aplicación
+   Datos, render, LocalStorage, temporizador, navegación
+   ========================================================= */
+
+/* ---------- ICONOS reutilizables (SVG inline, libres) ---------- */
+const ICONS = {
+  chest: `<svg viewBox="0 0 24 24"><path d="M12 4c-2 0-4 1.5-4 4 0 5-3 6-3 10a4 4 0 004 4c1.2 0 2-.5 3-1.5 1 1 1.8 1.5 3 1.5a4 4 0 004-4c0-4-3-5-3-10 0-2.5-2-4-4-4z"/></svg>`,
+  back: `<svg viewBox="0 0 24 24"><path d="M6 9V5a3 3 0 016 0M6 9v10a2 2 0 002 2h8a2 2 0 002-2V9M6 9h12M9 13h6M9 17h6"/></svg>`,
+  legs: `<svg viewBox="0 0 24 24"><path d="M9 3h2l1 8 1-8h2l1 14-2 4h-2l-1-6-1 6H8l-2-4L7 3z"/></svg>`,
+  shoulder: `<svg viewBox="0 0 24 24"><circle cx="12" cy="7" r="3"/><path d="M5 21l2-9a5 5 0 015-5 5 5 0 015 5l2 9"/></svg>`,
+  arm: `<svg viewBox="0 0 24 24"><path d="M6 4v6a6 6 0 006 6 6 6 0 006-6V4"/><path d="M12 16v4"/></svg>`,
+  core: `<svg viewBox="0 0 24 24"><rect x="7" y="4" width="10" height="16" rx="3"/><path d="M7 9h10M7 14h10M12 4v16"/></svg>`,
+  full: `<svg viewBox="0 0 24 24"><circle cx="12" cy="4" r="2"/><path d="M12 6v7M8 9l4 4 4-4M8 22l4-9 4 9"/></svg>`
+};
+
+/* ---------- BASE DE DATOS DE ANATOMÍA ---------- */
+const MUSCLES_DB = {
+  pect_mayor: {name:"Pectoral mayor", func:"Aducción y flexión horizontal del hombro (empuje frontal)."},
+  pect_menor: {name:"Pectoral menor", func:"Estabiliza y desciende la escápula."},
+  delt_ant: {name:"Deltoide anterior", func:"Flexión y empuje del hombro hacia adelante."},
+  delt_med: {name:"Deltoide medio", func:"Abducción del hombro (elevación lateral)."},
+  delt_post: {name:"Deltoide posterior", func:"Extensión horizontal del hombro (jalones/remo)."},
+  triceps: {name:"Tríceps braquial", func:"Extensión del codo."},
+  biceps: {name:"Bíceps braquial", func:"Flexión del codo y supinación del antebrazo."},
+  braquial: {name:"Braquial anterior", func:"Flexor profundo del codo."},
+  dorsal: {name:"Dorsal ancho", func:"Aducción y extensión del hombro (jalar hacia el cuerpo)."},
+  trapecio: {name:"Trapecio", func:"Elevación, retracción y rotación de la escápula."},
+  romboides: {name:"Romboides", func:"Retracción escapular (juntar los omóplatos)."},
+  erectores: {name:"Erectores espinales", func:"Extensión y estabilización de la columna."},
+  cuadriceps: {name:"Cuádriceps", func:"Extensión de la rodilla."},
+  isquios: {name:"Isquiotibiales", func:"Flexión de rodilla y extensión de cadera."},
+  gluteo: {name:"Glúteo mayor", func:"Extensión y rotación externa de cadera."},
+  gluteo_med: {name:"Glúteo medio", func:"Abducción y estabilización de la cadera."},
+  gemelos: {name:"Gastrocnemio / sóleo", func:"Flexión plantar del tobillo."},
+  aductores: {name:"Aductores", func:"Aducción de cadera (llevar la pierna al centro)."},
+  abdominales: {name:"Recto abdominal", func:"Flexión del torso."},
+  oblicuos: {name:"Oblicuos", func:"Rotación y flexión lateral del torso."},
+  antebrazo: {name:"Flexores del antebrazo", func:"Fuerza de agarre y flexión de muñeca."},
+  transverso: {name:"Transverso abdominal", func:"Estabilización del core (faja natural)."}
+};
+
+function muscleDot(pct){
+  if(pct>=60) return 'var(--gold)';
+  if(pct>=30) return 'var(--blue)';
+  return 'var(--text-faint)';
+}
+
+/* Genera fila de música con función y porcentaje */
+function muscleRowsHTML(list){
+  return list.map(m=>{
+    const md = MUSCLES_DB[m.id];
+    return `<div class="muscle-row">
+      <span class="dot" style="background:${muscleDot(m.pct)}"></span>
+      <span class="mname">${md.name}<span class="mfunc">${md.func}</span></span>
+      <span class="mpct">${m.pct}%</span>
+    </div>`;
+  }).join('');
+}
+
+/* Mini diagrama SVG genérico de figura humana con zona resaltada */
+function bodyDiagram(highlight){
+  // highlight: 'front-upper','front-lower','back-upper','back-lower','shoulders','arms','core'
+  return `<svg viewBox="0 0 60 90" fill="none">
+    <circle cx="30" cy="10" r="7" stroke="#3a3a3e" stroke-width="1.5"/>
+    <path d="M30 17v28M14 28l16-6 16 6M14 28l-3 20M46 28l3 20M18 45l-2 30M42 45l2 30M22 45v30M38 45v30" stroke="#3a3a3e" stroke-width="1.5"/>
+    <path class="hl" d="${HL_PATHS[highlight]||''}" fill="var(--gold)" opacity="0.55"/>
+  </svg>`;
+}
+const HL_PATHS = {
+  chest:"M16 24l14-5 14 5-2 12-12 4-12-4z",
+  back_upper:"M15 24l15-5 15 5-3 16-12 4-12-4z",
+  triceps:"M11 24l4 20-3 2-6-19z M49 24l-4 20 3 2 6-19z",
+  biceps:"M12 24l3 18 4-1-2-19z M48 24l-3 18-4-1 2-19z",
+  shoulders:"M13 20a5 5 0 0110 2l-2 6-8-2z M37 20a5 5 0 00-10 2l2 6 8-2z",
+  quads:"M20 47l3 26 6 1 1-27z M40 47l-3 26-6 1-1-27z",
+  hams_glutes:"M18 45l1 8 8 3 8-3 1-8-9-3z",
+  calves:"M21 66l1 12 3 1 2-13z M39 66l-1 12-3 1-2-13z",
+  abs:"M23 26l14 0 0 20-14 0z",
+  forearms:"M9 30l3 15-2 2-4-16z M51 30l-3 15 2 2 4-16z"
+};
+
+/* ---------- DATOS DEL PROGRAMA (5 días) ---------- */
+const PROGRAM = {}; // se completa abajo, día por día
+
+PROGRAM.mon = {
+  id:'mon', dayNum:1, name:'Lunes', title:'Pecho + Tríceps', focus:'Empuje horizontal y extensión de codo',
+  objective:'Desarrollar fuerza de empuje mientras se maximiza el gasto calórico de la sesión, priorizando ejecución controlada sobre el peso máximo.',
+  duration:'60 min', intensity:4, rest:'60-90s entre series (75-120s en compuestos pesados)',
+  icon: ICONS.chest,
+  warmup:[
+    {name:'Bici estática suave', time:'5 min', desc:'Eleva temperatura corporal y ritmo cardiaco de forma progresiva.'},
+    {name:'Círculos de hombro', time:'1 min', desc:'Movilidad articular de la cintura escapular.'},
+    {name:'Press banca vacío/ligero', time:'2 series x 15', desc:'Serie de aproximación con barra vacía o mancuernas ligeras.'},
+    {name:'Aperturas con banda', time:'1 min', desc:'Activa el pectoral antes de la carga pesada.'}
+  ],
+  stretch:[
+    {name:'Estiramiento pectoral en marco de puerta', time:'30s x lado', benefit:'Libera tensión del pectoral mayor y deltoide anterior.'},
+    {name:'Estiramiento de tríceps overhead', time:'30s x lado', benefit:'Mejora rango de movimiento del codo tras el trabajo de extensión.'},
+    {name:'Torsión de torso sentado', time:'20s x lado', benefit:'Descomprime la columna torácica.'}
+  ],
+  exercises:[
+    {
+      name:'Press de banca en máquina (Chest Press)',
+      diff:'Intermedio', sets:4, reps:'8-12', rest:'90s',
+      muscles:[{id:'pect_mayor',pct:60},{id:'delt_ant',pct:25},{id:'triceps',pct:15}],
+      diagram:'chest',
+      desc:'Ejercicio compuesto de empuje horizontal en máquina guiada, ideal como movimiento principal por su estabilidad y curva de resistencia constante.',
+      technique:'Siéntate con la espalda pegada al respaldo y las escápulas retraídas. Agarra las manijas a la altura del pecho. Empuja hasta la extensión casi completa del codo sin bloquear bruscamente, y regresa de forma controlada hasta sentir el estiramiento del pecho.',
+      errors:'Despegar la espalda del respaldo, arquear excesivamente la zona lumbar, o dejar caer el peso en la fase excéntrica sin control.',
+      breathing:'Exhala al empujar (fase concéntrica), inhala al regresar el peso (fase excéntrica).',
+      tips:'Ajusta el asiento para que las manijas queden a la altura media del pecho, no de los hombros.',
+      alt:'Si la máquina está ocupada: press de banca con mancuernas en banco plano.',
+      video:'press de banca en maquina tecnica'
+    },
+    {
+      name:'Press inclinado con mancuernas',
+      diff:'Intermedio', sets:3, reps:'8-12', rest:'90s',
+      muscles:[{id:'pect_mayor',pct:50},{id:'delt_ant',pct:35},{id:'triceps',pct:15}],
+      diagram:'chest',
+      desc:'Trabaja la porción clavicular (superior) del pectoral con un banco inclinado entre 30-45 grados.',
+      technique:'Recuéstate en el banco inclinado con una mancuerna en cada mano a la altura del pecho, palmas hacia adelante. Empuja hacia arriba y ligeramente hacia adentro sin chocar las mancuernas, controla el descenso hasta sentir estiramiento.',
+      errors:'Inclinar el banco a más de 45° convierte el ejercicio en trabajo de hombro; dejar que los codos se abran en exceso genera estrés innecesario en el hombro.',
+      breathing:'Exhala al empujar arriba, inhala al bajar.',
+      tips:'Mantén los pies firmes en el suelo para generar tensión estable en todo el cuerpo.',
+      alt:'Si el banco inclinado está ocupado: press inclinado en máquina Smith o press en máquina si tiene ajuste de ángulo.',
+      video:'press inclinado con mancuernas tecnica'
+    },
+    {
+      name:'Aperturas en polea (Cable Fly)',
+      diff:'Intermedio', sets:3, reps:'12-15', rest:'60s',
+      muscles:[{id:'pect_mayor',pct:75},{id:'delt_ant',pct:20},{id:'pect_menor',pct:5}],
+      diagram:'chest',
+      desc:'Movimiento de aislamiento que maximiza el estiramiento y la contracción del pectoral con tensión constante gracias a la polea.',
+      technique:'Coloca las poleas a la altura del pecho o ligeramente por encima. Con un ligero doblez de codo fijo, junta las manos al frente del pecho en un arco amplio, apretando fuerte al final del recorrido.',
+      errors:'Convertir el movimiento en un press (doblando y extendiendo el codo activamente) en lugar de un arco de aducción del hombro.',
+      breathing:'Exhala al juntar las manos, inhala al abrir los brazos.',
+      tips:'Da un paso adelante entre las poleas para aumentar el rango de movimiento.',
+      alt:'Si las poleas dobles están ocupadas: aperturas con mancuernas en banco plano.',
+      video:'aperturas en polea cable fly tecnica'
+    },
+    {
+      name:'Fondos asistidos en máquina (Assisted Dip)',
+      diff:'Intermedio-Avanzado', sets:3, reps:'8-12', rest:'90s',
+      muscles:[{id:'pect_mayor',pct:40},{id:'triceps',pct:40},{id:'delt_ant',pct:20}],
+      diagram:'chest',
+      desc:'Ejercicio compuesto que trabaja pecho inferior y tríceps simultáneamente con asistencia de peso ajustable.',
+      technique:'Selecciona el nivel de asistencia (a más peso en la pila, más ayuda). Inclina ligeramente el torso hacia adelante para enfatizar pecho, desciende hasta 90° de flexión de codo y empuja hacia arriba.',
+      errors:'Descender demasiado profundo comprometiendo el hombro; usar impulso en vez de control muscular.',
+      breathing:'Exhala al empujar hacia arriba, inhala al descender.',
+      tips:'Reduce la asistencia progresivamente cada 2-3 semanas conforme ganes fuerza.',
+      alt:'Si la máquina de fondos está ocupada: press cerrado en máquina de pecho.',
+      video:'fondos asistidos maquina pecho tecnica'
+    },
+    {
+      name:'Press francés en polea (cuerda)',
+      diff:'Intermedio', sets:3, reps:'10-15', rest:'60s',
+      muscles:[{id:'triceps',pct:90},{id:'delt_post',pct:10}],
+      diagram:'triceps',
+      desc:'Aislamiento de tríceps con cuerda en polea alta, permite un buen estiramiento y contracción del músculo.',
+      technique:'De pie o sentado, con la cuerda en polea alta detrás de la cabeza, extiende los codos manteniéndolos fijos y cercanos a la cabeza, separando ligeramente las puntas de la cuerda al final.',
+      errors:'Mover los codos hacia adelante durante la extensión, lo que quita tensión al tríceps.',
+      breathing:'Exhala al extender, inhala al flexionar el codo.',
+      tips:'Mantén el core apretado para no arquear la espalda baja.',
+      alt:'Si la polea alta está ocupada: extensión de tríceps con mancuerna a una mano.',
+      video:'press frances en polea cuerda tecnica'
+    },
+    {
+      name:'Extensión de tríceps en polea (barra recta)',
+      diff:'Principiante-Intermedio', sets:3, reps:'12-15', rest:'60s',
+      muscles:[{id:'triceps',pct:95},{id:'antebrazo',pct:5}],
+      diagram:'triceps',
+      desc:'Ejercicio de aislamiento clásico para tríceps con tensión constante de la polea.',
+      technique:'De pie frente a la polea alta, codos pegados al torso, empuja la barra hacia abajo hasta la extensión completa sin mover los hombros, y regresa controladamente.',
+      errors:'Separar los codos del torso o usar el peso del cuerpo para empujar la barra.',
+      breathing:'Exhala al empujar hacia abajo, inhala al subir.',
+      tips:'Inclínate ligeramente hacia adelante desde la cadera, no desde la espalda baja.',
+      alt:'Si la polea está ocupada: fondos en banco (dips de banco).',
+      video:'extension triceps polea barra tecnica'
+    },
+    {
+      name:'Press de tríceps en máquina',
+      diff:'Principiante', sets:2, reps:'12-15', rest:'60s',
+      muscles:[{id:'triceps',pct:100}],
+      diagram:'triceps',
+      desc:'Máquina guiada de aislamiento de tríceps, excelente para llegar al fallo de forma segura al final del entrenamiento.',
+      technique:'Ajusta el asiento para que las manijas queden alineadas con los hombros. Extiende los codos empujando las manijas hacia abajo/adelante según el diseño de la máquina.',
+      errors:'Usar un rango de movimiento parcial por seleccionar demasiado peso.',
+      breathing:'Exhala al extender, inhala al regresar.',
+      tips:'Ideal como ejercicio final para llegar al fallo muscular con seguridad, sin riesgo de perder el control de peso libre.',
+      alt:'Si la máquina está ocupada: fondos en banco con peso corporal.',
+      video:'maquina extension triceps tecnica'
+    }
+  ]
+};
+
+PROGRAM.tue = {
+  id:'tue', dayNum:2, name:'Martes', title:'Espalda + Bíceps', focus:'Jalón vertical, remo horizontal y flexión de codo',
+  objective:'Desarrollar densidad y fuerza de espalda mientras se preserva la postura, complementando con trabajo directo de bíceps para equilibrio muscular del brazo.',
+  duration:'60 min', intensity:4, rest:'60-90s entre series (90-120s en compuestos pesados)',
+  icon: ICONS.back,
+  warmup:[
+    {name:'Remo en máquina ligero', time:'2 series x 15', desc:'Activa dorsales y romboides antes de cargar peso.'},
+    {name:'Círculos de brazo y escápula', time:'1 min', desc:'Moviliza la cintura escapular en todos los planos.'},
+    {name:'Jalón al pecho ligero', time:'2 series x 15', desc:'Serie de aproximación para el patrón de jalón vertical.'},
+    {name:'Dead hang (colgarse de la barra)', time:'20-30s', desc:'Descomprime la columna y activa el agarre.'}
+  ],
+  stretch:[
+    {name:'Estiramiento de dorsal en polea/barra', time:'30s x lado', benefit:'Elonga el dorsal ancho tras el trabajo de jalón.'},
+    {name:'Estiramiento de bíceps con brazo extendido', time:'30s x lado', benefit:'Libera tensión del bíceps braquial.'},
+    {name:'Gato-camello (movilidad de columna)', time:'8 repeticiones', benefit:'Descomprime la columna vertebral tras el trabajo de remo.'}
+  ],
+  exercises:[
+    {
+      name:'Jalón al pecho en polea (Lat Pulldown)',
+      diff:'Intermedio', sets:4, reps:'8-12', rest:'90s',
+      muscles:[{id:'dorsal',pct:60},{id:'biceps',pct:20},{id:'romboides',pct:20}],
+      diagram:'back_upper',
+      desc:'Ejercicio compuesto de jalón vertical, fundamental para desarrollar amplitud y fuerza de la espalda alta.',
+      technique:'Siéntate con los muslos fijos bajo el soporte. Agarra la barra un poco más ancho que los hombros. Jala hacia la parte superior del pecho llevando los codos hacia abajo y atrás, sin usar impulso del torso.',
+      errors:'Jalar la barra detrás de la nuca (riesgo de hombro), balancear el torso hacia atrás para generar impulso.',
+      breathing:'Exhala al jalar hacia abajo, inhala al regresar la barra arriba.',
+      tips:'Piensa en "llevar los codos hacia los bolsillos traseros" para activar mejor el dorsal.',
+      alt:'Si la polea de jalón está ocupada: remo en máquina con agarre neutro enfocado en amplitud.',
+      video:'jalon al pecho polea lat pulldown tecnica'
+    },
+    {
+      name:'Remo en máquina sentado (Seated Cable Row)',
+      diff:'Intermedio', sets:4, reps:'8-12', rest:'90s',
+      muscles:[{id:'dorsal',pct:35},{id:'romboides',pct:35},{id:'trapecio',pct:15},{id:'biceps',pct:15}],
+      diagram:'back_upper',
+      desc:'Remo horizontal que desarrolla grosor de espalda media y mejora la postura.',
+      technique:'Sentado con las rodillas ligeramente flexionadas, agarra el mango y jala hacia el abdomen manteniendo el torso erguido, apretando los omóplatos al final del recorrido.',
+      errors:'Usar el impulso de balanceo del torso en lugar de la fuerza de la espalda; encoger los hombros hacia las orejas.',
+      breathing:'Exhala al jalar, inhala al extender los brazos hacia adelante.',
+      tips:'Pausa 1 segundo con los omóplatos apretados antes de regresar el peso.',
+      alt:'Si la máquina de remo está ocupada: remo con mancuerna a una mano apoyado en banco.',
+      video:'remo en maquina sentado cable row tecnica'
+    },
+    {
+      name:'Remo con mancuerna a una mano',
+      diff:'Intermedio', sets:3, reps:'8-12', rest:'75s',
+      muscles:[{id:'dorsal',pct:55},{id:'romboides',pct:25},{id:'biceps',pct:20}],
+      diagram:'back_upper',
+      desc:'Ejercicio unilateral que permite un rango de movimiento amplio y corrige desequilibrios entre ambos lados del cuerpo.',
+      technique:'Apoya una rodilla y una mano en el banco, espalda paralela al suelo. Jala la mancuerna hacia la cadera, llevando el codo hacia atrás y arriba, sin rotar el torso.',
+      errors:'Rotar el torso para "ayudar" al movimiento, lo cual reduce la tensión en el dorsal.',
+      breathing:'Exhala al jalar la mancuerna arriba, inhala al bajarla.',
+      tips:'Mantén la mirada hacia el suelo para evitar hiperextender el cuello.',
+      alt:'Si el banco está ocupado: remo en polea baja con agarre en V.',
+      video:'remo mancuerna una mano tecnica'
+    },
+    {
+      name:'Remo en polea baja con agarre en V',
+      diff:'Intermedio', sets:3, reps:'10-12', rest:'75s',
+      muscles:[{id:'dorsal',pct:40},{id:'romboides',pct:30},{id:'trapecio',pct:20},{id:'biceps',pct:10}],
+      diagram:'back_upper',
+      desc:'Variante de remo horizontal con agarre neutro que reduce el estrés en la muñeca y prioriza el espesor de espalda media.',
+      technique:'Sentado, con las piernas ligeramente flexionadas, jala el agarre en V hacia el abdomen bajo, manteniendo el torso estable y apretando la espalda al final.',
+      errors:'Inclinarse demasiado hacia atrás al jalar, generando trabajo de lumbar en lugar de espalda.',
+      breathing:'Exhala al jalar, inhala al regresar.',
+      tips:'Controla especialmente la fase excéntrica: 2-3 segundos de regreso.',
+      alt:'Si la polea está ocupada: face pull en polea alta.',
+      video:'remo polea baja agarre v tecnica'
+    },
+    {
+      name:'Face pull en polea alta',
+      diff:'Intermedio', sets:3, reps:'12-15', rest:'60s',
+      muscles:[{id:'delt_post',pct:45},{id:'trapecio',pct:30},{id:'romboides',pct:25}],
+      diagram:'back_upper',
+      desc:'Ejercicio de salud del hombro que fortalece la parte posterior del deltoide y mejora la postura, complementando el trabajo de empuje del lunes.',
+      technique:'Con la polea a la altura de la cara, jala la cuerda hacia el rostro separando las manos al final, con los codos altos.',
+      errors:'Usar demasiado peso y perder la separación de las manos al final del movimiento.',
+      breathing:'Exhala al jalar hacia la cara, inhala al regresar.',
+      tips:'Prioriza peso ligero y técnica perfecta: es un ejercicio de salud articular, no de fuerza máxima.',
+      alt:'Si la polea alta está ocupada: elevación posterior con mancuernas inclinado hacia adelante.',
+      video:'face pull polea alta tecnica'
+    },
+    {
+      name:'Curl de bíceps con barra Z en polea baja',
+      diff:'Intermedio', sets:3, reps:'8-12', rest:'75s',
+      muscles:[{id:'biceps',pct:80},{id:'braquial',pct:15},{id:'antebrazo',pct:5}],
+      diagram:'biceps',
+      desc:'Ejercicio compuesto de aislamiento con tensión constante gracias a la polea, más suave para la muñeca que la barra recta.',
+      technique:'De pie, codos pegados al torso, flexiona el codo llevando la barra hacia el pecho sin balancear el cuerpo, contrae arriba y baja controladamente.',
+      errors:'Balancear el torso hacia atrás (efecto "swing") para levantar más peso del que se controla realmente.',
+      breathing:'Exhala al flexionar el codo, inhala al bajar la barra.',
+      tips:'Aprieta fuerte el bíceps en la posición más alta durante 1 segundo.',
+      alt:'Si la polea está ocupada: curl con mancuernas alternado de pie.',
+      video:'curl biceps barra z polea baja tecnica'
+    },
+    {
+      name:'Curl martillo con mancuernas',
+      diff:'Principiante-Intermedio', sets:3, reps:'10-12', rest:'60s',
+      muscles:[{id:'braquial',pct:50},{id:'biceps',pct:35},{id:'antebrazo',pct:15}],
+      diagram:'biceps',
+      desc:'Variante con agarre neutro que enfatiza el braquial y el antebrazo, complementando el desarrollo del brazo completo.',
+      technique:'De pie, palmas enfrentadas (agarre neutro), flexiona ambos codos o alterna, manteniendo los codos fijos al costado del cuerpo.',
+      errors:'Abrir los codos hacia afuera o usar impulso de cadera para levantar el peso.',
+      breathing:'Exhala al subir, inhala al bajar.',
+      tips:'Este ejercicio también fortalece el agarre, útil para el resto de ejercicios de jalón.',
+      alt:'Si no hay mancuernas disponibles: curl martillo con cuerda en polea baja.',
+      video:'curl martillo mancuernas tecnica'
+    },
+    {
+      name:'Curl de bíceps en máquina',
+      diff:'Principiante', sets:2, reps:'12-15', rest:'60s',
+      muscles:[{id:'biceps',pct:90},{id:'braquial',pct:10}],
+      diagram:'biceps',
+      desc:'Máquina guiada ideal para llegar al fallo muscular de forma segura al cierre del entrenamiento.',
+      technique:'Ajusta el asiento para que el codo quede alineado con el eje de la máquina. Flexiona controladamente hasta la contracción máxima y regresa despacio.',
+      errors:'Colocar mal la altura del asiento, generando estrés innecesario en el hombro.',
+      breathing:'Exhala al flexionar, inhala al extender.',
+      tips:'Usa este ejercicio para hacer una serie al fallo real, ya que la máquina es segura para ello.',
+      alt:'Si la máquina está ocupada: curl concentrado con mancuerna sentado.',
+      video:'curl biceps en maquina tecnica'
+    }
+  ]
+};
+
+PROGRAM.wed = {
+  id:'wed', dayNum:3, name:'Miércoles', title:'Piernas Completas', focus:'Fuerza de tren inferior: cuádriceps, isquiotibiales y glúteo',
+  objective:'Mantener la fuerza y masa muscular de las piernas con ejercicios compuestos en máquina, priorizando la técnica para minimizar el impacto articular en déficit.',
+  duration:'60 min', intensity:5, rest:'90-120s entre series (compuestos pesados)',
+  icon: ICONS.legs,
+  warmup:[
+    {name:'Bici estática o elíptica', time:'6 min', desc:'Eleva la temperatura de rodillas y cadera antes de cargar peso.'},
+    {name:'Sentadilla con peso corporal', time:'2 series x 15', desc:'Activa el patrón de movimiento antes de añadir carga.'},
+    {name:'Círculos de cadera y balanceo de pierna', time:'1 min por lado', desc:'Moviliza la articulación de la cadera.'},
+    {name:'Prensa con peso ligero', time:'2 series x 15', desc:'Serie de aproximación para el ejercicio principal del día.'}
+  ],
+  stretch:[
+    {name:'Estiramiento de cuádriceps de pie', time:'30s x lado', benefit:'Libera tensión del recto femoral tras el trabajo de extensión.'},
+    {name:'Estiramiento de isquiotibiales sentado', time:'30s x lado', benefit:'Mejora flexibilidad posterior de la pierna.'},
+    {name:'Estiramiento de gemelo en pared', time:'30s x lado', benefit:'Relaja la musculatura de la pantorrilla tras el trabajo de elevación de talones.'},
+    {name:'Postura del niño (glúteo/lumbar)', time:'45s', benefit:'Descomprime la zona lumbar tras el trabajo de piernas.'}
+  ],
+  exercises:[
+    {
+      name:'Prensa de piernas 45° (Leg Press)',
+      diff:'Intermedio', sets:4, reps:'8-12', rest:'120s',
+      muscles:[{id:'cuadriceps',pct:50},{id:'gluteo',pct:30},{id:'isquios',pct:20}],
+      diagram:'quads',
+      desc:'Ejercicio compuesto principal del día; permite cargar peso considerable con bajo estrés en la columna comparado con la sentadilla libre.',
+      technique:'Coloca los pies al ancho de hombros en la plataforma. Desciende hasta que las rodillas formen un ángulo de 90°, sin despegar la zona lumbar del respaldo, y empuja de vuelta sin bloquear las rodillas por completo.',
+      errors:'Despegar la parte baja de la espalda del asiento en la fase baja; bloquear violentamente las rodillas al extender.',
+      breathing:'Exhala al empujar la plataforma, inhala al descender.',
+      tips:'Pies más altos en la plataforma enfatizan glúteo e isquiotibiales; pies más bajos enfatizan cuádriceps.',
+      alt:'Si la prensa está ocupada: sentadilla goblet con mancuerna.',
+      video:'prensa de piernas 45 grados tecnica'
+    },
+    {
+      name:'Extensión de cuádriceps en máquina',
+      diff:'Principiante-Intermedio', sets:3, reps:'10-15', rest:'75s',
+      muscles:[{id:'cuadriceps',pct:100}],
+      diagram:'quads',
+      desc:'Aislamiento de cuádriceps con tensión directa sobre la articulación de la rodilla, ideal para volumen adicional sin fatiga sistémica.',
+      technique:'Ajusta el respaldo para que la rodilla quede alineada con el eje de la máquina. Extiende la pierna completamente, contrayendo el cuádriceps arriba, y desciende controladamente.',
+      errors:'Usar demasiado peso y dejar caer el peso en la fase excéntrica; despegar la espalda del respaldo.',
+      breathing:'Exhala al extender, inhala al flexionar.',
+      tips:'Añade una pausa de 1 segundo en la posición de máxima extensión para mayor activación.',
+      alt:'Si la máquina está ocupada: sentadilla con pausa isométrica de 2 segundos abajo.',
+      video:'extension de cuadriceps en maquina tecnica'
+    },
+    {
+      name:'Curl femoral tumbado (Lying Leg Curl)',
+      diff:'Intermedio', sets:4, reps:'10-12', rest:'75s',
+      muscles:[{id:'isquios',pct:90},{id:'gemelos',pct:10}],
+      diagram:'hams_glutes',
+      desc:'Aislamiento de isquiotibiales, fundamental para equilibrar el desarrollo con el cuádriceps y proteger la rodilla.',
+      technique:'Boca abajo en la máquina, con el cojín justo por encima del talón, flexiona la rodilla llevando el talón hacia el glúteo, contrayendo con fuerza arriba.',
+      errors:'Levantar la cadera del banco para "ayudar" al movimiento con impulso.',
+      breathing:'Exhala al flexionar la rodilla, inhala al extender.',
+      tips:'Apunta los pies ligeramente hacia adentro para maximizar la activación del isquiotibial.',
+      alt:'Si la máquina está ocupada: peso muerto rumano con mancuernas.',
+      video:'curl femoral tumbado maquina tecnica'
+    },
+    {
+      name:'Peso muerto rumano con mancuernas',
+      diff:'Intermedio-Avanzado', sets:3, reps:'8-12', rest:'90s',
+      muscles:[{id:'isquios',pct:50},{id:'gluteo',pct:35},{id:'erectores',pct:15}],
+      diagram:'hams_glutes',
+      desc:'Ejercicio compuesto de bisagra de cadera que desarrolla la cadena posterior completa: isquiotibiales, glúteo y zona lumbar.',
+      technique:'De pie con mancuernas al frente de los muslos, empuja la cadera hacia atrás manteniendo las rodillas casi extendidas y la espalda neutra, hasta sentir el estiramiento en isquiotibiales, luego regresa extendiendo la cadera.',
+      errors:'Redondear la espalda baja; doblar excesivamente las rodillas convirtiendo el movimiento en una sentadilla.',
+      breathing:'Inhala al bajar las mancuernas, exhala al extender la cadera arriba.',
+      tips:'Mantén las mancuernas pegadas a las piernas durante todo el recorrido para proteger la espalda baja.',
+      alt:'Si necesitas más espacio: curl femoral sentado en máquina.',
+      video:'peso muerto rumano mancuernas tecnica'
+    },
+    {
+      name:'Sentadilla búlgara con mancuernas',
+      diff:'Intermedio-Avanzado', sets:3, reps:'8-10 x pierna', rest:'90s',
+      muscles:[{id:'cuadriceps',pct:45},{id:'gluteo',pct:40},{id:'isquios',pct:15}],
+      diagram:'quads',
+      desc:'Ejercicio unilateral que corrige desequilibrios entre piernas y añade un componente de estabilidad al entrenamiento.',
+      technique:'Coloca el empeine del pie trasero sobre un banco, desciende flexionando la rodilla delantera hasta 90° y empuja de regreso a través del talón delantero.',
+      errors:'Dar un paso demasiado corto, lo que sobrecarga la rodilla; inclinar el torso demasiado hacia adelante.',
+      breathing:'Inhala al bajar, exhala al empujar hacia arriba.',
+      tips:'Empieza sin peso hasta dominar el equilibrio, luego añade mancuernas progresivamente.',
+      alt:'Si necesitas más estabilidad: prensa de piernas con pies juntos y altos.',
+      video:'sentadilla bulgara mancuernas tecnica'
+    },
+    {
+      name:'Aducción de cadera en máquina',
+      diff:'Principiante', sets:2, reps:'15', rest:'45s',
+      muscles:[{id:'aductores',pct:90},{id:'gluteo_med',pct:10}],
+      diagram:'quads',
+      desc:'Ejercicio de aislamiento para la parte interna del muslo, aporta equilibrio y estabilidad a la cadera.',
+      technique:'Sentado en la máquina, junta las piernas contra la resistencia de forma controlada, sin usar impulso.',
+      errors:'Usar rangos de movimiento muy cortos con peso excesivo.',
+      breathing:'Exhala al juntar las piernas, inhala al abrir.',
+      tips:'Ejercicio de bajo riesgo, ideal para cerrar el entrenamiento con alto volumen.',
+      alt:'Si la máquina está ocupada: puente de glúteo con banda alrededor de rodillas.',
+      video:'aduccion de cadera maquina tecnica'
+    },
+    {
+      name:'Elevación de talones de pie (Standing Calf Raise)',
+      diff:'Principiante-Intermedio', sets:4, reps:'12-20', rest:'60s',
+      muscles:[{id:'gemelos',pct:100}],
+      diagram:'calves',
+      desc:'Ejercicio de aislamiento para pantorrilla, importante para el gasto calórico y la estética general de la pierna.',
+      technique:'De pie en la máquina o plataforma, eleva los talones lo más alto posible, pausa 1 segundo, y desciende hasta sentir un estiramiento completo del gemelo.',
+      errors:'Usar rango de movimiento parcial, rebotando en lugar de controlar el descenso.',
+      breathing:'Exhala al subir, inhala al bajar.',
+      tips:'Las pantorrillas responden bien a mayor volumen; no temas hacer varias series con reps altas.',
+      alt:'Si la máquina está ocupada: elevación de talones en el borde de la plataforma de la prensa.',
+      video:'elevacion de talones de pie tecnica'
+    }
+  ]
+};
+
+PROGRAM.thu = {
+  id:'thu', dayNum:4, name:'Jueves', title:'Hombros + Abdomen', focus:'Empuje vertical, estabilidad de hombro y core',
+  objective:'Desarrollar los tres haces del deltoide para hombros completos y estables, cerrando con trabajo de core para mejorar la estabilidad general del tronco.',
+  duration:'60 min', intensity:4, rest:'60-90s entre series',
+  icon: ICONS.shoulder,
+  warmup:[
+    {name:'Círculos de brazo (adelante/atrás)', time:'1 min', desc:'Moviliza la articulación del hombro en todos los planos.'},
+    {name:'Rotación externa con banda', time:'2 series x 15', desc:'Activa el manguito rotador antes de cargar peso.'},
+    {name:'Press de hombro ligero', time:'2 series x 15', desc:'Serie de aproximación para el ejercicio principal.'},
+    {name:'Elevaciones laterales ligeras', time:'1 serie x 20', desc:'Pre-activa el deltoide medio.'}
+  ],
+  stretch:[
+    {name:'Estiramiento de hombro cruzado', time:'30s x lado', benefit:'Libera tensión del deltoide posterior.'},
+    {name:'Estiramiento de deltoide anterior en pared', time:'30s x lado', benefit:'Contrarresta la tensión del trabajo de empuje.'},
+    {name:'Estiramiento de abdomen tipo cobra', time:'30s', benefit:'Elonga el recto abdominal tras el trabajo de core.'}
+  ],
+  exercises:[
+    {
+      name:'Press de hombro en máquina (Shoulder Press)',
+      diff:'Intermedio', sets:4, reps:'8-12', rest:'90s',
+      muscles:[{id:'delt_ant',pct:55},{id:'delt_med',pct:25},{id:'triceps',pct:20}],
+      diagram:'shoulders',
+      desc:'Ejercicio compuesto principal para el desarrollo de fuerza y masa del hombro completo, con trayectoria guiada segura.',
+      technique:'Siéntate con la espalda apoyada, agarra las manijas a la altura de los hombros y empuja hacia arriba sin bloquear violentamente los codos, luego desciende controladamente.',
+      errors:'Arquear excesivamente la espalda baja para ayudar al empuje; usar un rango de movimiento parcial.',
+      breathing:'Exhala al empujar hacia arriba, inhala al bajar.',
+      tips:'Mantén el core apretado durante todo el movimiento para proteger la columna.',
+      alt:'Si la máquina está ocupada: press de hombro con mancuernas sentado.',
+      video:'press de hombro en maquina tecnica'
+    },
+    {
+      name:'Elevaciones laterales con mancuernas',
+      diff:'Principiante-Intermedio', sets:4, reps:'12-15', rest:'60s',
+      muscles:[{id:'delt_med',pct:85},{id:'delt_ant',pct:15}],
+      diagram:'shoulders',
+      desc:'Aislamiento del deltoide medio, clave para la anchura visual del hombro.',
+      technique:'De pie con mancuernas a los costados, eleva los brazos lateralmente hasta la altura de los hombros con un ligero doblez de codo, y desciende controladamente.',
+      errors:'Usar impulso balanceando el cuerpo; elevar el peso por encima de la altura del hombro, lo que involucra al trapecio en exceso.',
+      breathing:'Exhala al elevar los brazos, inhala al bajar.',
+      tips:'Imagina que estás vertiendo agua de una jarra al llegar arriba, esto mejora la activación del deltoide medio.',
+      alt:'Si no hay mancuernas ligeras disponibles: elevación lateral en polea baja a una mano.',
+      video:'elevaciones laterales mancuernas tecnica'
+    },
+    {
+      name:'Elevación lateral en polea',
+      diff:'Intermedio', sets:3, reps:'12-15', rest:'60s',
+      muscles:[{id:'delt_med',pct:90},{id:'delt_ant',pct:10}],
+      diagram:'shoulders',
+      desc:'Variante con tensión constante que mantiene la resistencia incluso en la parte baja del movimiento, a diferencia de las mancuernas.',
+      technique:'De pie al lado de la polea baja, eleva el brazo lateralmente cruzando ligeramente el cuerpo, controlando tanto la subida como la bajada.',
+      errors:'Rotar el torso para generar impulso adicional.',
+      breathing:'Exhala al elevar, inhala al bajar.',
+      tips:'Usa peso ligero; este ejercicio prioriza la conexión mente-músculo sobre la carga.',
+      alt:'Si la polea está ocupada: elevación lateral con mancuerna a una mano sentado.',
+      video:'elevacion lateral en polea tecnica'
+    },
+    {
+      name:'Elevación posterior en máquina (Rear Delt Fly)',
+      diff:'Principiante-Intermedio', sets:3, reps:'12-15', rest:'60s',
+      muscles:[{id:'delt_post',pct:80},{id:'romboides',pct:20}],
+      diagram:'shoulders',
+      desc:'Aislamiento del deltoide posterior, esencial para hombros equilibrados y buena postura, muchas veces descuidado.',
+      technique:'Sentado de frente a la máquina, abre los brazos hacia atrás en un arco, apretando los omóplatos al final del recorrido.',
+      errors:'Usar demasiado peso y realizar un rango de movimiento muy corto.',
+      breathing:'Exhala al abrir los brazos, inhala al regresar.',
+      tips:'Este es el haz de hombro que más contribuye a la postura; no lo saltes aunque el peso sea bajo.',
+      alt:'Si la máquina está ocupada: face pull en polea alta (repetir del día de espalda con peso ligero).',
+      video:'elevacion posterior deltoide maquina tecnica'
+    },
+    {
+      name:'Press Arnold con mancuernas',
+      diff:'Intermedio-Avanzado', sets:3, reps:'8-12', rest:'75s',
+      muscles:[{id:'delt_ant',pct:45},{id:'delt_med',pct:35},{id:'triceps',pct:20}],
+      diagram:'shoulders',
+      desc:'Variante que combina rotación y empuje, trabajando el hombro desde múltiples ángulos en un solo movimiento.',
+      technique:'Comienza con las mancuernas frente al pecho, palmas hacia ti. Al empujar hacia arriba, rota las palmas hacia afuera hasta terminar mirando al frente, y revierte la secuencia al bajar.',
+      errors:'Realizar la rotación demasiado rápido, perdiendo control de la trayectoria.',
+      breathing:'Exhala al empujar y rotar hacia arriba, inhala al bajar.',
+      tips:'Practica el patrón de rotación con peso ligero antes de aumentar la carga.',
+      alt:'Si prefieres simplicidad: press de hombro con mancuernas sin rotación.',
+      video:'press arnold mancuernas tecnica'
+    },
+    {
+      name:'Encogimientos de trapecio con mancuernas (Shrugs)',
+      diff:'Principiante', sets:3, reps:'12-15', rest:'60s',
+      muscles:[{id:'trapecio',pct:95},{id:'antebrazo',pct:5}],
+      diagram:'shoulders',
+      desc:'Aislamiento del trapecio superior, contribuye al gasto calórico total y a una postura más erguida.',
+      technique:'De pie con mancuernas a los costados, eleva los hombros directamente hacia arriba (sin rodar), pausa arriba y desciende controladamente.',
+      errors:'Rodar los hombros en círculo, lo que puede irritar la articulación; usar impulso de rodillas.',
+      breathing:'Exhala al elevar los hombros, inhala al bajar.',
+      tips:'El movimiento es puramente vertical: sube y baja, no gires.',
+      alt:'Si no hay mancuernas pesadas: encogimientos en máquina Smith o barra.',
+      video:'encogimientos trapecio mancuernas shrugs tecnica'
+    },
+    {
+      name:'Elevación de piernas colgado o en banco',
+      diff:'Intermedio', sets:3, reps:'10-15', rest:'60s',
+      muscles:[{id:'abdominales',pct:70},{id:'oblicuos',pct:20},{id:'transverso',pct:10}],
+      diagram:'abs',
+      desc:'Ejercicio de core enfocado en la porción inferior del recto abdominal y flexores de cadera.',
+      technique:'Colgado de la barra o apoyado en el banco de abdominales, eleva las piernas (rectas o flexionadas) llevando la pelvis hacia arriba, controlando el descenso sin balancear el cuerpo.',
+      errors:'Usar impulso de balanceo en lugar de contracción abdominal controlada; arquear la espalda baja.',
+      breathing:'Exhala al elevar las piernas, inhala al bajar.',
+      tips:'Si es muy difícil colgado, hazlo apoyado en el banco con respaldo para reducir la dificultad.',
+      alt:'Si la barra está ocupada: crunch inverso en el suelo.',
+      video:'elevacion de piernas colgado abdominales tecnica'
+    },
+    {
+      name:'Crunch en máquina abdominal',
+      diff:'Principiante', sets:3, reps:'15-20', rest:'45s',
+      muscles:[{id:'abdominales',pct:85},{id:'oblicuos',pct:15}],
+      diagram:'abs',
+      desc:'Ejercicio guiado que permite sobrecargar progresivamente el abdomen de forma segura, algo difícil de lograr con crunches en el suelo.',
+      technique:'Siéntate en la máquina, ajusta el peso y flexiona el torso hacia adelante contrayendo el abdomen, no tirando con los brazos.',
+      errors:'Tirar del peso con los brazos y hombros en lugar de contraer el abdomen.',
+      breathing:'Exhala al flexionar el torso hacia adelante, inhala al regresar.',
+      tips:'Concéntrate en "doblar" la caja torácica hacia la pelvis, no solo en inclinar el torso.',
+      alt:'Si la máquina está ocupada: plancha abdominal (3 series x 30-45s).',
+      video:'crunch en maquina abdominal tecnica'
+    },
+    {
+      name:'Giro ruso con disco o mancuerna',
+      diff:'Intermedio', sets:3, reps:'12-15 x lado', rest:'45s',
+      muscles:[{id:'oblicuos',pct:75},{id:'abdominales',pct:15},{id:'transverso',pct:10}],
+      diagram:'abs',
+      desc:'Ejercicio rotacional que trabaja los oblicuos, complementando el trabajo de flexión de los ejercicios anteriores.',
+      technique:'Sentado con el torso inclinado hacia atrás y pies elevados o apoyados, rota el torso llevando el peso de un lado a otro con control.',
+      errors:'Mover solo los brazos en lugar de rotar desde el torso; rango de movimiento demasiado rápido y descontrolado.',
+      breathing:'Exhala en cada rotación, inhala en la transición.',
+      tips:'Empieza sin peso o con peso ligero hasta dominar la rotación controlada del torso.',
+      alt:'Si prefieres bajo impacto lumbar: plancha lateral con rotación.',
+      video:'giro ruso abdominales tecnica'
+    }
+  ]
+};
+
+PROGRAM.fri = {
+  id:'fri', dayNum:5, name:'Viernes', title:'Full Body — Gasto Calórico', focus:'Circuito de cuerpo completo para maximizar el gasto energético semanal',
+  objective:'Cerrar la semana con un estímulo de cuerpo completo que mantenga la musculatura activa, eleve el gasto calórico y complemente (sin reemplazar) el déficit generado por la dieta y el cardio.',
+  duration:'60 min', intensity:3, rest:'45-75s entre series (circuito con ritmo más elevado)',
+  icon: ICONS.full,
+  warmup:[
+    {name:'Cinta o elíptica a ritmo suave', time:'5 min', desc:'Activa el sistema cardiovascular para el formato de circuito.'},
+    {name:'Movilidad articular general', time:'3 min', desc:'Tobillos, cadera, hombros y columna en secuencia.'},
+    {name:'Sentadilla + press ligero combinados', time:'1 serie x 12', desc:'Prepara el patrón de movimiento compuesto del circuito.'}
+  ],
+  stretch:[
+    {name:'Estiramiento de cuerpo completo de pie', time:'30s', benefit:'Descompresión general tras el circuito.'},
+    {name:'Postura del niño extendida', time:'45s', benefit:'Relaja espalda baja y hombros.'},
+    {name:'Respiración diafragmática', time:'1 min', benefit:'Baja la frecuencia cardiaca y activa la recuperación.'}
+  ],
+  exercises:[
+    {
+      name:'Sentadilla en máquina Smith',
+      diff:'Intermedio', sets:3, reps:'10-15', rest:'60s',
+      muscles:[{id:'cuadriceps',pct:45},{id:'gluteo',pct:35},{id:'isquios',pct:20}],
+      diagram:'quads',
+      desc:'Movimiento compuesto de tren inferior con trayectoria guiada, ideal para un día de mayor ritmo y menor carga máxima.',
+      technique:'Coloca la barra sobre los trapecios, pies ligeramente adelantados a la línea de la barra. Desciende hasta 90° de flexión de rodilla y empuja de vuelta.',
+      errors:'Colocar los pies justo debajo de la barra, lo que fuerza demasiado la rodilla por la trayectoria fija de la máquina.',
+      breathing:'Inhala al descender, exhala al subir.',
+      tips:'Usa un peso moderado hoy: el objetivo es ritmo y gasto calórico, no una marca personal.',
+      alt:'Si la máquina Smith está ocupada: prensa de piernas con ritmo elevado.',
+      video:'sentadilla maquina smith tecnica'
+    },
+    {
+      name:'Press de banca en máquina (ritmo circuito)',
+      diff:'Intermedio', sets:3, reps:'12-15', rest:'60s',
+      muscles:[{id:'pect_mayor',pct:60},{id:'delt_ant',pct:25},{id:'triceps',pct:15}],
+      diagram:'chest',
+      desc:'Repetición del patrón de empuje horizontal con mayor rango de repeticiones para maximizar el gasto energético.',
+      technique:'Misma técnica que el lunes: espalda pegada al respaldo, empuje controlado sin bloquear violentamente el codo.',
+      errors:'Acelerar la técnica en busca de más repeticiones; perder el control de la fase excéntrica.',
+      breathing:'Exhala al empujar, inhala al regresar.',
+      tips:'Usa un peso 10-15% menor al del lunes: hoy priorizas ritmo, no carga máxima.',
+      alt:'Si la máquina está ocupada: flexiones de pecho (push-ups) con pies elevados o al nivel del suelo.',
+      video:'press de banca maquina ritmo tecnica'
+    },
+    {
+      name:'Jalón al pecho en polea (ritmo circuito)',
+      diff:'Intermedio', sets:3, reps:'12-15', rest:'60s',
+      muscles:[{id:'dorsal',pct:60},{id:'biceps',pct:20},{id:'romboides',pct:20}],
+      diagram:'back_upper',
+      desc:'Repetición del patrón de jalón vertical para mantener el estímulo de espalda con mayor densidad de repeticiones.',
+      technique:'Misma técnica que el martes: jala hacia el pecho llevando los codos abajo y atrás, sin usar impulso.',
+      errors:'Perder la postura erguida a medida que aumenta la fatiga del circuito.',
+      breathing:'Exhala al jalar, inhala al regresar.',
+      tips:'Si la fatiga es alta, prioriza completar el rango de movimiento completo sobre añadir más peso.',
+      alt:'Si la polea está ocupada: remo en máquina sentado.',
+      video:'jalon al pecho polea ritmo tecnica'
+    },
+    {
+      name:'Zancadas caminando con mancuernas',
+      diff:'Intermedio', sets:3, reps:'10-12 x pierna', rest:'60s',
+      muscles:[{id:'cuadriceps',pct:40},{id:'gluteo',pct:40},{id:'isquios',pct:20}],
+      diagram:'quads',
+      desc:'Ejercicio compuesto de alto gasto energético que además mejora el equilibrio y la coordinación.',
+      technique:'Con una mancuerna en cada mano, da un paso largo hacia adelante, desciende hasta que ambas rodillas formen 90°, y empuja hacia el siguiente paso.',
+      errors:'Dar pasos demasiado cortos, lo cual sobrecarga la rodilla delantera; inclinar el torso hacia adelante.',
+      breathing:'Inhala al descender, exhala al empujar hacia el siguiente paso.',
+      tips:'Si el espacio en el gimnasio es limitado, hazlas en el sitio alternando piernas en lugar de caminar.',
+      alt:'Si no hay espacio disponible: sentadilla búlgara con mancuernas.',
+      video:'zancadas caminando mancuernas tecnica'
+    },
+    {
+      name:'Press de hombro en máquina (ritmo circuito)',
+      diff:'Intermedio', sets:3, reps:'12-15', rest:'60s',
+      muscles:[{id:'delt_ant',pct:55},{id:'delt_med',pct:25},{id:'triceps',pct:20}],
+      diagram:'shoulders',
+      desc:'Repetición del patrón de empuje vertical para cerrar el estímulo semanal de hombro con mayor densidad de trabajo.',
+      technique:'Misma técnica que el jueves: empuje controlado desde los hombros sin arquear la espalda baja.',
+      errors:'Reducir el rango de movimiento a medida que aumenta la fatiga acumulada del circuito.',
+      breathing:'Exhala al empujar, inhala al bajar.',
+      tips:'Usa un peso moderado; el objetivo hoy es densidad de trabajo, no una carga máxima.',
+      alt:'Si la máquina está ocupada: elevaciones laterales con mancuernas.',
+      video:'press de hombro maquina ritmo tecnica'
+    },
+    {
+      name:'Remo bajo en polea (agarre neutro, ritmo circuito)',
+      diff:'Intermedio', sets:3, reps:'12-15', rest:'60s',
+      muscles:[{id:'dorsal',pct:40},{id:'romboides',pct:30},{id:'trapecio',pct:20},{id:'biceps',pct:10}],
+      diagram:'back_upper',
+      desc:'Cierra el trabajo de tirón horizontal de la semana manteniendo la postura y activando la espalda media.',
+      technique:'Misma técnica que el martes: jala el agarre hacia el abdomen bajo, apretando la espalda al final del recorrido.',
+      errors:'Balancearse hacia atrás para completar más repeticiones de las que el músculo puede controlar.',
+      breathing:'Exhala al jalar, inhala al regresar.',
+      tips:'Si sientes fatiga en el agarre, usa correas de sujeción para mantener el foco en la espalda.',
+      alt:'Si la polea está ocupada: remo con mancuerna a una mano.',
+      video:'remo bajo polea agarre neutro tecnica'
+    },
+    {
+      name:'Plancha abdominal (Plank)',
+      diff:'Principiante-Intermedio', sets:3, reps:'30-45s', rest:'45s',
+      muscles:[{id:'transverso',pct:50},{id:'abdominales',pct:30},{id:'oblicuos',pct:20}],
+      diagram:'abs',
+      desc:'Ejercicio isométrico de core que cierra el entrenamiento semanal fortaleciendo la estabilidad del tronco.',
+      technique:'Apoya antebrazos y puntas de los pies en el suelo, mantén el cuerpo en línea recta desde cabeza hasta talones, contrayendo abdomen y glúteo.',
+      errors:'Dejar caer la cadera hacia el suelo o elevarla demasiado, perdiendo la línea recta corporal.',
+      breathing:'Respiración controlada y constante, evitando contener el aire.',
+      tips:'Si 30-45s es fácil, aumenta el tiempo antes de buscar variantes más avanzadas.',
+      alt:'Si necesitas menos impacto en muñeca/hombro: plancha con antebrazos sobre banco elevado.',
+      video:'plancha abdominal plank tecnica'
+    }
+  ]
+};
+
+const DAY_ORDER = ['mon','tue','wed','thu','fri'];
+const DAY_LABEL = {mon:'Lunes',tue:'Martes',wed:'Miércoles',thu:'Jueves',fri:'Viernes'};
+
+/* ---------- ESTADO / LOCALSTORAGE ---------- */
+const STORAGE_KEY = 'forja_state_v1';
+let STATE = loadState();
+
+function loadState(){
+  try{
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if(raw) return JSON.parse(raw);
+  }catch(e){}
+  return { completedWorkouts:{}, logs:{}, favorites:{}, currentWeek:1, streak:0 };
+}
+function saveState(){
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(STATE));
+}
+
+/* ---------- NAVEGACIÓN ---------- */
+let currentDayId = null;
+
+function switchNav(btn){
+  document.querySelectorAll('.navbtn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  showView(btn.dataset.view);
+  if(btn.dataset.view==='view-search') renderSearch();
+  if(btn.dataset.view==='view-favorites') renderFavorites();
+}
+function showView(id){
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function goHome(){
+  document.querySelectorAll('.navbtn').forEach(b=>b.classList.remove('active'));
+  document.querySelector('.navbtn[data-view="view-home"]').classList.add('active');
+  showView('view-home');
+}
+function openDay(dayId){
+  const d = PROGRAM[dayId];
+  if(!d){ showToast('Este día se añadirá próximamente 🔜'); return; }
+  currentDayId = dayId;
+  renderDay(d);
+  showView('view-day');
+}
+
+/* ---------- RENDER: HOME ---------- */
+function renderHome(){
+  // Week list
+  const wrap = document.getElementById('weekList');
+  wrap.innerHTML = '';
+  const todayIdx = new Date().getDay(); // 0 sun .. 6 sat
+  DAY_ORDER.forEach((id,i)=>{
+    const d = PROGRAM[id];
+    const key = `w${STATE.currentWeek}_${id}`;
+    const done = !!STATE.completedWorkouts[key];
+    const isToday = (todayIdx===i+1);
+    const div = document.createElement('div');
+    div.className = `card day-card ${isToday?'today':''} ${done?'done':''} ${!d?'locked':''}`;
+    div.onclick = ()=>openDay(id);
+    div.innerHTML = `
+      <div class="dnum">${done?doneCheckSvg():`<span>${i+1}</span>`}<small>${DAY_LABEL[id].slice(0,3)}</small></div>
+      <div class="dinfo">
+        <div class="dtitle">${d?d.title:'Próximamente'}</div>
+        <div class="dmeta">${d? d.duration+' · '+ (d.exercises?.length||0) +' ejercicios':'En construcción'}</div>
+      </div>
+      <svg class="dchev" width="18" height="18" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+    `;
+    wrap.appendChild(div);
+  });
+
+  // Stats
+  const totalDone = Object.keys(STATE.completedWorkouts).length;
+  document.getElementById('statWorkouts').textContent = `${totalDone}/60`;
+  document.getElementById('statStreak').textContent = STATE.streak||0;
+  const weekDone = DAY_ORDER.filter(id=>STATE.completedWorkouts[`w${STATE.currentWeek}_${id}`]).length;
+  document.getElementById('statWeek').textContent = `${weekDone}/5`;
+  document.getElementById('curWeek').textContent = STATE.currentWeek;
+
+  // Rings
+  setRing('ringDay', DAY_ORDER.some(id=>STATE.completedWorkouts[`w${STATE.currentWeek}_${id}`] && id===DAY_ORDER[todayIdx-1]) ? 100:0);
+  setRing('ringWeek', Math.round((weekDone/5)*100));
+  setRing('ring12', Math.round((totalDone/60)*100));
+
+  renderVolume();
+}
+
+function doneCheckSvg(){
+  return `<svg width="18" height="18" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>`;
+}
+
+function setRing(id, pct){
+  const el = document.getElementById(id);
+  const r = 30, circ = 2*Math.PI*r;
+  el.setAttribute('stroke-dasharray', circ.toFixed(1));
+  el.setAttribute('stroke-dashoffset', (circ - (circ*pct/100)).toFixed(1));
+}
+
+/* Volumen semanal aproximado por grupo muscular, basado en series programadas */
+function renderVolume(){
+  const totals = {};
+  DAY_ORDER.forEach(id=>{
+    const d = PROGRAM[id];
+    if(!d) return;
+    d.exercises.forEach(ex=>{
+      ex.muscles.forEach(m=>{
+        const groupName = MUSCLES_DB[m.id].name.split(' ')[0];
+        totals[groupName] = (totals[groupName]||0) + ex.sets * (m.pct/100);
+      });
+    });
+  });
+  const entries = Object.entries(totals).sort((a,b)=>b[1]-a[1]).slice(0,8);
+  const max = Math.max(...entries.map(e=>e[1]), 1);
+  const wrap = document.getElementById('volList');
+  wrap.innerHTML = entries.map(([name,val])=>`
+    <div class="vol-row">
+      <div class="vname">${name}</div>
+      <div class="bar"><div class="bar-fill" style="width:${(val/max*100).toFixed(0)}%"></div></div>
+      <div class="vval">${val.toFixed(1)}</div>
+    </div>
+  `).join('') || '<p style="font-size:12px;color:var(--text-dim);">Se calculará conforme se agreguen más días.</p>';
+}
+
+/* ---------- RENDER: DAY DETAIL ---------- */
+function renderDay(d){
+  document.getElementById('dayTitle').textContent = `${DAY_LABEL[d.id]} · ${d.title}`;
+  document.getElementById('dayFocus').textContent = d.focus;
+  document.getElementById('dayObjective').textContent = d.objective;
+  document.getElementById('dayDuration').textContent = d.duration;
+  document.getElementById('dayRest').textContent = 'Descanso: '+d.rest;
+  document.getElementById('dayIntensity').textContent = 'Intensidad';
+  const dots = document.getElementById('dayIntensityDots');
+  dots.innerHTML = Array.from({length:5},(_,i)=>`<span class="${i<d.intensity?'on':''}"></span>`).join('');
+
+  // Warmup
+  document.getElementById('warmupStrip').innerHTML = d.warmup.map(w=>`
+    <div class="wu-item">
+      <div class="wicon"><svg viewBox="0 0 24 24" stroke="var(--gold)" fill="none" stroke-width="1.8"><circle cx="12" cy="12" r="9"/></svg></div>
+      <div class="wname">${w.name}</div>
+      <div class="wtime">${w.time}</div>
+      <div class="wdesc">${w.desc}</div>
+    </div>
+  `).join('');
+
+  // Stretch
+  document.getElementById('stretchStrip').innerHTML = d.stretch.map(s=>`
+    <div class="wu-item">
+      <div class="wicon"><svg viewBox="0 0 24 24" stroke="var(--gold)" fill="none" stroke-width="1.8"><path d="M12 2v20M2 12h20"/></svg></div>
+      <div class="wname">${s.name}</div>
+      <div class="wtime">${s.time}</div>
+      <div class="wdesc">${s.benefit}</div>
+    </div>
+  `).join('');
+
+  // Exercises
+  const exWrap = document.getElementById('exerciseList');
+  exWrap.innerHTML = d.exercises.map((ex,i)=>{
+    const exId = `${d.id}_${i}`;
+    const isFav = !!STATE.favorites[exId];
+    const log = STATE.logs[exId] || {};
+    return `
+    <div class="card ex-card" id="excard_${exId}">
+      <div class="ex-head" onclick="toggleExercise('${exId}')">
+        <div class="ex-thumb">${d.icon}</div>
+        <div class="ex-title-wrap">
+          <div class="ex-num">EJERCICIO ${i+1} DE ${d.exercises.length}</div>
+          <div class="ex-name">${ex.name}</div>
+          <div class="ex-quick">
+            <span><b>${ex.sets}</b> series</span>
+            <span><b>${ex.reps}</b> reps</span>
+            <span><b>${ex.rest}</b> descanso</span>
+          </div>
+        </div>
+        <button class="ex-fav ${isFav?'active':''}" onclick="event.stopPropagation();toggleFavorite('${exId}')" aria-label="Favorito">
+          <svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 00-7.8 0L12 5.6l-1-1a5.5 5.5 0 00-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 000-7.8z"/></svg>
+        </button>
+        <div class="ex-expand"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></div>
+      </div>
+      <div class="ex-body"><div class="ex-body-in">
+
+        <a class="video-link" href="https://www.youtube.com/results?search_query=${encodeURIComponent(ex.video)}" target="_blank" rel="noopener">
+          <div class="vp"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <div><div class="vt">Ver ejecución en video</div><div class="vs">Búsqueda en YouTube ↗</div></div>
+          <svg class="varrow" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg>
+        </a>
+
+        <div class="muscle-diagram-row">
+          <div class="muscle-mini">${bodyDiagram(ex.diagram)}<div class="mlbl">Zona principal</div></div>
+        </div>
+
+        <div class="info-block">
+          <h4>Músculos trabajados</h4>
+          <div class="muscle-list">${muscleRowsHTML(ex.muscles)}</div>
+        </div>
+
+        <div class="info-block">
+          <h4>Descripción</h4>
+          <p>${ex.desc}</p>
+        </div>
+
+        <div class="info-block">
+          <h4>Técnica correcta</h4>
+          <p>${ex.technique}</p>
+        </div>
+
+        <div class="two-col-info">
+          <div class="mini-box warn"><h5>Errores comunes</h5><p>${ex.errors}</p></div>
+          <div class="mini-box tip"><h5>Respiración</h5><p>${ex.breathing}</p></div>
+        </div>
+
+        <div class="info-block">
+          <h4>Consejo del entrenador</h4>
+          <p>${ex.tips}</p>
+        </div>
+
+        <table class="setrep-table">
+          <thead><tr><th>Series</th><th>Reps</th><th>Descanso</th><th>Dificultad</th></tr></thead>
+          <tbody><tr>
+            <td class="mono">${ex.sets}</td>
+            <td class="mono">${ex.reps}</td>
+            <td class="mono">${ex.rest}</td>
+            <td>${ex.diff}</td>
+          </tr></tbody>
+        </table>
+
+        <div class="alt-box">
+          <svg viewBox="0 0 24 24"><path d="M12 8v4M12 16h.01M12 2a10 10 0 100 20 10 10 0 000-20z"/></svg>
+          <p><b>Máquina ocupada:</b> ${ex.alt}</p>
+        </div>
+
+        <div class="info-block" style="margin-bottom:0;">
+          <h4>Registrar serie</h4>
+          <div class="log-row" style="margin-bottom:8px;">
+            <div style="flex:1;">
+              <span class="log-label">Peso (kg)</span>
+              <input class="log-input" type="number" inputmode="decimal" placeholder="0" value="${log.weight||''}" onchange="updateLog('${exId}','weight',this.value)">
+            </div>
+            <div style="flex:1;">
+              <span class="log-label">Reps logradas</span>
+              <input class="log-input" type="number" inputmode="numeric" placeholder="0" value="${log.repsdone||''}" onchange="updateLog('${exId}','repsdone',this.value)">
+            </div>
+          </div>
+          <span class="log-label">Sensación del ejercicio</span>
+          <div class="chip-row" style="margin-bottom:8px;">
+            ${['😓 Muy duro','😐 Duro','🙂 Bien','😎 Fácil'].map(s=>`<button class="chip ${log.feel===s?'active':''}" onclick="updateLog('${exId}','feel','${s}');renderDay(PROGRAM[currentDayId])">${s}</button>`).join('')}
+          </div>
+          <span class="log-label">Notas personales</span>
+          <textarea class="log-input" style="width:100%;min-height:60px;font-family:'Inter';resize:vertical;" placeholder="Ej: sentí molestia en el hombro derecho…" onchange="updateLog('${exId}','notes',this.value)">${log.notes||''}</textarea>
+
+```
+      <button class="btn btn-ghost btn-sm" style="margin-top:10px;" onclick="startRestTimer(${parseRestSeconds(ex.rest)})">
+        ⏱ Iniciar descanso (${ex.rest})
+      </button>
+    </div>
+
+  </div></div>
+</div>`;
+```
+
+}).join(’’);
+
+updateFinishBtn();
+}
+
+function parseRestSeconds(restStr){
+const nums = restStr.match(/\d+/g);
+if(!nums) return 60;
+return parseInt(nums[nums.length-1]) || 60;
+}
+
+function toggleExercise(exId){
+document.getElementById(`excard_${exId}`).classList.toggle(‘open’);
+}
+
+function toggleFavorite(exId){
+STATE.favorites[exId] = !STATE.favorites[exId];
+saveState();
+renderDay(PROGRAM[currentDayId]);
+showToast(STATE.favorites[exId] ? ‘Añadido a favoritos’ : ‘Quitado de favoritos’);
+}
+
+function updateLog(exId, field, value){
+if(!STATE.logs[exId]) STATE.logs[exId] = {};
+STATE.logs[exId][field] = value;
+saveState();
+}
+
+function toggleDayComplete(){
+const key = `w${STATE.currentWeek}_${currentDayId}`;
+STATE.completedWorkouts[key] = !STATE.completedWorkouts[key];
+if(STATE.completedWorkouts[key]) STATE.streak = (STATE.streak||0)+1;
+saveState();
+updateFinishBtn();
+renderHome();
+showToast(STATE.completedWorkouts[key] ? ‘¡Entrenamiento completado! 💪’ : ‘Marcado como pendiente’);
+}
+function updateFinishBtn(){
+const key = `w${STATE.currentWeek}_${currentDayId}`;
+const done = !!STATE.completedWorkouts[key];
+const btn = document.getElementById(‘finishBtn’);
+btn.textContent = done ? ‘✓ Entrenamiento completado’ : ‘Marcar entreno completado’;
+btn.style.opacity = done ? ‘0.85’:‘1’;
+}
+
+/* ––––– ACORDEONES (progresión / ciencia) ––––– */
+function toggleAcc(headEl){
+const acc = headEl.closest(’.acc’);
+const wasOpen = acc.classList.contains(‘open’);
+acc.classList.toggle(‘open’);
+const body = acc.querySelector(’.acc-body’);
+body.style.maxHeight = wasOpen ? ‘0px’ : body.scrollHeight+‘px’;
+}
+
+/* ––––– BUSCADOR ––––– */
+function allExercisesFlat(){
+const list = [];
+DAY_ORDER.forEach(id=>{
+const d = PROGRAM[id];
+if(!d) return;
+d.exercises.forEach((ex,i)=>list.push({…ex, dayId:id, exId:`${id}_${i}`, dayTitle:d.title}));
+});
+return list;
+}
+let activeMuscleFilter = ‘all’;
+function renderMuscleChips(){
+const groups = [‘all’,‘Pectoral’,‘Tríceps’,‘Dorsal’,‘Bíceps’,‘Cuádriceps’,‘Glúteo’,‘Deltoide’,‘Recto’];
+document.getElementById(‘muscleFilterChips’).innerHTML = groups.map(g=>`<button class="chip ${activeMuscleFilter===g?'active':''}" onclick="setMuscleFilter('${g}')">${g==='all'?'Todos':g}</button>`).join(’’);
+}
+function setMuscleFilter(g){ activeMuscleFilter=g; renderSearch(); }
+function renderSearch(){
+renderMuscleChips();
+const q = (document.getElementById(‘searchInput’).value||’’).toLowerCase();
+const all = allExercisesFlat();
+const filtered = all.filter(ex=>{
+const matchesQ = ex.name.toLowerCase().includes(q);
+const matchesM = activeMuscleFilter===‘all’ || ex.muscles.some(m=>MUSCLES_DB[m.id].name.startsWith(activeMuscleFilter));
+return matchesQ && matchesM;
+});
+const wrap = document.getElementById(‘searchResults’);
+if(filtered.length===0){
+wrap.innerHTML = `<div class="empty"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg><p>No se encontraron ejercicios.</p></div>`;
+return;
+}
+wrap.innerHTML = filtered.map(ex=>searchResultCard(ex)).join(’’);
+}
+function searchResultCard(ex){
+const isFav = !!STATE.favorites[ex.exId];
+return `<div class="card day-card" onclick="openDay('${ex.dayId}')">
+<div class="dnum" style="font-size:0;padding:8px;">${PROGRAM[ex.dayId].icon}</div>
+<div class="dinfo">
+<div class="dtitle">${ex.name}</div>
+<div class="dmeta">${ex.dayTitle} · ${ex.sets}x${ex.reps}</div>
+</div>
+<button class="ex-fav ${isFav?'active':''}" onclick="event.stopPropagation();toggleFavorite('${ex.exId}');renderSearch()">
+<svg viewBox="0 0 24 24" style="width:18px;stroke:currentColor;fill:${isFav?'var(--gold)':'none'};stroke-width:1.8;"><path d="M20.8 4.6a5.5 5.5 0 00-7.8 0L12 5.6l-1-1a5.5 5.5 0 00-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 000-7.8z"/></svg>
+</button>
+
+  </div>`;
+}
+function renderFavorites(){
+  const all = allExercisesFlat();
+  const favs = all.filter(ex=>STATE.favorites[ex.exId]);
+  const wrap = document.getElementById('favResults');
+  if(favs.length===0){
+    wrap.innerHTML = `<div class="empty"><svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 00-7.8 0L12 5.6l-1-1a5.5 5.5 0 00-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 000-7.8z"/></svg><p>Aún no tienes ejercicios favoritos.<br>Tócalos ♥ desde cualquier día.</p></div>`;
+    return;
+  }
+  wrap.innerHTML = favs.map(ex=>searchResultCard(ex)).join('');
+}
+
+/* ––––– TEMPORIZADOR DE DESCANSO ––––– */
+let timerInterval = null, timerSeconds = 60, timerTotal = 60, timerRunning = false;
+function startRestTimer(seconds){
+timerTotal = seconds; timerSeconds = seconds; timerRunning = true;
+document.getElementById(‘timerOverlay’).classList.add(‘show’);
+updateTimerDisplay();
+clearInterval(timerInterval);
+timerInterval = setInterval(()=>{
+if(!timerRunning) return;
+timerSeconds–;
+if(timerSeconds<=0){
+clearInterval(timerInterval);
+timerSeconds=0;
+updateTimerDisplay();
+if(navigator.vibrate) navigator.vibrate([200,100,200]);
+showToast(’¡Descanso terminado! 🔥’);
+setTimeout(closeTimer,900);
+return;
+}
+updateTimerDisplay();
+},1000);
+}
+function updateTimerDisplay(){
+const m = Math.floor(timerSeconds/60).toString().padStart(2,‘0’);
+const s = (timerSeconds%60).toString().padStart(2,‘0’);
+document.getElementById(‘timerTime’).textContent = `${m}:${s}`;
+const r=105, circ=2*Math.PI*r;
+const pct = timerSeconds/timerTotal;
+document.getElementById(‘timerRing’).setAttribute(‘stroke-dasharray’, circ.toFixed(1));
+document.getElementById(‘timerRing’).setAttribute(‘stroke-dashoffset’, (circ*(1-pct)).toFixed(1));
+}
+function adjustTimer(delta){
+timerSeconds = Math.max(0, timerSeconds+delta);
+timerTotal = Math.max(timerTotal, timerSeconds);
+updateTimerDisplay();
+}
+function toggleTimerPlay(){
+timerRunning = !timerRunning;
+document.getElementById(‘timerPlayPause’).innerHTML = timerRunning
+? `<svg viewBox="0 0 24 24"><path d="M6 4h4v16H6zM14 4h4v16h-4z"/></svg>`
+: `<svg viewBox="0 0 24 24"><path d="M6 4l15 8-15 8V4z"/></svg>`;
+}
+function closeTimer(){
+document.getElementById(‘timerOverlay’).classList.remove(‘show’);
+clearInterval(timerInterval);
+}
+
+/* ––––– TOAST ––––– */
+let toastTimeout;
+function showToast(msg){
+const t = document.getElementById(‘toast’);
+document.getElementById(‘toastMsg’).textContent = msg;
+t.classList.add(‘show’);
+clearTimeout(toastTimeout);
+toastTimeout = setTimeout(()=>t.classList.remove(‘show’), 2400);
+}
+
+/* ––––– FULLSCREEN ––––– */
+document.getElementById(‘fsToggle’).onclick = function(){
+if(!document.fullscreenElement){
+document.documentElement.requestFullscreen?.().catch(()=>{});
+document.getElementById(‘app’).classList.add(‘fullscreen’);
+this.classList.add(‘active’);
+}else{
+document.exitFullscreen?.();
+document.getElementById(‘app’).classList.remove(‘fullscreen’);
+this.classList.remove(‘active’);
+}
+};
+document.getElementById(‘searchToggle’).onclick = function(){
+document.querySelectorAll(’.navbtn’).forEach(b=>b.classList.remove(‘active’));
+document.querySelector(’.navbtn[data-view=“view-search”]’)?.classList.add(‘active’);
+showView(‘view-search’);
+renderSearch();
+};
+
+/* ––––– INIT ––––– */
+renderHome();
+</script>
+
+</body>
+</html>
