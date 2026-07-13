@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -53,39 +52,39 @@ img,svg{display:block;max-width:100%;}
 :focus-visible{outline:2px solid var(--gold);outline-offset:2px;}
 @media (prefers-reduced-motion: reduce){*{animation-duration:0.01ms !important;transition-duration:0.01ms !important;}}
 
-/* ––––– Layout shell ––––– */
+/* ---------- Layout shell ---------- */
 .app{max-width:520px;margin:0 auto;position:relative;min-height:100vh;}
 @media (min-width:900px){
-.app{max-width:1180px;}
+  .app{max-width:1180px;}
 }
 
 /* Top bar */
 .topbar{
-position:sticky;top:0;z-index:50;
-background:rgba(10,10,11,0.88);
-backdrop-filter:blur(14px);
--webkit-backdrop-filter:blur(14px);
-border-bottom:1px solid var(–border);
-padding:14px 20px;
-display:flex;align-items:center;justify-content:space-between;
+  position:sticky;top:0;z-index:50;
+  background:rgba(10,10,11,0.88);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border);
+  padding:14px 20px;
+  display:flex;align-items:center;justify-content:space-between;
 }
 .brand{display:flex;align-items:center;gap:10px;}
 .brand-mark{
-width:34px;height:34px;border-radius:9px;
-background:linear-gradient(155deg,var(–gold-bright),var(–gold-dim));
-display:flex;align-items:center;justify-content:center;
-font-family:‘Bebas Neue’,sans-serif;color:#0A0A0B;font-size:18px;
+  width:34px;height:34px;border-radius:9px;
+  background:linear-gradient(155deg,var(--gold-bright),var(--gold-dim));
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Bebas Neue',sans-serif;color:#0A0A0B;font-size:18px;
 }
-.brand-name{font-family:‘Bebas Neue’,sans-serif;font-size:22px;letter-spacing:0.06em;}
-.brand-sub{font-size:9px;color:var(–text-dim);letter-spacing:0.14em;text-transform:uppercase;margin-top:-2px;}
+.brand-name{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:0.06em;}
+.brand-sub{font-size:9px;color:var(--text-dim);letter-spacing:0.14em;text-transform:uppercase;margin-top:-2px;}
 .topbar-actions{display:flex;gap:8px;}
 .icon-btn{
-width:38px;height:38px;border-radius:11px;background:var(–surface);
-border:1px solid var(–border);display:flex;align-items:center;justify-content:center;
-color:var(–text-dim);transition:all .2s;
+  width:38px;height:38px;border-radius:11px;background:var(--surface);
+  border:1px solid var(--border);display:flex;align-items:center;justify-content:center;
+  color:var(--text-dim);transition:all .2s;
 }
-.icon-btn:hover{color:var(–gold);border-color:var(–gold-dim);}
-.icon-btn.active{color:var(–gold);border-color:var(–gold-dim);background:rgba(201,162,75,0.08);}
+.icon-btn:hover{color:var(--gold);border-color:var(--gold-dim);}
+.icon-btn.active{color:var(--gold);border-color:var(--gold-dim);background:rgba(201,162,75,0.08);}
 
 /* Views */
 .view{display:none;padding:20px 20px 40px;animation:fadeIn .35s ease;}
@@ -93,314 +92,314 @@ color:var(–text-dim);transition:all .2s;
 @keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
 
 @media (min-width:900px){
-.view{padding:28px 32px 48px;}
+  .view{padding:28px 32px 48px;}
 }
 
-/* ––––– Bottom nav ––––– */
+/* ---------- Bottom nav ---------- */
 .bottomnav{
-position:fixed;bottom:0;left:0;right:0;z-index:60;
-background:rgba(15,15,16,0.92);
-backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
-border-top:1px solid var(–border);
-display:flex;justify-content:space-around;
-padding:10px 6px calc(10px + var(–safe-bottom));
-max-width:520px;margin:0 auto;
+  position:fixed;bottom:0;left:0;right:0;z-index:60;
+  background:rgba(15,15,16,0.92);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border-top:1px solid var(--border);
+  display:flex;justify-content:space-around;
+  padding:10px 6px calc(10px + var(--safe-bottom));
+  max-width:520px;margin:0 auto;
 }
 @media (min-width:900px){.bottomnav{max-width:1180px;}}
 .navbtn{
-display:flex;flex-direction:column;align-items:center;gap:4px;
-color:var(–text-faint);font-size:10px;font-weight:600;letter-spacing:0.02em;
-padding:4px 10px;border-radius:10px;transition:color .2s;
-flex:1;max-width:90px;
+  display:flex;flex-direction:column;align-items:center;gap:4px;
+  color:var(--text-faint);font-size:10px;font-weight:600;letter-spacing:0.02em;
+  padding:4px 10px;border-radius:10px;transition:color .2s;
+  flex:1;max-width:90px;
 }
 .navbtn svg{width:21px;height:21px;stroke:currentColor;fill:none;stroke-width:1.8;transition:transform .2s;}
-.navbtn.active{color:var(–gold);}
+.navbtn.active{color:var(--gold);}
 .navbtn.active svg{transform:translateY(-2px);}
 
-/* ––––– Cards & primitives ––––– */
+/* ---------- Cards & primitives ---------- */
 .card{
-background:var(–surface);
-border:1px solid var(–border);
-border-radius:var(–radius);
-box-shadow:var(–shadow-card);
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow-card);
 }
 .section-title{
-font-family:‘Bebas Neue’,sans-serif;
-font-size:15px;letter-spacing:0.14em;text-transform:uppercase;
-color:var(–text-dim);margin:28px 0 12px;
-display:flex;align-items:center;gap:8px;
+  font-family:'Bebas Neue',sans-serif;
+  font-size:15px;letter-spacing:0.14em;text-transform:uppercase;
+  color:var(--text-dim);margin:28px 0 12px;
+  display:flex;align-items:center;gap:8px;
 }
-.section-title::before{content:’’;width:14px;height:2px;background:var(–gold);display:inline-block;}
+.section-title::before{content:'';width:14px;height:2px;background:var(--gold);display:inline-block;}
 .section-title:first-child{margin-top:0;}
 
 .pill{
-display:inline-flex;align-items:center;gap:5px;
-padding:4px 10px;border-radius:100px;font-size:11px;font-weight:600;
-background:var(–surface-2);border:1px solid var(–border);color:var(–text-dim);
+  display:inline-flex;align-items:center;gap:5px;
+  padding:4px 10px;border-radius:100px;font-size:11px;font-weight:600;
+  background:var(--surface-2);border:1px solid var(--border);color:var(--text-dim);
 }
-.pill.gold{color:var(–gold);border-color:var(–gold-dim);background:rgba(201,162,75,0.08);}
-.pill.green{color:var(–green);border-color:#1f4a30;background:rgba(74,222,128,0.08);}
+.pill.gold{color:var(--gold);border-color:var(--gold-dim);background:rgba(201,162,75,0.08);}
+.pill.green{color:var(--green);border-color:#1f4a30;background:rgba(74,222,128,0.08);}
 
 .btn{
-display:inline-flex;align-items:center;justify-content:center;gap:8px;
-padding:14px 22px;border-radius:12px;font-weight:700;font-size:14px;
-letter-spacing:0.02em;transition:all .2s;
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:14px 22px;border-radius:12px;font-weight:700;font-size:14px;
+  letter-spacing:0.02em;transition:all .2s;
 }
 .btn-primary{
-background:linear-gradient(155deg,var(–gold-bright),var(–gold-dim));
-color:#100C02;
+  background:linear-gradient(155deg,var(--gold-bright),var(--gold-dim));
+  color:#100C02;
 }
 .btn-primary:active{transform:scale(0.97);}
 .btn-ghost{
-background:var(–surface-2);border:1px solid var(–border);color:var(–text);
+  background:var(--surface-2);border:1px solid var(--border);color:var(--text);
 }
-.btn-ghost:hover{border-color:var(–gold-dim);}
-.btn-danger{background:rgba(229,72,77,0.1);color:var(–red);border:1px solid rgba(229,72,77,0.3);}
+.btn-ghost:hover{border-color:var(--gold-dim);}
+.btn-danger{background:rgba(229,72,77,0.1);color:var(--red);border:1px solid rgba(229,72,77,0.3);}
 .btn-full{width:100%;}
 .btn-sm{padding:9px 14px;font-size:12px;border-radius:10px;}
 
 /* Progress ring (signature element) */
 .ring-wrap{position:relative;display:flex;align-items:center;justify-content:center;}
 .ring-wrap svg{transform:rotate(-90deg);}
-.ring-track{stroke:var(–border);fill:none;}
-.ring-fill{stroke:var(–gold);fill:none;stroke-linecap:round;transition:stroke-dashoffset .6s cubic-bezier(.65,0,.35,1);}
+.ring-track{stroke:var(--border);fill:none;}
+.ring-fill{stroke:var(--gold);fill:none;stroke-linecap:round;transition:stroke-dashoffset .6s cubic-bezier(.65,0,.35,1);}
 .ring-center{position:absolute;text-align:center;}
-.ring-center .num{font-family:‘Bebas Neue’;font-size:28px;line-height:1;color:var(–text);}
-.ring-center .lbl{font-size:9px;color:var(–text-dim);text-transform:uppercase;letter-spacing:0.1em;margin-top:2px;}
+.ring-center .num{font-family:'Bebas Neue';font-size:28px;line-height:1;color:var(--text);}
+.ring-center .lbl{font-size:9px;color:var(--text-dim);text-transform:uppercase;letter-spacing:0.1em;margin-top:2px;}
 
 /* Progress bar */
-.bar{height:8px;border-radius:100px;background:var(–surface-2);overflow:hidden;border:1px solid var(–border);}
-.bar-fill{height:100%;background:linear-gradient(90deg,var(–gold-dim),var(–gold-bright));border-radius:100px;transition:width .5s ease;}
-.bar-fill.green{background:linear-gradient(90deg,#2c7a4b,var(–green));}
+.bar{height:8px;border-radius:100px;background:var(--surface-2);overflow:hidden;border:1px solid var(--border);}
+.bar-fill{height:100%;background:linear-gradient(90deg,var(--gold-dim),var(--gold-bright));border-radius:100px;transition:width .5s ease;}
+.bar-fill.green{background:linear-gradient(90deg,#2c7a4b,var(--green));}
 
-/* ––––– Home / Dashboard ––––– */
+/* ---------- Home / Dashboard ---------- */
 .hero-card{
-padding:24px 22px;border-radius:20px;
-background:radial-gradient(120% 140% at 100% 0%, rgba(201,162,75,0.14), transparent 60%), var(–surface);
-border:1px solid var(–border);position:relative;overflow:hidden;
+  padding:24px 22px;border-radius:20px;
+  background:radial-gradient(120% 140% at 100% 0%, rgba(201,162,75,0.14), transparent 60%), var(--surface);
+  border:1px solid var(--border);position:relative;overflow:hidden;
 }
-.hero-eyebrow{font-size:11px;color:var(–gold);text-transform:uppercase;letter-spacing:0.16em;font-weight:700;}
-.hero-title{font-family:‘Bebas Neue’;font-size:34px;line-height:1.05;margin:6px 0 4px;}
-.hero-sub{color:var(–text-dim);font-size:13px;line-height:1.5;max-width:340px;}
+.hero-eyebrow{font-size:11px;color:var(--gold);text-transform:uppercase;letter-spacing:0.16em;font-weight:700;}
+.hero-title{font-family:'Bebas Neue';font-size:34px;line-height:1.05;margin:6px 0 4px;}
+.hero-sub{color:var(--text-dim);font-size:13px;line-height:1.5;max-width:340px;}
 .hero-stats{display:flex;gap:22px;margin-top:18px;}
-.hero-stat .n{font-family:‘JetBrains Mono’;font-size:20px;color:var(–gold-bright);font-weight:700;}
-.hero-stat .l{font-size:10px;color:var(–text-dim);text-transform:uppercase;letter-spacing:0.08em;margin-top:2px;}
+.hero-stat .n{font-family:'JetBrains Mono';font-size:20px;color:var(--gold-bright);font-weight:700;}
+.hero-stat .l{font-size:10px;color:var(--text-dim);text-transform:uppercase;letter-spacing:0.08em;margin-top:2px;}
 
 .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
 .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
 @media (min-width:900px){
-.dash-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:24px;align-items:start;}
+  .dash-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:24px;align-items:start;}
 }
 
 .stat-card{padding:16px;text-align:center;}
-.stat-card .n{font-family:‘Bebas Neue’;font-size:26px;color:var(–gold);}
-.stat-card .l{font-size:10px;color:var(–text-dim);text-transform:uppercase;letter-spacing:0.06em;margin-top:2px;}
+.stat-card .n{font-family:'Bebas Neue';font-size:26px;color:var(--gold);}
+.stat-card .l{font-size:10px;color:var(--text-dim);text-transform:uppercase;letter-spacing:0.06em;margin-top:2px;}
 
 .day-card{
-padding:16px 18px;display:flex;align-items:center;gap:14px;margin-bottom:10px;
-transition:transform .15s, border-color .15s;
+  padding:16px 18px;display:flex;align-items:center;gap:14px;margin-bottom:10px;
+  transition:transform .15s, border-color .15s;
 }
 .day-card:active{transform:scale(0.98);}
-.day-card.today{border-color:var(–gold-dim);background:linear-gradient(155deg, rgba(201,162,75,0.09), var(–surface));}
+.day-card.today{border-color:var(--gold-dim);background:linear-gradient(155deg, rgba(201,162,75,0.09), var(--surface));}
 .day-card .dnum{
-width:44px;height:44px;border-radius:12px;background:var(–surface-2);
-display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;
-font-family:‘Bebas Neue’;font-size:16px;border:1px solid var(–border);
+  width:44px;height:44px;border-radius:12px;background:var(--surface-2);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;
+  font-family:'Bebas Neue';font-size:16px;border:1px solid var(--border);
 }
-.day-card.done .dnum{background:rgba(74,222,128,0.1);border-color:#1f4a30;color:var(–green);}
-.day-card .dnum small{font-size:8px;color:var(–text-faint);text-transform:uppercase;font-family:‘Inter’;font-weight:700;}
+.day-card.done .dnum{background:rgba(74,222,128,0.1);border-color:#1f4a30;color:var(--green);}
+.day-card .dnum small{font-size:8px;color:var(--text-faint);text-transform:uppercase;font-family:'Inter';font-weight:700;}
 .day-card .dinfo{flex:1;min-width:0;}
 .day-card .dtitle{font-weight:700;font-size:15px;}
-.day-card .dmeta{font-size:11px;color:var(–text-dim);margin-top:2px;}
-.day-card .dchev{color:var(–text-faint);}
+.day-card .dmeta{font-size:11px;color:var(--text-dim);margin-top:2px;}
+.day-card .dchev{color:var(--text-faint);}
 .day-card.locked{opacity:0.45;}
 
-/* ––––– Day detail view ––––– */
+/* ---------- Day detail view ---------- */
 .day-hero{
-border-radius:18px;padding:22px 20px;position:relative;overflow:hidden;
-background:var(–surface);border:1px solid var(–border);
-background-image:radial-gradient(140% 100% at 0% 0%, rgba(201,162,75,0.13), transparent 55%);
+  border-radius:18px;padding:22px 20px;position:relative;overflow:hidden;
+  background:var(--surface);border:1px solid var(--border);
+  background-image:radial-gradient(140% 100% at 0% 0%, rgba(201,162,75,0.13), transparent 55%);
 }
-.back-btn{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(–text-dim);font-weight:600;margin-bottom:14px;}
+.back-btn{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--text-dim);font-weight:600;margin-bottom:14px;}
 .back-btn svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;}
-.day-hero-title{font-family:‘Bebas Neue’;font-size:30px;}
-.day-hero-focus{color:var(–gold);font-size:13px;font-weight:700;margin-top:2px;}
+.day-hero-title{font-family:'Bebas Neue';font-size:30px;}
+.day-hero-focus{color:var(--gold);font-size:13px;font-weight:700;margin-top:2px;}
 .day-hero-meta{display:flex;gap:16px;margin-top:16px;flex-wrap:wrap;}
-.dhm-item{display:flex;align-items:center;gap:6px;font-size:12px;color:var(–text-dim);}
-.dhm-item svg{width:15px;height:15px;stroke:var(–gold);fill:none;stroke-width:1.8;}
+.dhm-item{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text-dim);}
+.dhm-item svg{width:15px;height:15px;stroke:var(--gold);fill:none;stroke-width:1.8;}
 
 .intensity-dots{display:inline-flex;gap:3px;}
-.intensity-dots span{width:6px;height:6px;border-radius:50%;background:var(–border);}
-.intensity-dots span.on{background:var(–gold);}
+.intensity-dots span{width:6px;height:6px;border-radius:50%;background:var(--border);}
+.intensity-dots span.on{background:var(--gold);}
 
 /* Exercise card */
 .ex-card{margin-bottom:12px;overflow:hidden;}
 .ex-head{
-padding:16px 18px;display:flex;align-items:center;gap:14px;
+  padding:16px 18px;display:flex;align-items:center;gap:14px;
 }
 .ex-thumb{
-width:56px;height:56px;border-radius:12px;background:var(–surface-2);
-display:flex;align-items:center;justify-content:center;flex-shrink:0;border:1px solid var(–border);
+  width:56px;height:56px;border-radius:12px;background:var(--surface-2);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;border:1px solid var(--border);
 }
-.ex-thumb svg{width:30px;height:30px;stroke:var(–gold);fill:none;stroke-width:1.5;}
+.ex-thumb svg{width:30px;height:30px;stroke:var(--gold);fill:none;stroke-width:1.5;}
 .ex-title-wrap{flex:1;min-width:0;}
-.ex-num{font-family:‘JetBrains Mono’;font-size:10px;color:var(–gold-dim);font-weight:700;}
+.ex-num{font-family:'JetBrains Mono';font-size:10px;color:var(--gold-dim);font-weight:700;}
 .ex-name{font-weight:700;font-size:15px;margin-top:1px;}
 .ex-quick{display:flex;gap:10px;margin-top:4px;flex-wrap:wrap;}
-.ex-quick span{font-size:11px;color:var(–text-dim);}
-.ex-quick b{color:var(–text);font-family:‘JetBrains Mono’;}
-.ex-fav{width:34px;height:34px;flex-shrink:0;border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(–text-faint);}
+.ex-quick span{font-size:11px;color:var(--text-dim);}
+.ex-quick b{color:var(--text);font-family:'JetBrains Mono';}
+.ex-fav{width:34px;height:34px;flex-shrink:0;border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--text-faint);}
 .ex-fav svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.8;}
-.ex-fav.active svg{fill:var(–gold);stroke:var(–gold);}
-.ex-expand{width:34px;height:34px;flex-shrink:0;border-radius:10px;background:var(–surface-2);display:flex;align-items:center;justify-content:center;transition:transform .25s;}
-.ex-expand svg{width:16px;height:16px;stroke:var(–text-dim);fill:none;stroke-width:2;}
+.ex-fav.active svg{fill:var(--gold);stroke:var(--gold);}
+.ex-expand{width:34px;height:34px;flex-shrink:0;border-radius:10px;background:var(--surface-2);display:flex;align-items:center;justify-content:center;transition:transform .25s;}
+.ex-expand svg{width:16px;height:16px;stroke:var(--text-dim);fill:none;stroke-width:2;}
 .ex-card.open .ex-expand{transform:rotate(180deg);}
 
 .ex-body{max-height:0;overflow:hidden;transition:max-height .35s ease;}
 .ex-card.open .ex-body{max-height:none;}
-.ex-body-in{padding:0 18px 20px;border-top:1px solid var(–border);padding-top:16px;}
+.ex-body-in{padding:0 18px 20px;border-top:1px solid var(--border);padding-top:16px;}
 
 .video-link{
-display:flex;align-items:center;gap:10px;padding:12px 14px;border-radius:12px;
-background:var(–surface-2);border:1px solid var(–border);margin-bottom:14px;
+  display:flex;align-items:center;gap:10px;padding:12px 14px;border-radius:12px;
+  background:var(--surface-2);border:1px solid var(--border);margin-bottom:14px;
 }
 .video-link .vp{
-width:36px;height:36px;border-radius:50%;background:var(–red);display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  width:36px;height:36px;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center;flex-shrink:0;
 }
 .video-link .vp svg{width:14px;height:14px;fill:#fff;stroke:none;margin-left:2px;}
 .video-link .vt{font-size:12px;font-weight:700;}
-.video-link .vs{font-size:10px;color:var(–text-dim);}
-.video-link .varrow{margin-left:auto;color:var(–text-faint);width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;}
+.video-link .vs{font-size:10px;color:var(--text-dim);}
+.video-link .varrow{margin-left:auto;color:var(--text-faint);width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;}
 
 .muscle-diagram-row{display:flex;gap:10px;margin-bottom:14px;}
-.muscle-mini{flex:1;background:var(–surface-2);border:1px solid var(–border);border-radius:12px;padding:10px;text-align:center;}
+.muscle-mini{flex:1;background:var(--surface-2);border:1px solid var(--border);border-radius:12px;padding:10px;text-align:center;}
 .muscle-mini svg{width:100%;height:70px;margin-bottom:6px;}
-.muscle-mini .mlbl{font-size:10px;color:var(–text-dim);text-transform:uppercase;letter-spacing:0.04em;}
+.muscle-mini .mlbl{font-size:10px;color:var(--text-dim);text-transform:uppercase;letter-spacing:0.04em;}
 
 .muscle-list{margin-bottom:14px;}
 .muscle-row{display:flex;align-items:center;gap:10px;padding:7px 0;}
 .muscle-row .dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
 .muscle-row .mname{flex:1;font-size:12.5px;font-weight:600;}
-.muscle-row .mfunc{font-size:10.5px;color:var(–text-dim);display:block;}
-.muscle-row .mpct{font-family:‘JetBrains Mono’;font-size:12px;color:var(–gold);font-weight:700;}
+.muscle-row .mfunc{font-size:10.5px;color:var(--text-dim);display:block;}
+.muscle-row .mpct{font-family:'JetBrains Mono';font-size:12px;color:var(--gold);font-weight:700;}
 
 .info-block{margin-bottom:14px;}
-.info-block h4{font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:var(–gold);margin-bottom:6px;font-weight:700;}
+.info-block h4{font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:var(--gold);margin-bottom:6px;font-weight:700;}
 .info-block p, .info-block li{font-size:13px;line-height:1.6;color:#D8D4CB;}
 .info-block ul{padding-left:18px;}
 .info-block li{margin-bottom:3px;}
 
 .two-col-info{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;}
-.mini-box{background:var(–surface-2);border:1px solid var(–border);border-radius:12px;padding:12px;}
-.mini-box h5{font-size:10px;text-transform:uppercase;color:var(–text-dim);letter-spacing:0.06em;margin-bottom:5px;}
+.mini-box{background:var(--surface-2);border:1px solid var(--border);border-radius:12px;padding:12px;}
+.mini-box h5{font-size:10px;text-transform:uppercase;color:var(--text-dim);letter-spacing:0.06em;margin-bottom:5px;}
 .mini-box p{font-size:12px;line-height:1.5;}
-.mini-box.warn h5{color:var(–red);}
-.mini-box.tip h5{color:var(–green);}
+.mini-box.warn h5{color:var(--red);}
+.mini-box.tip h5{color:var(--green);}
 
 .setrep-table{width:100%;border-collapse:collapse;margin-bottom:14px;font-size:12.5px;}
 .setrep-table th{
-text-align:left;font-size:9.5px;text-transform:uppercase;color:var(–text-faint);
-letter-spacing:0.06em;padding-bottom:6px;border-bottom:1px solid var(–border);font-weight:700;
+  text-align:left;font-size:9.5px;text-transform:uppercase;color:var(--text-faint);
+  letter-spacing:0.06em;padding-bottom:6px;border-bottom:1px solid var(--border);font-weight:700;
 }
-.setrep-table td{padding:9px 0;border-bottom:1px solid var(–border);}
+.setrep-table td{padding:9px 0;border-bottom:1px solid var(--border);}
 .setrep-table td:first-child{font-weight:700;}
-.setrep-table td.mono{font-family:‘JetBrains Mono’;color:var(–gold);}
+.setrep-table td.mono{font-family:'JetBrains Mono';color:var(--gold);}
 .setrep-table tr:last-child td{border-bottom:none;}
 
 .alt-box{
-display:flex;gap:10px;align-items:flex-start;padding:12px 14px;border-radius:12px;
-background:rgba(91,155,213,0.08);border:1px solid rgba(91,155,213,0.25);margin-bottom:14px;
+  display:flex;gap:10px;align-items:flex-start;padding:12px 14px;border-radius:12px;
+  background:rgba(91,155,213,0.08);border:1px solid rgba(91,155,213,0.25);margin-bottom:14px;
 }
-.alt-box svg{width:16px;height:16px;stroke:var(–blue);fill:none;stroke-width:2;flex-shrink:0;margin-top:1px;}
+.alt-box svg{width:16px;height:16px;stroke:var(--blue);fill:none;stroke-width:2;flex-shrink:0;margin-top:1px;}
 .alt-box p{font-size:12px;line-height:1.5;}
-.alt-box b{color:var(–blue);}
+.alt-box b{color:var(--blue);}
 
 .log-row{display:flex;gap:8px;align-items:center;}
 .log-input{
-flex:1;background:var(–surface-2);border:1px solid var(–border);border-radius:10px;
-padding:10px 12px;color:var(–text);font-size:13px;font-family:‘JetBrains Mono’;
+  flex:1;background:var(--surface-2);border:1px solid var(--border);border-radius:10px;
+  padding:10px 12px;color:var(--text);font-size:13px;font-family:'JetBrains Mono';
 }
-.log-input::placeholder{color:var(–text-faint);font-family:‘Inter’;}
-.log-label{font-size:10px;color:var(–text-dim);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:5px;display:block;}
+.log-input::placeholder{color:var(--text-faint);font-family:'Inter';}
+.log-label{font-size:10px;color:var(--text-dim);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:5px;display:block;}
 
 /* Warmup / stretch strip */
 .wu-strip{display:flex;gap:10px;overflow-x:auto;padding-bottom:6px;margin-bottom:4px;}
 .wu-strip::-webkit-scrollbar{display:none;}
 .wu-item{
-flex:0 0 auto;width:150px;background:var(–surface);border:1px solid var(–border);
-border-radius:14px;padding:14px;
+  flex:0 0 auto;width:150px;background:var(--surface);border:1px solid var(--border);
+  border-radius:14px;padding:14px;
 }
-.wu-item .wicon{width:34px;height:34px;border-radius:10px;background:var(–surface-2);display:flex;align-items:center;justify-content:center;margin-bottom:10px;}
-.wu-item .wicon svg{width:18px;height:18px;stroke:var(–gold);fill:none;stroke-width:1.8;}
+.wu-item .wicon{width:34px;height:34px;border-radius:10px;background:var(--surface-2);display:flex;align-items:center;justify-content:center;margin-bottom:10px;}
+.wu-item .wicon svg{width:18px;height:18px;stroke:var(--gold);fill:none;stroke-width:1.8;}
 .wu-item .wname{font-size:12.5px;font-weight:700;margin-bottom:2px;}
-.wu-item .wtime{font-size:10.5px;color:var(–gold);font-family:‘JetBrains Mono’;font-weight:700;}
-.wu-item .wdesc{font-size:10.5px;color:var(–text-dim);margin-top:4px;line-height:1.4;}
+.wu-item .wtime{font-size:10.5px;color:var(--gold);font-family:'JetBrains Mono';font-weight:700;}
+.wu-item .wdesc{font-size:10.5px;color:var(--text-dim);margin-top:4px;line-height:1.4;}
 
 /* Timer overlay */
 .timer-overlay{
-position:fixed;inset:0;z-index:200;background:rgba(6,6,7,0.92);
-backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;flex-direction:column;
-padding:20px;
+  position:fixed;inset:0;z-index:200;background:rgba(6,6,7,0.92);
+  backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;flex-direction:column;
+  padding:20px;
 }
 .timer-overlay.show{display:flex;}
 .timer-ring-wrap{position:relative;width:240px;height:240px;}
-.timer-time{font-family:‘Bebas Neue’;font-size:56px;position:absolute;inset:0;display:flex;align-items:center;justify-content:center;}
-.timer-label{color:var(–text-dim);font-size:13px;text-transform:uppercase;letter-spacing:0.12em;margin-top:18px;}
+.timer-time{font-family:'Bebas Neue';font-size:56px;position:absolute;inset:0;display:flex;align-items:center;justify-content:center;}
+.timer-label{color:var(--text-dim);font-size:13px;text-transform:uppercase;letter-spacing:0.12em;margin-top:18px;}
 .timer-controls{display:flex;gap:12px;margin-top:28px;}
 .timer-controls .icon-btn{width:52px;height:52px;border-radius:50%;}
 .timer-controls .icon-btn svg{width:22px;height:22px;}
 
 /* Finish workout bar */
 .floating-bar{
-position:sticky;bottom:calc(84px + var(–safe-bottom) + 12px);z-index:40;
-margin-top:20px;padding:14px;display:flex;gap:10px;
-background:rgba(20,20,22,0.95);backdrop-filter:blur(10px);
+  position:sticky;bottom:calc(84px + var(--safe-bottom) + 12px);z-index:40;
+  margin-top:20px;padding:14px;display:flex;gap:10px;
+  background:rgba(20,20,22,0.95);backdrop-filter:blur(10px);
 }
 
 /* Search / filter */
 .search-bar{
-display:flex;align-items:center;gap:10px;background:var(–surface);border:1px solid var(–border);
-border-radius:14px;padding:12px 16px;margin-bottom:14px;
+  display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--border);
+  border-radius:14px;padding:12px 16px;margin-bottom:14px;
 }
-.search-bar svg{width:17px;stroke:var(–text-dim);fill:none;stroke-width:2;flex-shrink:0;}
-.search-bar input{background:none;border:none;color:var(–text);font-size:14px;flex:1;outline:none;}
-.search-bar input::placeholder{color:var(–text-faint);}
+.search-bar svg{width:17px;stroke:var(--text-dim);fill:none;stroke-width:2;flex-shrink:0;}
+.search-bar input{background:none;border:none;color:var(--text);font-size:14px;flex:1;outline:none;}
+.search-bar input::placeholder{color:var(--text-faint);}
 .chip-row{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;margin-bottom:16px;}
 .chip-row::-webkit-scrollbar{display:none;}
 .chip{
-flex:0 0 auto;padding:8px 16px;border-radius:100px;font-size:12px;font-weight:600;
-background:var(–surface);border:1px solid var(–border);color:var(–text-dim);
+  flex:0 0 auto;padding:8px 16px;border-radius:100px;font-size:12px;font-weight:600;
+  background:var(--surface);border:1px solid var(--border);color:var(--text-dim);
 }
-.chip.active{background:var(–gold);color:#100C02;border-color:var(–gold);}
+.chip.active{background:var(--gold);color:#100C02;border-color:var(--gold);}
 
 /* Accordion generic (science, progression) */
 .acc{margin-bottom:10px;overflow:hidden;}
 .acc-head{padding:16px 18px;display:flex;align-items:center;gap:12px;}
-.acc-head .aicon{width:36px;height:36px;border-radius:10px;background:var(–surface-2);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.acc-head .aicon svg{width:18px;height:18px;stroke:var(–gold);fill:none;stroke-width:1.8;}
+.acc-head .aicon{width:36px;height:36px;border-radius:10px;background:var(--surface-2);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.acc-head .aicon svg{width:18px;height:18px;stroke:var(--gold);fill:none;stroke-width:1.8;}
 .acc-head .atitle{flex:1;font-weight:700;font-size:13.5px;}
-.acc-head .achev{width:14px;height:14px;stroke:var(–text-dim);fill:none;stroke-width:2;transition:transform .25s;flex-shrink:0;}
+.acc-head .achev{width:14px;height:14px;stroke:var(--text-dim);fill:none;stroke-width:2;transition:transform .25s;flex-shrink:0;}
 .acc.open .achev{transform:rotate(180deg);}
 .acc-body{max-height:0;overflow:hidden;transition:max-height .35s ease;}
 .acc.open .acc-body{max-height:2000px;}
 .acc-body-in{padding:0 18px 18px;font-size:13px;line-height:1.65;color:#D8D4CB;}
 .acc-body-in ul{padding-left:18px;margin-top:6px;}
 .acc-body-in li{margin-bottom:4px;}
-.acc-body-in strong{color:var(–gold);}
+.acc-body-in strong{color:var(--gold);}
 
 /* Toast */
 .toast{
-position:fixed;bottom:calc(96px + var(–safe-bottom));left:50%;transform:translateX(-50%) translateY(20px);
-background:var(–surface-2);border:1px solid var(–gold-dim);color:var(–text);
-padding:12px 20px;border-radius:100px;font-size:13px;font-weight:600;z-index:300;
-opacity:0;transition:all .3s;display:flex;align-items:center;gap:8px;box-shadow:0 8px 30px rgba(0,0,0,0.5);
+  position:fixed;bottom:calc(96px + var(--safe-bottom));left:50%;transform:translateX(-50%) translateY(20px);
+  background:var(--surface-2);border:1px solid var(--gold-dim);color:var(--text);
+  padding:12px 20px;border-radius:100px;font-size:13px;font-weight:600;z-index:300;
+  opacity:0;transition:all .3s;display:flex;align-items:center;gap:8px;box-shadow:0 8px 30px rgba(0,0,0,0.5);
 }
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
-.toast svg{width:16px;stroke:var(–green);fill:none;stroke-width:2.5;}
+.toast svg{width:16px;stroke:var(--green);fill:none;stroke-width:2.5;}
 
 /* Empty state */
-.empty{text-align:center;padding:50px 20px;color:var(–text-dim);}
-.empty svg{width:44px;stroke:var(–text-faint);fill:none;stroke-width:1.5;margin:0 auto 14px;}
+.empty{text-align:center;padding:50px 20px;color:var(--text-dim);}
+.empty svg{width:44px;stroke:var(--text-faint);fill:none;stroke-width:1.5;margin:0 auto 14px;}
 .empty p{font-size:13px;}
 
 /* Fullscreen mode */
@@ -409,24 +408,22 @@ opacity:0;transition:all .3s;display:flex;align-items:center;gap:8px;box-shadow:
 
 /* Volume bars (muscle group weekly) */
 .vol-row{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
-.vol-row .vname{width:78px;font-size:11.5px;color:var(–text-dim);flex-shrink:0;}
+.vol-row .vname{width:78px;font-size:11.5px;color:var(--text-dim);flex-shrink:0;}
 .vol-row .bar{flex:1;}
-.vol-row .vval{width:34px;text-align:right;font-family:‘JetBrains Mono’;font-size:11px;color:var(–gold);flex-shrink:0;}
+.vol-row .vval{width:34px;text-align:right;font-family:'JetBrains Mono';font-size:11px;color:var(--gold);flex-shrink:0;}
 
 /* Responsive desktop tweaks */
 @media (min-width:900px){
-.grid-2.desktop-3{grid-template-columns:repeat(3,1fr);}
-.day-hero-title{font-size:38px;}
-.hero-title{font-size:42px;}
+  .grid-2.desktop-3{grid-template-columns:repeat(3,1fr);}
+  .day-hero-title{font-size:38px;}
+  .hero-title{font-size:42px;}
 }
 </style>
-
 </head>
 <body>
 <div class="app" id="app">
 
   <!-- ================= TOP BAR ================= -->
-
   <div class="topbar">
     <div class="brand">
       <div class="brand-mark">F</div>
@@ -446,289 +443,273 @@ opacity:0;transition:all .3s;display:flex;align-items:center;gap:8px;box-shadow:
   </div>
 
   <!-- ================= VIEW: HOME / DASHBOARD ================= -->
-
   <div class="view active" id="view-home">
 
-```
-<div class="hero-card">
-  <div class="hero-eyebrow">Semana <span id="curWeek">1</span> de 12</div>
-  <h1 class="hero-title">Recomposición<br>en marcha.</h1>
-  <p class="hero-sub">93 kg → objetivo 10-12% grasa corporal. Fuerza en déficit, sin perder músculo. Planet Fitness, 5 días/semana.</p>
-  <div class="hero-stats">
-    <div class="hero-stat"><div class="n" id="statWorkouts">0/60</div><div class="l">Entrenos</div></div>
-    <div class="hero-stat"><div class="n" id="statStreak">0</div><div class="l">Racha días</div></div>
-    <div class="hero-stat"><div class="n" id="statWeek">0/5</div><div class="l">Esta semana</div></div>
-  </div>
-</div>
-
-<div class="section-title">Progreso general</div>
-<div class="dash-grid">
-  <div>
-    <div class="grid-3" style="margin-bottom:12px;">
-      <div class="card stat-card">
-        <div class="ring-wrap" style="width:70px;height:70px;margin:0 auto 6px;">
-          <svg width="70" height="70"><circle class="ring-track" cx="35" cy="35" r="30" stroke-width="6"/><circle class="ring-fill" id="ringDay" cx="35" cy="35" r="30" stroke-width="6" stroke-dasharray="188.5" stroke-dashoffset="188.5"/></svg>
-        </div>
-        <div class="l">Hoy</div>
-      </div>
-      <div class="card stat-card">
-        <div class="ring-wrap" style="width:70px;height:70px;margin:0 auto 6px;">
-          <svg width="70" height="70"><circle class="ring-track" cx="35" cy="35" r="30" stroke-width="6"/><circle class="ring-fill" id="ringWeek" cx="35" cy="35" r="30" stroke-width="6" stroke-dasharray="188.5" stroke-dashoffset="188.5"/></svg>
-        </div>
-        <div class="l">Semana</div>
-      </div>
-      <div class="card stat-card">
-        <div class="ring-wrap" style="width:70px;height:70px;margin:0 auto 6px;">
-          <svg width="70" height="70"><circle class="ring-track" cx="35" cy="35" r="30" stroke-width="6"/><circle class="ring-fill" id="ring12" cx="35" cy="35" r="30" stroke-width="6" stroke-dasharray="188.5" stroke-dashoffset="188.5"/></svg>
-        </div>
-        <div class="l">12 sem.</div>
+    <div class="hero-card">
+      <div class="hero-eyebrow">Semana <span id="curWeek">1</span> de 12</div>
+      <h1 class="hero-title">Recomposición<br>en marcha.</h1>
+      <p class="hero-sub">93 kg → objetivo 10-12% grasa corporal. Fuerza en déficit, sin perder músculo. Planet Fitness, 5 días/semana.</p>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="n" id="statWorkouts">0/60</div><div class="l">Entrenos</div></div>
+        <div class="hero-stat"><div class="n" id="statStreak">0</div><div class="l">Racha días</div></div>
+        <div class="hero-stat"><div class="n" id="statWeek">0/5</div><div class="l">Esta semana</div></div>
       </div>
     </div>
 
-    <div class="section-title">Tu semana</div>
-    <div id="weekList"></div>
-  </div>
+    <div class="section-title">Progreso general</div>
+    <div class="dash-grid">
+      <div>
+        <div class="grid-3" style="margin-bottom:12px;">
+          <div class="card stat-card">
+            <div class="ring-wrap" style="width:70px;height:70px;margin:0 auto 6px;">
+              <svg width="70" height="70"><circle class="ring-track" cx="35" cy="35" r="30" stroke-width="6"/><circle class="ring-fill" id="ringDay" cx="35" cy="35" r="30" stroke-width="6" stroke-dasharray="188.5" stroke-dashoffset="188.5"/></svg>
+            </div>
+            <div class="l">Hoy</div>
+          </div>
+          <div class="card stat-card">
+            <div class="ring-wrap" style="width:70px;height:70px;margin:0 auto 6px;">
+              <svg width="70" height="70"><circle class="ring-track" cx="35" cy="35" r="30" stroke-width="6"/><circle class="ring-fill" id="ringWeek" cx="35" cy="35" r="30" stroke-width="6" stroke-dasharray="188.5" stroke-dashoffset="188.5"/></svg>
+            </div>
+            <div class="l">Semana</div>
+          </div>
+          <div class="card stat-card">
+            <div class="ring-wrap" style="width:70px;height:70px;margin:0 auto 6px;">
+              <svg width="70" height="70"><circle class="ring-track" cx="35" cy="35" r="30" stroke-width="6"/><circle class="ring-fill" id="ring12" cx="35" cy="35" r="30" stroke-width="6" stroke-dasharray="188.5" stroke-dashoffset="188.5"/></svg>
+            </div>
+            <div class="l">12 sem.</div>
+          </div>
+        </div>
 
-  <div>
-    <div class="section-title" style="margin-top:28px;">Volumen semanal por músculo</div>
-    <div class="card" style="padding:16px 18px;">
-      <div id="volList"></div>
+        <div class="section-title">Tu semana</div>
+        <div id="weekList"></div>
+      </div>
+
+      <div>
+        <div class="section-title" style="margin-top:28px;">Volumen semanal por músculo</div>
+        <div class="card" style="padding:16px 18px;">
+          <div id="volList"></div>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-```
 
   </div>
 
   <!-- ================= VIEW: DAY DETAIL ================= -->
-
   <div class="view" id="view-day">
     <button class="back-btn" onclick="goHome()"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg> Volver al plan</button>
 
-```
-<div class="day-hero">
-  <div class="day-hero-title" id="dayTitle">—</div>
-  <div class="day-hero-focus" id="dayFocus">—</div>
-  <p style="font-size:12.5px;color:var(--text-dim);margin-top:10px;line-height:1.55;" id="dayObjective">—</p>
-  <div class="day-hero-meta">
-    <div class="dhm-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg><span id="dayDuration">60 min</span></div>
-    <div class="dhm-item"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg><span id="dayIntensity">Intensidad</span> <span class="intensity-dots" id="dayIntensityDots"></span></div>
-    <div class="dhm-item"><svg viewBox="0 0 24 24"><path d="M4 4v16M20 4v16M4 12h16"/></svg><span id="dayRest">Descanso 60-90s</span></div>
-  </div>
-</div>
+    <div class="day-hero">
+      <div class="day-hero-title" id="dayTitle">—</div>
+      <div class="day-hero-focus" id="dayFocus">—</div>
+      <p style="font-size:12.5px;color:var(--text-dim);margin-top:10px;line-height:1.55;" id="dayObjective">—</p>
+      <div class="day-hero-meta">
+        <div class="dhm-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg><span id="dayDuration">60 min</span></div>
+        <div class="dhm-item"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg><span id="dayIntensity">Intensidad</span> <span class="intensity-dots" id="dayIntensityDots"></span></div>
+        <div class="dhm-item"><svg viewBox="0 0 24 24"><path d="M4 4v16M20 4v16M4 12h16"/></svg><span id="dayRest">Descanso 60-90s</span></div>
+      </div>
+    </div>
 
-<div class="section-title">Calentamiento específico</div>
-<div class="wu-strip" id="warmupStrip"></div>
+    <div class="section-title">Calentamiento específico</div>
+    <div class="wu-strip" id="warmupStrip"></div>
 
-<div class="section-title">Ejercicios</div>
-<div id="exerciseList"></div>
+    <div class="section-title">Ejercicios</div>
+    <div id="exerciseList"></div>
 
-<div class="section-title">Estiramientos finales</div>
-<div class="wu-strip" id="stretchStrip"></div>
+    <div class="section-title">Estiramientos finales</div>
+    <div class="wu-strip" id="stretchStrip"></div>
 
-<div class="floating-bar card">
-  <button class="btn btn-ghost" style="flex:0 0 auto;" onclick="goHome()">Salir</button>
-  <button class="btn btn-primary btn-full" id="finishBtn" onclick="toggleDayComplete()">Marcar entreno completado</button>
-</div>
-```
-
+    <div class="floating-bar card">
+      <button class="btn btn-ghost" style="flex:0 0 auto;" onclick="goHome()">Salir</button>
+      <button class="btn btn-primary btn-full" id="finishBtn" onclick="toggleDayComplete()">Marcar entreno completado</button>
+    </div>
   </div>
 
   <!-- ================= VIEW: PROGRESIÓN ================= -->
-
   <div class="view" id="view-progress-info">
     <h2 class="display" style="font-size:26px;margin-bottom:4px;">Progresión de las 12 semanas</h2>
     <p style="font-size:13px;color:var(--text-dim);margin-bottom:20px;">Cómo aplicar sobrecarga progresiva sin comprometer tu recuperación durante el déficit.</p>
 
-```
-<div class="card acc">
-  <div class="acc-head" onclick="toggleAcc(this)">
-    <div class="aicon"><svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8"/></svg></div>
-    <div class="atitle">Cuándo subir peso</div>
-    <svg class="achev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
-  </div>
-  <div class="acc-body"><div class="acc-body-in">
-    <p>Sube peso cuando completes <strong>todas las series con todas las repeticiones del rango superior</strong>, con buena técnica, durante dos sesiones consecutivas de ese ejercicio. Ejemplo: si el objetivo es 8-12 reps y llegas a 12 en las 3 series dos semanas seguidas, en la siguiente sesión sube de peso.</p>
-  </div></div>
-</div>
-
-<div class="card acc">
-  <div class="acc-head" onclick="toggleAcc(this)">
-    <div class="aicon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></div>
-    <div class="atitle">Cómo elegir el peso</div>
-    <svg class="achev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
-  </div>
-  <div class="acc-body"><div class="acc-body-in">
-    <p>Elige una carga con la que las <strong>últimas 2 repeticiones</strong> de cada serie sean genuinamente difíciles pero técnicamente limpias (RIR 1-2: podrías hacer 1-2 reps más como máximo). Si terminas una serie sintiendo que podrías haber hecho 5 reps más, el peso es demasiado bajo.</p>
-  </div></div>
-</div>
-
-<div class="card acc">
-  <div class="acc-head" onclick="toggleAcc(this)">
-    <div class="aicon"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>
-    <div class="atitle">Si completo todas las repeticiones</div>
-    <svg class="achev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
-  </div>
-  <div class="acc-body"><div class="acc-body-in">
-    <p>Si alcanzas el <strong>tope del rango en todas las series</strong>, incrementa el peso en la siguiente sesión: +2.5-5% en máquinas y poleas, o el salto mínimo de mancuerna disponible (normalmente 2-2.5 kg por lado). Vuelve a la parte baja del rango de reps con el nuevo peso; es normal y esperado.</p>
-  </div></div>
-</div>
-
-<div class="card acc">
-  <div class="acc-head" onclick="toggleAcc(this)">
-    <div class="aicon"><svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg></div>
-    <div class="atitle">Si fallo antes del rango objetivo</div>
-    <svg class="achev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
-  </div>
-  <div class="acc-body"><div class="acc-body-in">
-    <p>Si no llegas al mínimo del rango (ej. objetivo 8-12 y solo logras 6), <strong>mantén el mismo peso</strong> la próxima sesión, no lo bajes automáticamente. Solo reduce la carga si fallas por debajo del mínimo durante 2 sesiones seguidas, lo cual suele indicar fatiga acumulada por el déficit, no falta de fuerza real.</p>
-  </div></div>
-</div>
-
-<div class="card acc">
-  <div class="acc-head" onclick="toggleAcc(this)">
-    <div class="aicon"><svg viewBox="0 0 24 24"><path d="M12 2l2.4 7.2H22l-6 4.4 2.3 7.2L12 16.4l-6.3 4.4 2.3-7.2-6-4.4h7.6z"/></svg></div>
-    <div class="atitle">Si el ejercicio resulta demasiado fácil</div>
-    <svg class="achev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
-  </div>
-  <div class="acc-body"><div class="acc-body-in">
-    <p>Si terminas todas las series con margen de 4+ repeticiones de reserva, el peso está desactualizado respecto a tu nivel actual. No esperes a la siguiente semana: <strong>sube el peso en la siguiente serie de la misma sesión</strong> y recalibra desde ahí.</p>
-  </div></div>
-</div>
-
-<div class="card acc">
-  <div class="acc-head" onclick="toggleAcc(this)">
-    <div class="aicon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4.5 8-11.8V5l-8-3-8 3v5.2C4 17.5 12 22 12 22z"/></svg></div>
-    <div class="atitle">Sobrecarga progresiva sin comprometer la recuperación</div>
-    <svg class="achev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
-  </div>
-  <div class="acc-body"><div class="acc-body-in">
-    <p>En déficit calórico tu capacidad de recuperación está reducida. Prioriza este orden de progresión, del más al menos sostenible:</p>
-    <ul>
-      <li><strong>1. Técnica:</strong> mejora el control excéntrico y el rango de movimiento antes de subir peso.</li>
-      <li><strong>2. Peso:</strong> sube carga manteniendo series y reps iguales.</li>
-      <li><strong>3. Reps dentro del rango:</strong> exprime el rango antes de añadir series.</li>
-      <li><strong>4. Series (con moderación):</strong> añadir volumen extra solo si el sueño, el estrés y el apetito están bien controlados esa semana.</li>
-    </ul>
-    <p style="margin-top:8px;">Evita subir peso y añadir series en la misma semana. Si una semana te sientes agotado, repite los pesos de la semana anterior: mantener el estímulo ya es progreso durante un déficit.</p>
-  </div></div>
-</div>
-
-<div class="section-title">Cómo evoluciona el plan</div>
-<div class="card" style="padding:18px 20px;">
-  <div class="two-col-info" style="grid-template-columns:1fr;">
-    <div class="mini-box">
-      <h5>Semanas 1-4 · Adaptación</h5>
-      <p>Aprende la técnica de cada ejercicio. Prioriza rango de movimiento completo y conexión mente-músculo sobre el peso. RIR 2-3.</p>
+    <div class="card acc">
+      <div class="acc-head" onclick="toggleAcc(this)">
+        <div class="aicon"><svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8"/></svg></div>
+        <div class="atitle">Cuándo subir peso</div>
+        <svg class="achev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="acc-body"><div class="acc-body-in">
+        <p>Sube peso cuando completes <strong>todas las series con todas las repeticiones del rango superior</strong>, con buena técnica, durante dos sesiones consecutivas de ese ejercicio. Ejemplo: si el objetivo es 8-12 reps y llegas a 12 en las 3 series dos semanas seguidas, en la siguiente sesión sube de peso.</p>
+      </div></div>
     </div>
-    <div class="mini-box">
-      <h5>Semanas 5-8 · Progresión</h5>
-      <p>El déficit se profundiza. Sube peso cuando corresponda, pero vigila señales de fatiga. RIR 1-2. Considera una semana de descarga si el rendimiento cae 2 sesiones seguidas.</p>
-    </div>
-    <div class="mini-box">
-      <h5>Semanas 9-12 · Mantenimiento de intensidad</h5>
-      <p>La energía es más limitada. El objetivo ya no es subir peso agresivamente, sino <strong>mantener el peso actual con buena técnica</strong>: eso ya conserva el músculo.</p>
-    </div>
-  </div>
-</div>
-```
 
+    <div class="card acc">
+      <div class="acc-head" onclick="toggleAcc(this)">
+        <div class="aicon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></div>
+        <div class="atitle">Cómo elegir el peso</div>
+        <svg class="achev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="acc-body"><div class="acc-body-in">
+        <p>Elige una carga con la que las <strong>últimas 2 repeticiones</strong> de cada serie sean genuinamente difíciles pero técnicamente limpias (RIR 1-2: podrías hacer 1-2 reps más como máximo). Si terminas una serie sintiendo que podrías haber hecho 5 reps más, el peso es demasiado bajo.</p>
+      </div></div>
+    </div>
+
+    <div class="card acc">
+      <div class="acc-head" onclick="toggleAcc(this)">
+        <div class="aicon"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>
+        <div class="atitle">Si completo todas las repeticiones</div>
+        <svg class="achev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="acc-body"><div class="acc-body-in">
+        <p>Si alcanzas el <strong>tope del rango en todas las series</strong>, incrementa el peso en la siguiente sesión: +2.5-5% en máquinas y poleas, o el salto mínimo de mancuerna disponible (normalmente 2-2.5 kg por lado). Vuelve a la parte baja del rango de reps con el nuevo peso; es normal y esperado.</p>
+      </div></div>
+    </div>
+
+    <div class="card acc">
+      <div class="acc-head" onclick="toggleAcc(this)">
+        <div class="aicon"><svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg></div>
+        <div class="atitle">Si fallo antes del rango objetivo</div>
+        <svg class="achev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="acc-body"><div class="acc-body-in">
+        <p>Si no llegas al mínimo del rango (ej. objetivo 8-12 y solo logras 6), <strong>mantén el mismo peso</strong> la próxima sesión, no lo bajes automáticamente. Solo reduce la carga si fallas por debajo del mínimo durante 2 sesiones seguidas, lo cual suele indicar fatiga acumulada por el déficit, no falta de fuerza real.</p>
+      </div></div>
+    </div>
+
+    <div class="card acc">
+      <div class="acc-head" onclick="toggleAcc(this)">
+        <div class="aicon"><svg viewBox="0 0 24 24"><path d="M12 2l2.4 7.2H22l-6 4.4 2.3 7.2L12 16.4l-6.3 4.4 2.3-7.2-6-4.4h7.6z"/></svg></div>
+        <div class="atitle">Si el ejercicio resulta demasiado fácil</div>
+        <svg class="achev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="acc-body"><div class="acc-body-in">
+        <p>Si terminas todas las series con margen de 4+ repeticiones de reserva, el peso está desactualizado respecto a tu nivel actual. No esperes a la siguiente semana: <strong>sube el peso en la siguiente serie de la misma sesión</strong> y recalibra desde ahí.</p>
+      </div></div>
+    </div>
+
+    <div class="card acc">
+      <div class="acc-head" onclick="toggleAcc(this)">
+        <div class="aicon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4.5 8-11.8V5l-8-3-8 3v5.2C4 17.5 12 22 12 22z"/></svg></div>
+        <div class="atitle">Sobrecarga progresiva sin comprometer la recuperación</div>
+        <svg class="achev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="acc-body"><div class="acc-body-in">
+        <p>En déficit calórico tu capacidad de recuperación está reducida. Prioriza este orden de progresión, del más al menos sostenible:</p>
+        <ul>
+          <li><strong>1. Técnica:</strong> mejora el control excéntrico y el rango de movimiento antes de subir peso.</li>
+          <li><strong>2. Peso:</strong> sube carga manteniendo series y reps iguales.</li>
+          <li><strong>3. Reps dentro del rango:</strong> exprime el rango antes de añadir series.</li>
+          <li><strong>4. Series (con moderación):</strong> añadir volumen extra solo si el sueño, el estrés y el apetito están bien controlados esa semana.</li>
+        </ul>
+        <p style="margin-top:8px;">Evita subir peso y añadir series en la misma semana. Si una semana te sientes agotado, repite los pesos de la semana anterior: mantener el estímulo ya es progreso durante un déficit.</p>
+      </div></div>
+    </div>
+
+    <div class="section-title">Cómo evoluciona el plan</div>
+    <div class="card" style="padding:18px 20px;">
+      <div class="two-col-info" style="grid-template-columns:1fr;">
+        <div class="mini-box">
+          <h5>Semanas 1-4 · Adaptación</h5>
+          <p>Aprende la técnica de cada ejercicio. Prioriza rango de movimiento completo y conexión mente-músculo sobre el peso. RIR 2-3.</p>
+        </div>
+        <div class="mini-box">
+          <h5>Semanas 5-8 · Progresión</h5>
+          <p>El déficit se profundiza. Sube peso cuando corresponda, pero vigila señales de fatiga. RIR 1-2. Considera una semana de descarga si el rendimiento cae 2 sesiones seguidas.</p>
+        </div>
+        <div class="mini-box">
+          <h5>Semanas 9-12 · Mantenimiento de intensidad</h5>
+          <p>La energía es más limitada. El objetivo ya no es subir peso agresivamente, sino <strong>mantener el peso actual con buena técnica</strong>: eso ya conserva el músculo.</p>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- ================= VIEW: CIENCIA ================= -->
-
   <div class="view" id="view-science">
     <h2 class="display" style="font-size:26px;margin-bottom:4px;">Fundamento científico</h2>
     <p style="font-size:13px;color:var(--text-dim);margin-bottom:20px;">Por qué este plan está diseñado así.</p>
 
-```
-<div class="card acc">
-  <div class="acc-head" onclick="toggleAcc(this)">
-    <div class="aicon"><svg viewBox="0 0 24 24"><path d="M12 2v20M2 12h20"/></svg></div>
-    <div class="atitle">Qué ocurre durante un déficit calórico</div>
-    <svg class="achev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
-  </div>
-  <div class="acc-body"><div class="acc-body-in">
-    <p>Cuando comes menos calorías de las que gastas, el cuerpo recurre a sus reservas de energía: principalmente grasa, pero también tejido muscular si no recibe el estímulo y los nutrientes adecuados. El objetivo de este plan es maximizar la proporción de grasa perdida frente a músculo perdido, algo que la ciencia llama "partición nutricional".</p>
-  </div></div>
-</div>
+    <div class="card acc">
+      <div class="acc-head" onclick="toggleAcc(this)">
+        <div class="aicon"><svg viewBox="0 0 24 24"><path d="M12 2v20M2 12h20"/></svg></div>
+        <div class="atitle">Qué ocurre durante un déficit calórico</div>
+        <svg class="achev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="acc-body"><div class="acc-body-in">
+        <p>Cuando comes menos calorías de las que gastas, el cuerpo recurre a sus reservas de energía: principalmente grasa, pero también tejido muscular si no recibe el estímulo y los nutrientes adecuados. El objetivo de este plan es maximizar la proporción de grasa perdida frente a músculo perdido, algo que la ciencia llama "partición nutricional".</p>
+      </div></div>
+    </div>
 
-<div class="card acc">
-  <div class="acc-head" onclick="toggleAcc(this)">
-    <div class="aicon"><svg viewBox="0 0 24 24"><path d="M6.5 6.5h11v11h-11z"/><path d="M6.5 2v4.5M17.5 2v4.5M6.5 17.5V22M17.5 17.5V22M2 6.5h4.5M17.5 6.5H22M2 17.5h4.5M17.5 17.5H22"/></svg></div>
-    <div class="atitle">Cómo conservar músculo en déficit</div>
-    <svg class="achev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
-  </div>
-  <div class="acc-body"><div class="acc-body-in">
-    <p>El músculo se conserva dándole al cuerpo una razón para mantenerlo: seguir entrenándolo con cargas exigentes. Un déficit moderado (no extremo), proteína suficiente y entrenamiento de fuerza cercano al fallo son los tres pilares respaldados por la evidencia actual para minimizar la pérdida de masa magra durante la pérdida de grasa.</p>
-  </div></div>
-</div>
+    <div class="card acc">
+      <div class="acc-head" onclick="toggleAcc(this)">
+        <div class="aicon"><svg viewBox="0 0 24 24"><path d="M6.5 6.5h11v11h-11z"/><path d="M6.5 2v4.5M17.5 2v4.5M6.5 17.5V22M17.5 17.5V22M2 6.5h4.5M17.5 6.5H22M2 17.5h4.5M17.5 17.5H22"/></svg></div>
+        <div class="atitle">Cómo conservar músculo en déficit</div>
+        <svg class="achev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="acc-body"><div class="acc-body-in">
+        <p>El músculo se conserva dándole al cuerpo una razón para mantenerlo: seguir entrenándolo con cargas exigentes. Un déficit moderado (no extremo), proteína suficiente y entrenamiento de fuerza cercano al fallo son los tres pilares respaldados por la evidencia actual para minimizar la pérdida de masa magra durante la pérdida de grasa.</p>
+      </div></div>
+    </div>
 
-<div class="card acc">
-  <div class="acc-head" onclick="toggleAcc(this)">
-    <div class="aicon"><svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg></div>
-    <div class="atitle">Por qué levantar pesas ayuda a perder grasa</div>
-    <svg class="achev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
-  </div>
-  <div class="acc-body"><div class="acc-body-in">
-    <p>El entrenamiento de fuerza envía la señal de "este músculo es necesario" incluso con menos energía disponible. Además, mantener más masa muscular sostiene un metabolismo basal más alto a largo plazo que si esa pérdida de peso viniera solo de dieta o cardio. El déficit crea la pérdida de peso; la fuerza decide de dónde sale ese peso.</p>
-  </div></div>
-</div>
+    <div class="card acc">
+      <div class="acc-head" onclick="toggleAcc(this)">
+        <div class="aicon"><svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg></div>
+        <div class="atitle">Por qué levantar pesas ayuda a perder grasa</div>
+        <svg class="achev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="acc-body"><div class="acc-body-in">
+        <p>El entrenamiento de fuerza envía la señal de "este músculo es necesario" incluso con menos energía disponible. Además, mantener más masa muscular sostiene un metabolismo basal más alto a largo plazo que si esa pérdida de peso viniera solo de dieta o cardio. El déficit crea la pérdida de peso; la fuerza decide de dónde sale ese peso.</p>
+      </div></div>
+    </div>
 
-<div class="card acc">
-  <div class="acc-head" onclick="toggleAcc(this)">
-    <div class="aicon"><svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 109 9c0-.5 0-1-.1-1.5A5 5 0 0113 4.1c-.5-.1-1-.1-1-.1z"/></svg></div>
-    <div class="atitle">Importancia del descanso entre sesiones</div>
-    <svg class="achev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
-  </div>
-  <div class="acc-body"><div class="acc-body-in">
-    <p>El músculo no crece ni se conserva durante el entrenamiento, sino en la recuperación posterior. En déficit, esa capacidad de recuperación está reducida, por eso este plan da al menos 48h a cada grupo muscular grande antes de repetirlo directamente.</p>
-  </div></div>
-</div>
+    <div class="card acc">
+      <div class="acc-head" onclick="toggleAcc(this)">
+        <div class="aicon"><svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 109 9c0-.5 0-1-.1-1.5A5 5 0 0113 4.1c-.5-.1-1-.1-1-.1z"/></svg></div>
+        <div class="atitle">Importancia del descanso entre sesiones</div>
+        <svg class="achev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="acc-body"><div class="acc-body-in">
+        <p>El músculo no crece ni se conserva durante el entrenamiento, sino en la recuperación posterior. En déficit, esa capacidad de recuperación está reducida, por eso este plan da al menos 48h a cada grupo muscular grande antes de repetirlo directamente.</p>
+      </div></div>
+    </div>
 
-<div class="card acc">
-  <div class="acc-head" onclick="toggleAcc(this)">
-    <div class="aicon"><svg viewBox="0 0 24 24"><path d="M12 2C8 6 5 10 5 14a7 7 0 0014 0c0-4-3-8-7-12z"/></svg></div>
-    <div class="atitle">Importancia de la proteína</div>
-    <svg class="achev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
-  </div>
-  <div class="acc-body"><div class="acc-body-in">
-    <p>La proteína aporta los aminoácidos necesarios para reparar y mantener el tejido muscular, y es el macronutriente que más sacia por caloría, lo cual ayuda a sostener el déficit sin pasar hambre extrema. La evidencia actual en personas entrenando fuerza en déficit apunta a un rango aproximado de <strong>1.6-2.2 g de proteína por kg de peso corporal al día</strong> para maximizar la retención muscular.</p>
-  </div></div>
-</div>
+    <div class="card acc">
+      <div class="acc-head" onclick="toggleAcc(this)">
+        <div class="aicon"><svg viewBox="0 0 24 24"><path d="M12 2C8 6 5 10 5 14a7 7 0 0014 0c0-4-3-8-7-12z"/></svg></div>
+        <div class="atitle">Importancia de la proteína</div>
+        <svg class="achev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="acc-body"><div class="acc-body-in">
+        <p>La proteína aporta los aminoácidos necesarios para reparar y mantener el tejido muscular, y es el macronutriente que más sacia por caloría, lo cual ayuda a sostener el déficit sin pasar hambre extrema. La evidencia actual en personas entrenando fuerza en déficit apunta a un rango aproximado de <strong>1.6-2.2 g de proteína por kg de peso corporal al día</strong> para maximizar la retención muscular.</p>
+      </div></div>
+    </div>
 
-<div class="card acc">
-  <div class="acc-head" onclick="toggleAcc(this)">
-    <div class="aicon"><svg viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg></div>
-    <div class="atitle">Importancia del sueño</div>
-    <svg class="achev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
-  </div>
-  <div class="acc-body"><div class="acc-body-in">
-    <p>Dormir poco altera las hormonas que regulan el apetito (aumenta grelina, reduce leptina), lo que hace más difícil sostener el déficit, y reduce la síntesis de proteína muscular. Dormir menos de 6 horas de forma sostenida puede hacer que una parte significativa del peso perdido venga de músculo en lugar de grasa, incluso entrenando fuerza.</p>
-  </div></div>
-</div>
+    <div class="card acc">
+      <div class="acc-head" onclick="toggleAcc(this)">
+        <div class="aicon"><svg viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg></div>
+        <div class="atitle">Importancia del sueño</div>
+        <svg class="achev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="acc-body"><div class="acc-body-in">
+        <p>Dormir poco altera las hormonas que regulan el apetito (aumenta grelina, reduce leptina), lo que hace más difícil sostener el déficit, y reduce la síntesis de proteína muscular. Dormir menos de 6 horas de forma sostenida puede hacer que una parte significativa del peso perdido venga de músculo en lugar de grasa, incluso entrenando fuerza.</p>
+      </div></div>
+    </div>
 
-<div class="card acc">
-  <div class="acc-head" onclick="toggleAcc(this)">
-    <div class="aicon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 2"/></svg></div>
-    <div class="atitle">Mitos frecuentes</div>
-    <svg class="achev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
-  </div>
-  <div class="acc-body"><div class="acc-body-in">
-    <ul>
-      <li><strong>"Hacer más repeticiones quema más grasa localmente":</strong> falso. No existe la pérdida de grasa localizada; el cuerpo decide de dónde moviliza grasa de forma general.</li>
-      <li><strong>"Sin cardio no se pierde grasa":</strong> falso. El déficit calórico es lo que determina la pérdida de grasa; el cardio solo ayuda a crear ese déficit más cómodamente.</li>
-      <li><strong>"Levantar pesado en déficit es peligroso":</strong> falso si la técnica es correcta y la progresión es gradual; de hecho es lo que protege el músculo.</li>
-      <li><strong>"Hay que entrenar todos los días para ver resultados":</strong> falso. La recuperación es parte activa del progreso, no tiempo perdido.</li>
-    </ul>
-  </div></div>
-</div>
-```
-
+    <div class="card acc">
+      <div class="acc-head" onclick="toggleAcc(this)">
+        <div class="aicon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 2"/></svg></div>
+        <div class="atitle">Mitos frecuentes</div>
+        <svg class="achev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="acc-body"><div class="acc-body-in">
+        <ul>
+          <li><strong>"Hacer más repeticiones quema más grasa localmente":</strong> falso. No existe la pérdida de grasa localizada; el cuerpo decide de dónde moviliza grasa de forma general.</li>
+          <li><strong>"Sin cardio no se pierde grasa":</strong> falso. El déficit calórico es lo que determina la pérdida de grasa; el cardio solo ayuda a crear ese déficit más cómodamente.</li>
+          <li><strong>"Levantar pesado en déficit es peligroso":</strong> falso si la técnica es correcta y la progresión es gradual; de hecho es lo que protege el músculo.</li>
+          <li><strong>"Hay que entrenar todos los días para ver resultados":</strong> falso. La recuperación es parte activa del progreso, no tiempo perdido.</li>
+        </ul>
+      </div></div>
+    </div>
   </div>
 
-  <!-- ================= VIEW: BUSCADOR ================= -->
-
+   <!-- ================= VIEW: BUSCADOR ================= -->
   <div class="view" id="view-search">
     <h2 class="display" style="font-size:26px;margin-bottom:14px;">Buscador de ejercicios</h2>
     <div class="search-bar">
@@ -740,7 +721,6 @@ opacity:0;transition:all .3s;display:flex;align-items:center;gap:8px;box-shadow:
   </div>
 
   <!-- ================= VIEW: FAVORITOS ================= -->
-
   <div class="view" id="view-favorites">
     <h2 class="display" style="font-size:26px;margin-bottom:14px;">Ejercicios favoritos</h2>
     <div id="favResults"></div>
@@ -749,7 +729,6 @@ opacity:0;transition:all .3s;display:flex;align-items:center;gap:8px;box-shadow:
 </div>
 
 <!-- ============ BOTTOM NAV ============ -->
-
 <div class="bottomnav">
   <button class="navbtn active" data-view="view-home" onclick="switchNav(this)">
     <svg viewBox="0 0 24 24"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/></svg>
@@ -770,7 +749,6 @@ opacity:0;transition:all .3s;display:flex;align-items:center;gap:8px;box-shadow:
 </div>
 
 <!-- ============ TIMER OVERLAY ============ -->
-
 <div class="timer-overlay" id="timerOverlay">
   <div class="timer-ring-wrap">
     <svg width="240" height="240"><circle class="ring-track" cx="120" cy="120" r="105" stroke-width="10"/><circle class="ring-fill" id="timerRing" cx="120" cy="120" r="105" stroke-width="10" stroke-dasharray="659.7" stroke-dashoffset="0"/></svg>
@@ -879,7 +857,7 @@ const HL_PATHS = {
   forearms:"M9 30l3 15-2 2-4-16z M51 30l-3 15 2 2 4-16z"
 };
 
-/* ---------- DATOS DEL PROGRAMA (5 días) ---------- */
+   /* ---------- DATOS DEL PROGRAMA (5 días) ---------- */
 const PROGRAM = {}; // se completa abajo, día por día
 
 PROGRAM.mon = {
@@ -1229,7 +1207,7 @@ PROGRAM.wed = {
   ]
 };
 
-PROGRAM.thu = {
+   PROGRAM.thu = {
   id:'thu', dayNum:4, name:'Jueves', title:'Hombros + Abdomen', focus:'Empuje vertical, estabilidad de hombro y core',
   objective:'Desarrollar los tres haces del deltoide para hombros completos y estables, cerrando con trabajo de core para mejorar la estabilidad general del tronco.',
   duration:'60 min', intensity:4, rest:'60-90s entre series',
@@ -1476,7 +1454,7 @@ PROGRAM.fri = {
   ]
 };
 
-const DAY_ORDER = ['mon','tue','wed','thu','fri'];
+   const DAY_ORDER = ['mon','tue','wed','thu','fri'];
 const DAY_LABEL = {mon:'Lunes',tue:'Martes',wed:'Miércoles',thu:'Jueves',fri:'Viernes'};
 
 /* ---------- ESTADO / LOCALSTORAGE ---------- */
@@ -1724,115 +1702,112 @@ function renderDay(d){
           </div>
           <span class="log-label">Notas personales</span>
           <textarea class="log-input" style="width:100%;min-height:60px;font-family:'Inter';resize:vertical;" placeholder="Ej: sentí molestia en el hombro derecho…" onchange="updateLog('${exId}','notes',this.value)">${log.notes||''}</textarea>
+          <button class="btn btn-ghost btn-sm" style="margin-top:10px;" onclick="startRestTimer(${parseRestSeconds(ex.rest)})">
+            ⏱ Iniciar descanso (${ex.rest})
+          </button>
+        </div>
 
-```
-      <button class="btn btn-ghost btn-sm" style="margin-top:10px;" onclick="startRestTimer(${parseRestSeconds(ex.rest)})">
-        ⏱ Iniciar descanso (${ex.rest})
-      </button>
-    </div>
+      </div></div>
+    </div>`;
+  }).join('');
 
-  </div></div>
-</div>`;
-```
-
-}).join(’’);
-
-updateFinishBtn();
+  updateFinishBtn();
 }
 
 function parseRestSeconds(restStr){
-const nums = restStr.match(/\d+/g);
-if(!nums) return 60;
-return parseInt(nums[nums.length-1]) || 60;
+  const nums = restStr.match(/\d+/g);
+  if(!nums) return 60;
+  return parseInt(nums[nums.length-1]) || 60;
 }
 
 function toggleExercise(exId){
-document.getElementById(`excard_${exId}`).classList.toggle(‘open’);
+  document.getElementById(`excard_${exId}`).classList.toggle('open');
 }
 
 function toggleFavorite(exId){
-STATE.favorites[exId] = !STATE.favorites[exId];
-saveState();
-renderDay(PROGRAM[currentDayId]);
-showToast(STATE.favorites[exId] ? ‘Añadido a favoritos’ : ‘Quitado de favoritos’);
+  STATE.favorites[exId] = !STATE.favorites[exId];
+  saveState();
+  renderDay(PROGRAM[currentDayId]);
+  showToast(STATE.favorites[exId] ? 'Añadido a favoritos' : 'Quitado de favoritos');
 }
 
 function updateLog(exId, field, value){
-if(!STATE.logs[exId]) STATE.logs[exId] = {};
-STATE.logs[exId][field] = value;
-saveState();
+  if(!STATE.logs[exId]) STATE.logs[exId] = {};
+  STATE.logs[exId][field] = value;
+  saveState();
 }
 
 function toggleDayComplete(){
-const key = `w${STATE.currentWeek}_${currentDayId}`;
-STATE.completedWorkouts[key] = !STATE.completedWorkouts[key];
-if(STATE.completedWorkouts[key]) STATE.streak = (STATE.streak||0)+1;
-saveState();
-updateFinishBtn();
-renderHome();
-showToast(STATE.completedWorkouts[key] ? ‘¡Entrenamiento completado! 💪’ : ‘Marcado como pendiente’);
+  const key = `w${STATE.currentWeek}_${currentDayId}`;
+  STATE.completedWorkouts[key] = !STATE.completedWorkouts[key];
+  if(STATE.completedWorkouts[key]) STATE.streak = (STATE.streak||0)+1;
+  saveState();
+  updateFinishBtn();
+  renderHome();
+  showToast(STATE.completedWorkouts[key] ? '¡Entrenamiento completado! 💪' : 'Marcado como pendiente');
 }
 function updateFinishBtn(){
-const key = `w${STATE.currentWeek}_${currentDayId}`;
-const done = !!STATE.completedWorkouts[key];
-const btn = document.getElementById(‘finishBtn’);
-btn.textContent = done ? ‘✓ Entrenamiento completado’ : ‘Marcar entreno completado’;
-btn.style.opacity = done ? ‘0.85’:‘1’;
+  const key = `w${STATE.currentWeek}_${currentDayId}`;
+  const done = !!STATE.completedWorkouts[key];
+  const btn = document.getElementById('finishBtn');
+  btn.textContent = done ? '✓ Entrenamiento completado' : 'Marcar entreno completado';
+  btn.style.opacity = done ? '0.85':'1';
 }
 
-/* ––––– ACORDEONES (progresión / ciencia) ––––– */
+/* ---------- ACORDEONES (progresión / ciencia) ---------- */
 function toggleAcc(headEl){
-const acc = headEl.closest(’.acc’);
-const wasOpen = acc.classList.contains(‘open’);
-acc.classList.toggle(‘open’);
-const body = acc.querySelector(’.acc-body’);
-body.style.maxHeight = wasOpen ? ‘0px’ : body.scrollHeight+‘px’;
+  const acc = headEl.closest('.acc');
+  const wasOpen = acc.classList.contains('open');
+  acc.classList.toggle('open');
+  const body = acc.querySelector('.acc-body');
+  body.style.maxHeight = wasOpen ? '0px' : body.scrollHeight+'px';
 }
 
-/* ––––– BUSCADOR ––––– */
+/* ---------- BUSCADOR ---------- */
 function allExercisesFlat(){
-const list = [];
-DAY_ORDER.forEach(id=>{
-const d = PROGRAM[id];
-if(!d) return;
-d.exercises.forEach((ex,i)=>list.push({…ex, dayId:id, exId:`${id}_${i}`, dayTitle:d.title}));
-});
-return list;
+  const list = [];
+  DAY_ORDER.forEach(id=>{
+    const d = PROGRAM[id];
+    if(!d) return;
+    d.exercises.forEach((ex,i)=>list.push({...ex, dayId:id, exId:`${id}_${i}`, dayTitle:d.title}));
+  });
+  return list;
 }
-let activeMuscleFilter = ‘all’;
+let activeMuscleFilter = 'all';
 function renderMuscleChips(){
-const groups = [‘all’,‘Pectoral’,‘Tríceps’,‘Dorsal’,‘Bíceps’,‘Cuádriceps’,‘Glúteo’,‘Deltoide’,‘Recto’];
-document.getElementById(‘muscleFilterChips’).innerHTML = groups.map(g=>`<button class="chip ${activeMuscleFilter===g?'active':''}" onclick="setMuscleFilter('${g}')">${g==='all'?'Todos':g}</button>`).join(’’);
+  const groups = ['all','Pectoral','Tríceps','Dorsal','Bíceps','Cuádriceps','Glúteo','Deltoide','Recto'];
+  document.getElementById('muscleFilterChips').innerHTML = groups.map(g=>`
+    <button class="chip ${activeMuscleFilter===g?'active':''}" onclick="setMuscleFilter('${g}')">${g==='all'?'Todos':g}</button>
+  `).join('');
 }
 function setMuscleFilter(g){ activeMuscleFilter=g; renderSearch(); }
 function renderSearch(){
-renderMuscleChips();
-const q = (document.getElementById(‘searchInput’).value||’’).toLowerCase();
-const all = allExercisesFlat();
-const filtered = all.filter(ex=>{
-const matchesQ = ex.name.toLowerCase().includes(q);
-const matchesM = activeMuscleFilter===‘all’ || ex.muscles.some(m=>MUSCLES_DB[m.id].name.startsWith(activeMuscleFilter));
-return matchesQ && matchesM;
-});
-const wrap = document.getElementById(‘searchResults’);
-if(filtered.length===0){
-wrap.innerHTML = `<div class="empty"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg><p>No se encontraron ejercicios.</p></div>`;
-return;
-}
-wrap.innerHTML = filtered.map(ex=>searchResultCard(ex)).join(’’);
+  renderMuscleChips();
+  const q = (document.getElementById('searchInput').value||'').toLowerCase();
+  const all = allExercisesFlat();
+  const filtered = all.filter(ex=>{
+    const matchesQ = ex.name.toLowerCase().includes(q);
+    const matchesM = activeMuscleFilter==='all' || ex.muscles.some(m=>MUSCLES_DB[m.id].name.startsWith(activeMuscleFilter));
+    return matchesQ && matchesM;
+  });
+  const wrap = document.getElementById('searchResults');
+  if(filtered.length===0){
+    wrap.innerHTML = `<div class="empty"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg><p>No se encontraron ejercicios.</p></div>`;
+    return;
+  }
+  wrap.innerHTML = filtered.map(ex=>searchResultCard(ex)).join('');
 }
 function searchResultCard(ex){
-const isFav = !!STATE.favorites[ex.exId];
-return `<div class="card day-card" onclick="openDay('${ex.dayId}')">
-<div class="dnum" style="font-size:0;padding:8px;">${PROGRAM[ex.dayId].icon}</div>
-<div class="dinfo">
-<div class="dtitle">${ex.name}</div>
-<div class="dmeta">${ex.dayTitle} · ${ex.sets}x${ex.reps}</div>
-</div>
-<button class="ex-fav ${isFav?'active':''}" onclick="event.stopPropagation();toggleFavorite('${ex.exId}');renderSearch()">
-<svg viewBox="0 0 24 24" style="width:18px;stroke:currentColor;fill:${isFav?'var(--gold)':'none'};stroke-width:1.8;"><path d="M20.8 4.6a5.5 5.5 0 00-7.8 0L12 5.6l-1-1a5.5 5.5 0 00-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 000-7.8z"/></svg>
-</button>
-
+  const isFav = !!STATE.favorites[ex.exId];
+  return `<div class="card day-card" onclick="openDay('${ex.dayId}')">
+    <div class="dnum" style="font-size:0;padding:8px;">${PROGRAM[ex.dayId].icon}</div>
+    <div class="dinfo">
+      <div class="dtitle">${ex.name}</div>
+      <div class="dmeta">${ex.dayTitle} · ${ex.sets}x${ex.reps}</div>
+    </div>
+    <button class="ex-fav ${isFav?'active':''}" onclick="event.stopPropagation();toggleFavorite('${ex.exId}');renderSearch()">
+      <svg viewBox="0 0 24 24" style="width:18px;stroke:currentColor;fill:${isFav?'var(--gold)':'none'};stroke-width:1.8;"><path d="M20.8 4.6a5.5 5.5 0 00-7.8 0L12 5.6l-1-1a5.5 5.5 0 00-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 000-7.8z"/></svg>
+    </button>
   </div>`;
 }
 function renderFavorites(){
@@ -1846,85 +1821,86 @@ function renderFavorites(){
   wrap.innerHTML = favs.map(ex=>searchResultCard(ex)).join('');
 }
 
-/* ––––– TEMPORIZADOR DE DESCANSO ––––– */
+   /* ---------- TEMPORIZADOR DE DESCANSO ---------- */
 let timerInterval = null, timerSeconds = 60, timerTotal = 60, timerRunning = false;
 function startRestTimer(seconds){
-timerTotal = seconds; timerSeconds = seconds; timerRunning = true;
-document.getElementById(‘timerOverlay’).classList.add(‘show’);
-updateTimerDisplay();
-clearInterval(timerInterval);
-timerInterval = setInterval(()=>{
-if(!timerRunning) return;
-timerSeconds–;
-if(timerSeconds<=0){
-clearInterval(timerInterval);
-timerSeconds=0;
-updateTimerDisplay();
-if(navigator.vibrate) navigator.vibrate([200,100,200]);
-showToast(’¡Descanso terminado! 🔥’);
-setTimeout(closeTimer,900);
-return;
-}
-updateTimerDisplay();
-},1000);
+  timerTotal = seconds; timerSeconds = seconds; timerRunning = true;
+  document.getElementById('timerOverlay').classList.add('show');
+  updateTimerDisplay();
+  clearInterval(timerInterval);
+  timerInterval = setInterval(()=>{
+    if(!timerRunning) return;
+    timerSeconds--;
+    if(timerSeconds<=0){
+      clearInterval(timerInterval);
+      timerSeconds=0;
+      updateTimerDisplay();
+      if(navigator.vibrate) navigator.vibrate([200,100,200]);
+      showToast('¡Descanso terminado! 🔥');
+      setTimeout(closeTimer,900);
+      return;
+    }
+    updateTimerDisplay();
+  },1000);
 }
 function updateTimerDisplay(){
-const m = Math.floor(timerSeconds/60).toString().padStart(2,‘0’);
-const s = (timerSeconds%60).toString().padStart(2,‘0’);
-document.getElementById(‘timerTime’).textContent = `${m}:${s}`;
-const r=105, circ=2*Math.PI*r;
-const pct = timerSeconds/timerTotal;
-document.getElementById(‘timerRing’).setAttribute(‘stroke-dasharray’, circ.toFixed(1));
-document.getElementById(‘timerRing’).setAttribute(‘stroke-dashoffset’, (circ*(1-pct)).toFixed(1));
+  const m = Math.floor(timerSeconds/60).toString().padStart(2,'0');
+  const s = (timerSeconds%60).toString().padStart(2,'0');
+  document.getElementById('timerTime').textContent = `${m}:${s}`;
+  const r=105, circ=2*Math.PI*r;
+  const pct = timerSeconds/timerTotal;
+  document.getElementById('timerRing').setAttribute('stroke-dasharray', circ.toFixed(1));
+  document.getElementById('timerRing').setAttribute('stroke-dashoffset', (circ*(1-pct)).toFixed(1));
 }
 function adjustTimer(delta){
-timerSeconds = Math.max(0, timerSeconds+delta);
-timerTotal = Math.max(timerTotal, timerSeconds);
-updateTimerDisplay();
+  timerSeconds = Math.max(0, timerSeconds+delta);
+  timerTotal = Math.max(timerTotal, timerSeconds);
+  updateTimerDisplay();
 }
 function toggleTimerPlay(){
-timerRunning = !timerRunning;
-document.getElementById(‘timerPlayPause’).innerHTML = timerRunning
-? `<svg viewBox="0 0 24 24"><path d="M6 4h4v16H6zM14 4h4v16h-4z"/></svg>`
-: `<svg viewBox="0 0 24 24"><path d="M6 4l15 8-15 8V4z"/></svg>`;
+  timerRunning = !timerRunning;
+  document.getElementById('timerPlayPause').innerHTML = timerRunning
+    ? `<svg viewBox="0 0 24 24"><path d="M6 4h4v16H6zM14 4h4v16h-4z"/></svg>`
+    : `<svg viewBox="0 0 24 24"><path d="M6 4l15 8-15 8V4z"/></svg>`;
 }
 function closeTimer(){
-document.getElementById(‘timerOverlay’).classList.remove(‘show’);
-clearInterval(timerInterval);
+  document.getElementById('timerOverlay').classList.remove('show');
+  clearInterval(timerInterval);
 }
 
-/* ––––– TOAST ––––– */
+/* ---------- TOAST ---------- */
 let toastTimeout;
 function showToast(msg){
-const t = document.getElementById(‘toast’);
-document.getElementById(‘toastMsg’).textContent = msg;
-t.classList.add(‘show’);
-clearTimeout(toastTimeout);
-toastTimeout = setTimeout(()=>t.classList.remove(‘show’), 2400);
+  const t = document.getElementById('toast');
+  document.getElementById('toastMsg').textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimeout);
+  toastTimeout = setTimeout(()=>t.classList.remove('show'), 2400);
 }
 
-/* ––––– FULLSCREEN ––––– */
-document.getElementById(‘fsToggle’).onclick = function(){
-if(!document.fullscreenElement){
-document.documentElement.requestFullscreen?.().catch(()=>{});
-document.getElementById(‘app’).classList.add(‘fullscreen’);
-this.classList.add(‘active’);
-}else{
-document.exitFullscreen?.();
-document.getElementById(‘app’).classList.remove(‘fullscreen’);
-this.classList.remove(‘active’);
-}
+/* ---------- FULLSCREEN ---------- */
+document.getElementById('fsToggle').onclick = function(){
+  if(!document.fullscreenElement){
+    document.documentElement.requestFullscreen?.().catch(()=>{});
+    document.getElementById('app').classList.add('fullscreen');
+    this.classList.add('active');
+  }else{
+    document.exitFullscreen?.();
+    document.getElementById('app').classList.remove('fullscreen');
+    this.classList.remove('active');
+  }
 };
-document.getElementById(‘searchToggle’).onclick = function(){
-document.querySelectorAll(’.navbtn’).forEach(b=>b.classList.remove(‘active’));
-document.querySelector(’.navbtn[data-view=“view-search”]’)?.classList.add(‘active’);
-showView(‘view-search’);
-renderSearch();
+document.getElementById('searchToggle').onclick = function(){
+  document.querySelectorAll('.navbtn').forEach(b=>b.classList.remove('active'));
+  document.querySelector('.navbtn[data-view="view-search"]')?.classList.add('active');
+  showView('view-search');
+  renderSearch();
 };
 
-/* ––––– INIT ––––– */
+/* ---------- INIT ---------- */
 renderHome();
 </script>
-
 </body>
 </html>
+
+   
